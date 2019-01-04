@@ -1,4 +1,7 @@
-@mixin section {
+@import './colors';
+
+@mixin section($color) {
+    background-color: $color;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -6,5 +9,10 @@
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
-    box-shadow: inset 0px 2px 100px black;
+    @if ($color == $primary_color) {
+        box-shadow: inset 0px 2px 100px black;
+    }
+    @else {
+        box-shadow: inset 0px 2px 100px darkgray;
+    }
 }

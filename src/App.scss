@@ -14,8 +14,7 @@
 
 
 .App-header {
-  background-color: $primary_color;
-  @include section;
+  @include section($primary_color);
 }
 
 
@@ -36,11 +35,14 @@
   }
 }
 
-.App-section:nth-child(1) {
-  background-color: $primary_color;
-  @include section;
+.App-section:nth-child(odd) {
+  @include section($primary_color);
 }
-.App-section:nth-child(2) {
-  background-color: $secundary_color;
-  @include section;
+.App-section:nth-child(even) {
+  @include section($secundary_color);
+}
+
+.App-footer {
+  @include section($primary_color);
+  min-height: 20vh;
 }

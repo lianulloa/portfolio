@@ -3,6 +3,9 @@ import logo from './test.png';
 import './App.scss';
 
 import About from './components/about/About';
+import Services from './components/services/Services';
+import Contact from './components/contact/Contact';
+import Footer from './components/footer/Footer';
 
 class App extends Component {
   render() {
@@ -12,6 +15,9 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
         </header>
         <About />
+        <Services />
+        <Contact />
+        <Footer />
       </div>
     );
   }

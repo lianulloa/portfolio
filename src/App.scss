@@ -10,6 +10,7 @@
   height: 40vmin;
   position: absolute;
   left: 10%;
+  top: 35%;
 }
 
 
@@ -38,6 +39,7 @@
 .App-section:nth-child(odd) {
   @include section($primary_color);
 }
+
 .App-section:nth-child(even) {
   @include section($secundary_color);
 }

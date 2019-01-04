@@ -1,14 +1,19 @@
+@import './theme/colors';
+
 .App {
   text-align: center;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
+  animation: App-logo-in 0.75s ease-in;
   height: 40vmin;
+  position: absolute;
+  left: 10%;
 }
 
+
 .App-header {
-  background-color: #282c34;
+  background-color: $primary_color;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -18,15 +23,41 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+
+@keyframes App-logo-in {
+  0% {
+    transform: scale(1.5);
+    filter: blur(3px);
+  }
+
+  75% {
+    transform: scale(0.75);
+    filter: blur(2px);
+  }
+
+  100% {
+    transform: scale(1);
+    filter: blur(0px);
+  }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App-section:nth-child(1) {
+  background-color: $secundary_color;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+.App-section:nth-child(2) {
+  background-color: $primary_color;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }

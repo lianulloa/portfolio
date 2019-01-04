@@ -13,7 +13,6 @@ class App extends Component {
     $(window).scroll(function() {
       var navInit = $(".App-header")[0].offsetHeight;
       var navigation = $(".App-navigation");
-      // var navTop = navigation[0].offsetTop;
       var scrollPos = $(window).scrollTop();
       var yPos = scrollPos / 8;
       var newPos = 25 + yPos;
@@ -21,15 +20,6 @@ class App extends Component {
         top: newPos + "%"
       });
 
-      // if (scrollPos >= navTop && scrollPos < navInit) {
-      //   navigation.css({
-      //     bottom: -(scrollPos - navTop) + "px"
-      //   });
-      // } else {
-      //   navigation.css({
-      //     bottom: "0"
-      //   });
-      // }
       if (scrollPos > navInit) {
         if (!navigation.hasClass("fixed")) {
           navigation.removeClass("no-fixed");
@@ -48,25 +38,30 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <img src={logo} className="App-logo" alt="Deal" />
           <div className="App-navigation no-fixed">
-            <ul>
-              <li>
-                <a href="#"> navigation1 </a>
-              </li>
-              <li>
-                <a href="#"> navigation2 </a>
-              </li>
-              <li>
-                <a href="#"> navigation3 </a>
-              </li>
-              <li>
-                <a href="#"> navigation4 </a>
-              </li>
-              <li>
-                <a href="#"> navigation5 </a>
-              </li>
-            </ul>
+            <div className="App-navigation-container">
+              <a href="#" className="App-link-logo">
+                <img src={logo} className="App-menu-logo" alt="Deal" />
+              </a>
+              <ul>
+                <li>
+                  <a href="#"> navigation1 </a>
+                </li>
+                <li>
+                  <a href="#"> navigation2 </a>
+                </li>
+                <li>
+                  <a href="#"> navigation3 </a>
+                </li>
+                <li>
+                  <a href="#"> navigation4 </a>
+                </li>
+                <li>
+                  <a href="#"> navigation5 </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </header>
         <About />

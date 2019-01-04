@@ -3,6 +3,7 @@
 
 .App {
   text-align: center;
+  color: $font-color;
 }
 
 .App-logo {
@@ -10,7 +11,7 @@
   height: 40vmin;
   position: absolute;
   left: 10%;
-  top: 35%;
+  top: 25%;
 }
 
 
@@ -18,6 +19,13 @@
   @include section($primary_color);
 }
 
+.App-navigation.no-fixed {
+  @include navigation(false);
+}
+
+.App-navigation.fixed {
+  @include navigation(true);
+}
 
 @keyframes App-logo-in {
   0% {
@@ -47,4 +55,8 @@
 .App-footer {
   @include section($primary_color);
   min-height: 20vh;
+}
+
+.App-content {
+  @include content;
 }

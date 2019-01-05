@@ -44,7 +44,6 @@
 
     .App-navigation-container {
         max-width: 1200px;
-        border: solid 2px red;
         display: block;
         padding-left: 5px;
         padding-right: 5px;
@@ -55,6 +54,10 @@
         }
 
         ul {
+            @media screen and (max-width: 764px) {
+                display: none;
+            }
+
             float: right;
             display: flex;
             justify-content: space-evenly;
@@ -70,6 +73,23 @@
                     color: $font-color;
                     text-decoration: none;
                 }
+            }
+        }
+
+        button {
+            @media screen and (min-width: 764px) {
+                display: none;
+            }
+
+            float: right;
+            background: inherit;
+            border: none;
+            outline: 0;
+            padding: 1.5rem 1.5rem;
+            margin-left: 5%;
+
+            img {
+                width: 2rem;
             }
         }
     }

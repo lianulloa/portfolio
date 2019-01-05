@@ -54,10 +54,6 @@
         }
 
         ul {
-            @media screen and (max-width: 764px) {
-                display: none;
-            }
-
             float: right;
             display: flex;
             justify-content: space-evenly;
@@ -77,9 +73,6 @@
         }
 
         button {
-            @media screen and (min-width: 764px) {
-                display: none;
-            }
 
             float: right;
             background: inherit;

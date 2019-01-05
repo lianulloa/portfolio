@@ -12,10 +12,14 @@ import Footer from "./components/footer/Footer";
 class App extends Component {
   state = {
     scrollValues: [25],
-    fixed: false
+    fixed: false,
+    width: window.screen.width
   };
   componentDidMount() {
     window.onscroll = () => this.handleAnimation();
+    window.onresize = () => {
+      this.setState({ width: window.screen.width });
+    };
   }
   handleAnimation() {
     this.setState({});
@@ -45,24 +49,27 @@ class App extends Component {
               <a href="#" className="App-link-logo">
                 <img src={logo} className="App-menu-logo" alt="Deal" />
               </a>
-              <ul>
+              <ul
+                style={{ display: this.state.width <= 764 ? "none" : "flex" }}
+              >
                 <li>
-                  <a href="#"> navigation1 </a>
+                  <a href="#"> About Us </a>
                 </li>
                 <li>
-                  <a href="#"> navigation2 </a>
+                  <a href="#"> Services </a>
                 </li>
                 <li>
-                  <a href="#"> navigation3 </a>
+                  <a href="#"> Contact Us </a>
                 </li>
                 <li>
-                  <a href="#"> navigation4 </a>
-                </li>
-                <li>
-                  <a href="#"> navigation5 </a>
+                  <a href="#"> How find us? </a>
                 </li>
               </ul>
-              <button className="menu-trigger" onClick={this.handleMenuClick}>
+              <button
+                className="menu-trigger"
+                onClick={this.handleMenuClick}
+                style={{ display: this.state.width > 764 ? "none" : "block" }}
+              >
                 <img src={menu} alt="menu" />
               </button>
             </div>

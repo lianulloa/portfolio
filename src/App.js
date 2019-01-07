@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import logo from "./logotest.svg";
 import menu from "./static/images/toggle_menu.svg";
 import "./App.scss";
-import $ from "jquery";
 
 import About from "./components/about/About";
 import Services from "./components/services/Services";

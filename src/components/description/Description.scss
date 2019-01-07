@@ -1,0 +1,13 @@
+.viewed {
+    transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.title.no-viewed {
+    opacity: 0;
+    transform: translateX(120%) scale(0.2);
+}
+
+.text.no-viewed {
+    opacity: 0;
+    transform: scale(0);
+}

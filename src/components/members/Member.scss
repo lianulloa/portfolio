@@ -1,0 +1,13 @@
+.member-card {
+    float: left;
+    width: 100%;
+
+    .card-image {}
+}
+
+
+@media screen and (min-width: 764px) {
+    .member-card {
+        width: 33%;
+    }
+}

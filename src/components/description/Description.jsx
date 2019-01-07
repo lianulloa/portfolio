@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Description.scss";
+import Members from "../members/Members";
 class Description extends Component {
   state = {
     title: false,
@@ -34,6 +35,7 @@ class Description extends Component {
           unde magnam, deserunt itaque tempora, explicabo sed officiis, veniam
           animi!
         </p>
+        <Members />
       </div>
     );
   }

@@ -1,7 +1,14 @@
 .member-card {
     float: left;
     width: 100%;
+    max-width: 400px;
 
+    .card-image {
+        display: block;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
 }
 
 

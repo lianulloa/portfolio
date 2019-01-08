@@ -2,13 +2,8 @@
     transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.title.no-viewed {
-    opacity: 0;
-    transition: all 1s ease-out;
-    transform: translateX(120%) scale(0.2);
-}
 
-.text.no-viewed {
+.no-viewed {
     opacity: 0;
     transition: all 1s ease-out;
     transform: scale(0);

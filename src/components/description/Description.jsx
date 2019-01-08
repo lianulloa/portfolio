@@ -20,6 +20,10 @@ class Description extends Component {
     if (top < 400 && !this.state.title) {
       this.setState({ title: !this.state.title });
       this.setState({ text: !this.state.text });
+    } 
+    if (top > 400 && this.state.title) {
+      this.setState({ title: !this.state.title });
+      this.setState({ text: !this.state.text });
     }
   }
 

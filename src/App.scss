@@ -56,6 +56,9 @@
 
 .App-section:nth-child(even) {
   @include section($secundary_color);
+  z-index: 2;
+  box-shadow: 0px 4px 10px black,
+    0px -4px 10px black;
 }
 
 .App-footer {

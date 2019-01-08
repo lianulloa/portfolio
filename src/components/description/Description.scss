@@ -4,10 +4,12 @@
 
 .title.no-viewed {
     opacity: 0;
+    transition: all 1s ease-out;
     transform: translateX(120%) scale(0.2);
 }
 
 .text.no-viewed {
     opacity: 0;
+    transition: all 1s ease-out;
     transform: scale(0);
 }

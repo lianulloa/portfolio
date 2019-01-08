@@ -12,7 +12,11 @@ class Footer extends Component {
       top = 1000;
     }
     return (
-      <footer className="App-footer" ref={el => (this.instance = el)}>
+      <footer
+        className="App-footer"
+        id="App-footer"
+        ref={el => (this.instance = el)}
+      >
         <p
           style={{
             position: "absolute",

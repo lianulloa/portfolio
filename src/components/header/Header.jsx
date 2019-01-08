@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 // import './Header.scss';
 import logo from "../../logotest.svg";
-import laptop from "../../static/images/laptop.svg";
+// import laptop from "../../static/images/laptop.svg";
 import menu from "../../static/images/toggle_menu.svg";
+import Scrollchor from "react-scrollchor";
 class Header extends Component {
   render() {
     const { fixed, width } = this.props;
@@ -25,21 +26,49 @@ class Header extends Component {
         /> */}
         <div className={navclass}>
           <div className="App-navigation-container">
-            <a href="#" className="App-link-logo">
+            <Scrollchor
+              to=""
+              animate={{ offset: 0, duration: 700 }}
+              className="App-link-logo"
+            >
               <img src={logo} className="App-menu-logo" alt="Deal" />
-            </a>
+            </Scrollchor>
             <ul style={{ display: width <= 764 ? "none" : "flex" }}>
               <li>
-                <a href="#"> About Us </a>
+                <Scrollchor
+                  to="#App-about"
+                  animate={{ offset: 0, duration: 700 }}
+                  className="App-nav-link"
+                >
+                  About Us
+                </Scrollchor>
               </li>
               <li>
-                <a href="#"> Services </a>
+                <Scrollchor
+                  to="#App-services"
+                  animate={{ offset: 0, duration: 700 }}
+                  className="App-nav-link"
+                >
+                  Services
+                </Scrollchor>
               </li>
               <li>
-                <a href="#"> Contact Us </a>
+                <Scrollchor
+                  to="#App-contact"
+                  animate={{ offset: 0, duration: 700 }}
+                  className="App-nav-link"
+                >
+                  Contact Us
+                </Scrollchor>
               </li>
               <li>
-                <a href="#"> How find us? </a>
+                <Scrollchor
+                  to="#App-footer"
+                  animate={{ offset: 0, duration: 700 }}
+                  className="App-nav-link"
+                >
+                  How find us?
+                </Scrollchor>
               </li>
             </ul>
             <button

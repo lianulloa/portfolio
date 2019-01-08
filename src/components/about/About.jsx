@@ -12,7 +12,7 @@ class About extends Component {
 
   render() {
     return (
-      <div className="App-section">
+      <div className="App-section" id="App-about">
         <div className="App-content">
           <Description />
         </div>

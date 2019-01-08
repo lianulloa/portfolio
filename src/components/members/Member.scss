@@ -1,7 +1,12 @@
 .member-card {
+    padding: 2% 0%;
     float: left;
     width: 100%;
     max-width: 400px;
+
+    div {
+        margin: 0% 2%;
+    }
 
     .card-image {
         display: block;

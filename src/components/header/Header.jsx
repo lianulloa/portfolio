@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 // import './Header.scss';
 import logo from "../../logotest.svg";
+import laptop from "../../static/images/laptop.svg";
 import menu from "../../static/images/toggle_menu.svg";
 class Header extends Component {
   render() {
@@ -16,6 +17,12 @@ class Header extends Component {
           alt="Deal"
           style={{ top: 25 + window.scrollY / 10 + "%" }}
         />
+        {/* <img
+          src={laptop}
+          className="App-laptop"
+          alt="Laptop"
+          style={{ top: -30 - window.scrollY / 5 + "%" }}
+        /> */}
         <div className={navclass}>
           <div className="App-navigation-container">
             <a href="#" className="App-link-logo">

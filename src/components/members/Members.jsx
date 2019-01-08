@@ -34,7 +34,7 @@ class Members extends Component {
   };
   render() {
     return (
-      <div className="members">
+      <div className="App-members">
         {this.state.members.map(member => (
           <Member key={member.id} member={member} />
         ))}

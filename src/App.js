@@ -28,7 +28,6 @@ class App extends Component {
     let navInit = headerH - navH;
     this.setState({ fixed: window.scrollY > navInit });
   }
-  handleMenuClick() {}
   render() {
     return (
       <div className="App">

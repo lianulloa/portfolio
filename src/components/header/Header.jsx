@@ -5,16 +5,26 @@ import logo from "../../logotest.svg";
 import menu from "../../static/images/toggle_menu.svg";
 import Scrollchor from "react-scrollchor";
 class Header extends Component {
-  sections = [
-    { text: "About us", link: "#App-about" },
-    { text: "Services", link: "#App-services" },
-    { text: "Contact", link: "#App-contact" },
-    { text: "How find us", link: "#App-footer" }
-  ];
+  state = {
+    menuHidden: true,
+    sections: [
+      { text: "About us", link: "#App-about" },
+      { text: "Services", link: "#App-services" },
+      { text: "Contact", link: "#App-contact" },
+      { text: "How find us", link: "#App-footer" }
+    ]
+  };
+
+  handleMenuClick = () => {
+    this.setState({ menuHidden: !this.state.menuHidden });
+  };
+
   render() {
     const { fixed, width } = this.props;
     let navclass = "App-navigation";
     navclass += fixed === true ? " fixed" : " no-fixed";
+    let menuOverlay = "App-menu-overlay";
+    menuOverlay += this.state.menuHidden === true ? " hidden" : " show";
 
     return (
       <header className="App-header">
@@ -34,17 +44,17 @@ class Header extends Component {
           <div className="App-navigation-container">
             <Scrollchor
               to=""
-              animate={{ offset: 0, duration: 700 }}
+              animate={{ offset: 0, duration: 500 }}
               className="App-link-logo"
             >
               <img src={logo} className="App-menu-logo" alt="Deal" />
             </Scrollchor>
             <ul style={{ display: width <= 764 ? "none" : "flex" }}>
-              {this.sections.map(section => (
+              {this.state.sections.map(section => (
                 <li>
                   <Scrollchor
                     to={section.link}
-                    animate={{ offset: 0, duration: 700 }}
+                    animate={{ offset: 0, duration: 500 }}
                     className="App-nav-link"
                   >
                     {section.text}
@@ -59,6 +69,29 @@ class Header extends Component {
             >
               <img src={menu} alt="menu" />
             </button>
+            <div className={menuOverlay}>
+              <div
+                className="App-menu-overlay-content"
+                onClick={this.handleMenuClick}
+              >
+                <ul>
+                  {this.state.sections.map(section => (
+                    <li>
+                      <Scrollchor
+                        to={section.link}
+                        animate={{ offset: 0, duration: 500 }}
+                        className="App-nav-link"
+                      >
+                        {section.text}
+                      </Scrollchor>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div className="App-menu-overlay-bg" onClick={this.handleMenuClick}>
+              {/* <button className="menu-close">x</button> */}
+            </div>
           </div>
         </div>
       </header>

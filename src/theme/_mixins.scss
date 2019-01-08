@@ -49,30 +49,30 @@
         padding-right: 5px;
         width: inherit;
 
-        a {
+        >a {
             float: left;
         }
 
-        ul {
+        >ul {
             float: right;
             display: flex;
             justify-content: space-evenly;
             margin: 1.5rem 1rem 1.5rem;
             padding: 0;
 
-            li {
+            >li {
                 font-size: 1.2rem;
                 display: block;
                 margin-right: 7px;
 
-                a {
+                >a {
                     color: $font-color;
                     text-decoration: none;
                 }
             }
         }
 
-        button {
+        >button {
 
             float: right;
             background: inherit;
@@ -81,9 +81,53 @@
             padding: 1.5rem 1.5rem;
             margin-left: 5%;
 
-            img {
+            >img {
                 width: 2rem;
             }
+        }
+    }
+}
+
+@mixin menu-overlay($hidden) {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: auto;
+    z-index: 2000;
+
+    @if ($hidden==true) {
+        visibility: hidden;
+        backface-visibility: hidden;
+    }
+
+    @else {
+        visibility: visible;
+        backface-visibility: visible;
+    }
+
+    transform: translateX(-50%) translateY(-50%);
+
+    .App-menu-overlay-content {
+        @if ($hidden==true) {
+            transform: scale(0.8);
+            opacity: 0;
+        }
+
+        @else {
+            display: block;
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        transition: all 0.3s;
+        background: transparent;
+
+        >ul {
+            text-align: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
     }
 }

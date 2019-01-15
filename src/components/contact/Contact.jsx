@@ -14,6 +14,12 @@ class Contact extends Component {
       phone: false,
       message: false
     },
+    fieldFocus: {
+      name: false,
+      email: false,
+      phone: false,
+      message: false
+    },
     fieldErrors: []
   };
   onFormSubmit = evt => {
@@ -41,8 +47,10 @@ class Contact extends Component {
       });
     }
   };
-  onInputSelect = evt => {
-    console.log(evt.target.focus);
+  onInputFocus = evt => {
+    const fieldFocus = this.state.fieldFocus;
+    fieldFocus[evt.target.name] = true;
+    this.setState({ fieldFocus });
   };
   onInputChange = evt => {
     const fields = this.state.fields;
@@ -50,6 +58,18 @@ class Contact extends Component {
     this.setState({ fields });
   };
   render() {
+    var nameClass,
+      emailClass,
+      phoneClass,
+      messageClass = "initial";
+    if (this.state.fieldFocus.name || this.state.fields.name !== "")
+      nameClass = "used";
+    if (this.state.fieldFocus.email || this.state.fields.email !== "")
+      emailClass = "used";
+    if (this.state.fieldFocus.phone || this.state.fields.phone !== "")
+      phoneClass = "used";
+    if (this.state.fieldFocus.message || this.state.fields.message !== "")
+      messageClass = "used";
     return (
       <div className="App-section" id="App-contact">
         <form onSubmit={this.onFormSubmit}>
@@ -63,12 +83,12 @@ class Contact extends Component {
           <div className="formInputs" style={{ display: "flex" }}>
             <div className="formFirstPart">
               <div className="formInput">
-                <label className="used" for="nameInput">
+                <label className={nameClass} for="nameInput">
                   Nombre
                 </label>
                 <input
                   onChange={this.onInputChange}
-                  onSelect={this.onInputSelect}
+                  onFocus={this.onInputFocus}
                   id="nameInput"
                   autoComplete={"off"}
                   type="text"
@@ -77,12 +97,12 @@ class Contact extends Component {
                 />
               </div>
               <div className="formInput">
-                <label className="initial" for="emailInput">
+                <label className={emailClass} for="emailInput">
                   Email
                 </label>
                 <input
                   onChange={this.onInputChange}
-                  onSelect={this.onInputSelect}
+                  onFocus={this.onInputFocus}
                   id="emailInput"
                   autoComplete={"off"}
                   type="email"
@@ -91,12 +111,12 @@ class Contact extends Component {
                 />
               </div>
               <div className="formInput">
-                <label className="initial" for="phoneInput">
+                <label className={phoneClass} for="phoneInput">
                   Teléfono
                 </label>
                 <input
                   onChange={this.onInputChange}
-                  onSelect={this.onInputSelect}
+                  onFocus={this.onInputFocus}
                   id="phoneInput"
                   autoComplete={"off"}
                   type="tel"
@@ -107,12 +127,12 @@ class Contact extends Component {
             </div>
             <div className="formSecondPart">
               <div className="formInput">
-                <label className="initial" for="messageInput">
+                <label className={messageClass} for="messageInput">
                   Mensaje
                 </label>
                 <textarea
                   onChange={this.onInputChange}
-                  onSelect={this.onInputSelect}
+                  onFocus={this.onInputFocus}
                   id="messageInput"
                   autoComplete={"off"}
                   name="message"

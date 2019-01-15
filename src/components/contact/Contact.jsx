@@ -52,16 +52,21 @@ class Contact extends Component {
     fieldFocus[evt.target.name] = true;
     this.setState({ fieldFocus });
   };
+  onInputBlur = evt => {
+    const fieldFocus = this.state.fieldFocus;
+    fieldFocus[evt.target.name] = false;
+    this.setState({ fieldFocus });
+  };
   onInputChange = evt => {
     const fields = this.state.fields;
     fields[evt.target.name] = evt.target.value;
     this.setState({ fields });
   };
   render() {
-    var nameClass,
-      emailClass,
-      phoneClass,
-      messageClass = "initial";
+    var nameClass = "initial";
+    var emailClass = "initial";
+    var phoneClass = "initial";
+    var messageClass = "initial";
     if (this.state.fieldFocus.name || this.state.fields.name !== "")
       nameClass = "used";
     if (this.state.fieldFocus.email || this.state.fields.email !== "")
@@ -83,12 +88,18 @@ class Contact extends Component {
           <div className="formInputs" style={{ display: "flex" }}>
             <div className="formFirstPart">
               <div className="formInput">
-                <label className={nameClass} for="nameInput">
+                <label
+                  className={
+                    (nameClass += this.state.fieldsError.name ? " error" : "")
+                  }
+                  htmlFor="nameInput"
+                >
                   Nombre
                 </label>
                 <input
                   onChange={this.onInputChange}
                   onFocus={this.onInputFocus}
+                  onBlur={this.onInputBlur}
                   id="nameInput"
                   autoComplete={"off"}
                   type="text"
@@ -97,12 +108,13 @@ class Contact extends Component {
                 />
               </div>
               <div className="formInput">
-                <label className={emailClass} for="emailInput">
+                <label className={emailClass} htmlFor="emailInput">
                   Email
                 </label>
                 <input
                   onChange={this.onInputChange}
                   onFocus={this.onInputFocus}
+                  onBlur={this.onInputBlur}
                   id="emailInput"
                   autoComplete={"off"}
                   type="email"
@@ -111,12 +123,13 @@ class Contact extends Component {
                 />
               </div>
               <div className="formInput">
-                <label className={phoneClass} for="phoneInput">
+                <label className={phoneClass} htmlFor="phoneInput">
                   Teléfono
                 </label>
                 <input
                   onChange={this.onInputChange}
                   onFocus={this.onInputFocus}
+                  onBlur={this.onInputBlur}
                   id="phoneInput"
                   autoComplete={"off"}
                   type="tel"
@@ -127,12 +140,13 @@ class Contact extends Component {
             </div>
             <div className="formSecondPart">
               <div className="formInput">
-                <label className={messageClass} for="messageInput">
+                <label className={messageClass} htmlFor="messageInput">
                   Mensaje
                 </label>
                 <textarea
                   onChange={this.onInputChange}
                   onFocus={this.onInputFocus}
+                  onBlur={this.onInputBlur}
                   id="messageInput"
                   autoComplete={"off"}
                   name="message"

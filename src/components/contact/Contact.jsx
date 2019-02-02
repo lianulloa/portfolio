@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Input from "./Input";
 import "./Contact.scss";
 class Contact extends Component {
   state = {
@@ -157,6 +158,7 @@ class Contact extends Component {
               </div>
             </div>
           </div>
+          <Input name={"Firts Name"} />
           <input type="submit" value="Enviar" />
         </form>
       </div>

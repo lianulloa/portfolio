@@ -4,10 +4,9 @@ import "./App.scss";
 
 import About from "./components/about/About";
 import Services from "./components/services/Services";
-import Contact from "./components/contact/Contact";
+import ContactForm from "./components/contact/ContactForm";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
-
 class App extends Component {
   state = {
     fixed: false,
@@ -17,7 +16,9 @@ class App extends Component {
     console.log("Here");
     window.onscroll = () => this.handleAnimation();
     window.onresize = () => {
-      this.setState({ width: window.screen.width });
+      this.setState({
+        width: window.screen.width
+      });
     };
   }
   handleAnimation() {
@@ -26,15 +27,16 @@ class App extends Component {
       .offsetHeight;
     let headerH = document.getElementsByClassName("App-header")[0].offsetHeight;
     let navInit = headerH - navH;
-    this.setState({ fixed: window.scrollY > navInit });
+    this.setState({
+      fixed: window.scrollY > navInit
+    });
   }
   render() {
     return (
       <div className="App">
-        <Header fixed={this.state.fixed} width={this.state.width} />
-        <About />
+        <Header fixed={this.state.fixed} width={this.state.width} /> <About />
         <Services />
-        <Contact />
+        <ContactForm />
         <Footer />
       </div>
     );

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import toastr from "toastr";
 import Input from "./Input";
 import TextArea from "./TextArea";
+import Button from "./Button";
+import "./ContactForm.scss";
 import * as emailjs from "emailjs-com";
 
 class ContactForm extends Component {
@@ -100,18 +102,20 @@ class ContactForm extends Component {
   state = {};
   render() {
     return (
-      <div>
+      <div className="App-section" id="App-contact">
         <form
           id={this.props.id}
           className="contact-form"
           name="contact-form"
           method="post"
           action=""
+          autoComplete="off"
         >
           <Input
             type="text"
             name="name"
-            className="form-control"
+            text="Nombre"
+            className="field__input a-field__input"
             required="required"
             onChange={this.handleInputChange.bind(this)}
             value={this.state.name}
@@ -120,7 +124,8 @@ class ContactForm extends Component {
           <Input
             type="email"
             name="email"
-            className="form-control"
+            text="Email"
+            className="field__input a-field__input"
             required="required"
             onChange={this.handleInputChange.bind(this)}
             value={this.state.email}
@@ -129,7 +134,8 @@ class ContactForm extends Component {
           <Input
             type="text"
             name="subject"
-            className="form-control"
+            text="Asunto"
+            className="field__input a-field__input"
             required="required"
             onChange={this.handleInputChange.bind(this)}
             value={this.state.subject}
@@ -138,20 +144,21 @@ class ContactForm extends Component {
           <TextArea
             name="message"
             id="message"
-            className="form-control"
+            text="Mensaje"
+            className="field__input a-field__input"
             required="required"
             rows="8"
             onChange={this.handleInputChange.bind(this)}
             value={this.state.message}
             error={this.state.errors.message}
           />
-          {/* <Button
+          <Button
             onClick={this.sendMessage.bind(this)}
             type="button"
             name="submit"
             className="btn btn-primary btn-lg"
             required="required"
-          /> */}
+          />
         </form>
       </div>
     );

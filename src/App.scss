@@ -118,3 +118,22 @@
   opacity: 1;
   visibility: visible;
 }
+
+@font-face{
+	font-family: 'Pixel';
+	font-style: normal;
+	font-weight: 400;
+	src: url('static/fonts/Pixel12x10.ttf') format('truetype');
+}
+@font-face{
+	font-family: 'V-Gerb Bold';
+	font-style: bold;
+	font-weight: bold;
+	src: url('static/fonts/v-gerb(bold).ttf') format('truetype');
+}
+@font-face{
+	font-family: 'Voyager Grotesque';
+	font-style: normal;
+	font-weight: 400;
+	src: url('static/fonts/voyager_grotesque(regular).ttf') format('truetype');
+}

@@ -17,7 +17,7 @@ class ChatBubble extends Component {
 
 	componentDidMount() {
 		this.animebubble = anime({
-			targets: "rect",
+			targets: "rect[name='" + this.props.bubbleId +"']",
 			width: "40%",
 			duration: 1000
 		});
@@ -25,10 +25,10 @@ class ChatBubble extends Component {
 			() =>
 			{
 				anime({
-					targets: "rect",
-					width: '100%',
+					targets: "rect[name='"+this.props.bubbleId+"']",
+					width: this.props.finalWidth? this.props.finalWidth: '100%',
 					paddingTop: '10px',
-					delay: 2500,
+					delay: 2300,
 					duration: 900
 				});
 				setTimeout(() => {
@@ -37,7 +37,7 @@ class ChatBubble extends Component {
 						showContent: true
 					});
 					
-				}, 2800);
+				}, 2600);
 			}
 		);//end then
 	}
@@ -52,7 +52,7 @@ class ChatBubble extends Component {
 					height="60"
 					viewBox="0 0 92.60475 15.875006"
 					>
-					<rect
+					<rect name={this.props.bubbleId}
 					style={{
 							fill: "#a8b0b1", fillOpacity: 0.83921569, stroke: "#5b5b5b", strokeWidth: 1.19175148, strokeLinecap: "butt",
 						strokeLinejoin: "round", strokeMiterlimit: 4, strokeDasharray: "none", strokeDashoffset: 0, strokeOpacity: 0, paintOrder: "normal",

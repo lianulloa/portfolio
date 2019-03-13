@@ -19,19 +19,19 @@ class CircleLoader extends Component {
 		.add({
 			targets: "#circle1.circleLoaderSvg",
 			scale: 1.3,
-			duration: 300,
+			duration: 200,
 		})
 		.add({
 			targets: "#circle2.circleLoaderSvg, #circle3.circleLoaderSvg",
 			scale: 1.3,
 			translateX: '17.5px',
-			duration: 500
+			duration: 400
 		})
 		.add({
 			targets: "#circle3.circleLoaderSvg",
 			scale: 1.3,
 			translateX: '35px',
-			duration: 500
+			duration: 400
 		});
 	}
 	render(){

@@ -1,20 +1,44 @@
 import React, { Component } from "react";
 // import './Header.scss';
-import logo from "../../logotest.svg";
+import logo from "../../logotest.png";
 import header from "../../header1.jpg";
 import menu from "../../static/images/toggle_menu.svg";
 import Scrollchor from "react-scrollchor";
 import ChatBubble from "../chat_bubble/ChatBubble";
 class Header extends Component {
-	state = {
-		menuHidden: true,
-		sections: [
-			{ text: "About us", link: "#App-about" },
-			{ text: "Services", link: "#App-services" },
-			{ text: "Contact", link: "#App-contact" },
-			{ text: "How find us", link: "#App-footer" }
-		]
-	};
+	constructor(props){
+		super(props);
+		this.state = {
+			menuHidden: true,
+			sections: [
+				{ text: "About us", link: "#App-about" },
+				{ text: "Services", link: "#App-services" },
+				{ text: "Contact", link: "#App-contact" },
+				{ text: "How find us", link: "#App-footer" }
+			],
+			showWhatWeDo: false
+		};
+		setTimeout(() => {
+			this.setState({
+				showBubble1: true
+			})
+		}, 4600);
+		setTimeout(() => {
+			this.setState({
+				showBubble2: true
+			})
+		}, 9600);
+		setTimeout(() => {
+			this.setState({
+				showBubble3: true
+			})
+		}, 14200);
+		setTimeout(() => {
+			this.setState({
+				showBubble4: true
+			})
+		}, 18600);
+	}
 
 	handleMenuClick = () => {
 		this.setState({ menuHidden: !this.state.menuHidden });
@@ -38,38 +62,16 @@ class Header extends Component {
 					flexDirection: 'row'
 				}}>
 				<div style={{width:'50%',flex:'1 1 auto'}}>
-				<h1 
-					style={{
-						width:'100%',
-						textAlign:'center',
-						fontSize:'7em',
-						color:'white',
-						fontFamily: 'V-Gerb Bold',
-						position: 'relative',
-						marginTop: '20px',
-						// textShadow: '1px 1px 1px #c18f00'
-						}}>
-							DEAL
-							<br></br>
-					<small
-						style={{
-							fontSize: '60px',
-							color: 'white',
-								fontFamily: 'V-Gerb Bold',
-							margin: 0,
-							position: "absolute",
-							left:0,
-							width:"100%"
-						}}>
-						MANIPULUS
-					</small>
-				</h1>
+					<img src={logo} alt="logo" width="60%"/>
 				</div>
 				<div style={{width:'50%',textAlign:'left'}}>
-					<ChatBubble content={"Hello, We are DeaL Manipulus"} />
-
+					<ChatBubble bubbleId="1" content={"Hello, We are Deal Manipulus"} />
+					{this.state.showBubble1 && <ChatBubble bubbleId="2" content="We specialize in Web Design and Development" finalWidth="150%" />}
+					{this.state.showBubble2 && <ChatBubble bubbleId="3" content="As well as mobile applications" finalWidth="110%" />}
+					{this.state.showBubble3 && <ChatBubble bubbleId="4" content="And for low prices!!!" finalWidth="70%" />}
+					{this.state.showBubble4 && <ChatBubble bubbleId="5" content="Scroll down to see what we've got" finalWidth="110%" />}
 				</div>
-				<div className={navclass} style={{backgroundColor:'transparent'}}>
+				<div className={navclass} >
 					<div className="App-navigation-container">
 						<Scrollchor
 							to=""

@@ -1,0 +1,10 @@
+.circleLoaderRoot{
+	height: 100%;
+	width: 20px;
+	position: relative;
+}
+
+.circleLoaderSvg {
+	/* top:25%; */
+	position: absolute;
+}

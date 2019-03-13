@@ -1,0 +1,22 @@
+#content{
+	position: absolute;
+	top: 1px;
+	bottom: 9px;
+	color: #222222;
+	padding-left: 20px;
+	padding-top: 13px;
+	padding-bottom: 20px;
+	font-size: 22px;
+}
+#content.loader{
+	padding-top: 20px;
+}
+
+.chatBubbleRoot {
+	position: relative;
+	padding-right: 20px;
+}
+
+svg{
+	overflow:visible;
+}

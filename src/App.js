@@ -13,7 +13,6 @@ class App extends Component {
     width: window.screen.width
   };
   componentDidMount() {
-    console.log("Here");
     window.onscroll = () => this.handleAnimation();
     window.onresize = () => {
       this.setState({
@@ -34,7 +33,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header fixed={this.state.fixed} width={this.state.width} /> <About />
+        <Header fixed={this.state.fixed} width={this.state.width} /> 
+		<About />
         <Services />
         <ContactForm />
         <Footer />

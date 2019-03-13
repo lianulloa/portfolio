@@ -2,9 +2,9 @@ import React, { Component } from "react";
 // import './Header.scss';
 import logo from "../../logotest.svg";
 import header from "../../header1.jpg";
-// import laptop from "../../static/images/laptop.svg";
 import menu from "../../static/images/toggle_menu.svg";
 import Scrollchor from "react-scrollchor";
+import ChatBubble from "../chat_bubble/ChatBubble";
 class Header extends Component {
 	state = {
 		menuHidden: true,
@@ -65,25 +65,9 @@ class Header extends Component {
 					</small>
 				</h1>
 				</div>
-				<div style={{width:'50%'}}>
-					<div style={{
-						height: "300px",
-						width:"400px",
-						margin: "auto",
-						backgroundColor: "#a8b0b1d6",
-						borderRadius: "5px",
-					}}>
+				<div style={{width:'50%',textAlign:'left'}}>
+					<ChatBubble content={"Hello, We are DeaL Manipulus"} />
 
-					</div>
-					<div style={{
-						height: "300px",
-						width:"400px",
-						margin: "auto",
-						backgroundColor: "#a8b0b1d6",
-						borderRadius: "5px",
-					}}>
-
-					</div>
 				</div>
 				<div className={navclass} style={{backgroundColor:'transparent'}}>
 					<div className="App-navigation-container">

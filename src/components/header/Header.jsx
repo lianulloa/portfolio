@@ -22,22 +22,22 @@ class Header extends Component {
 			this.setState({
 				showBubble1: true
 			})
-		}, 4600);
+		}, 3500);
 		setTimeout(() => {
 			this.setState({
 				showBubble2: true
 			})
-		}, 9600);
+		}, 6900);
 		setTimeout(() => {
 			this.setState({
 				showBubble3: true
 			})
-		}, 14200);
+		}, 10000);
 		setTimeout(() => {
 			this.setState({
 				showBubble4: true
 			})
-		}, 18600);
+		}, 13000);
 	}
 
 	handleMenuClick = () => {

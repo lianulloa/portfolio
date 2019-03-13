@@ -28,7 +28,7 @@ class ChatBubble extends Component {
 					targets: "rect[name='"+this.props.bubbleId+"']",
 					width: this.props.finalWidth? this.props.finalWidth: '100%',
 					paddingTop: '10px',
-					delay: 2300,
+					delay: 1500,
 					duration: 900
 				});
 				setTimeout(() => {
@@ -37,7 +37,7 @@ class ChatBubble extends Component {
 						showContent: true
 					});
 					
-				}, 2600);
+				}, 1800);
 			}
 		);//end then
 	}

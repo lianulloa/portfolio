@@ -75,7 +75,7 @@ class Header extends Component {
 					<div className="App-navigation-container">
 						<Scrollchor
 							to=""
-							animate={{ offset: 0, duration: 500 }}
+							animate={{ offset: 0, duration: 400 }}
 							className="App-link-logo"
 						>
 							<img src={logo} className="App-menu-logo" alt="Deal" />
@@ -85,7 +85,7 @@ class Header extends Component {
 								<li>
 									<Scrollchor
 										to={section.link}
-										animate={{ offset: 0, duration: 500 }}
+										animate={{ offset: 0, duration: 400 }}
 										className="App-nav-link"
 									>
 										{section.text}
@@ -110,7 +110,7 @@ class Header extends Component {
 										<li>
 											<Scrollchor
 												to={section.link}
-												animate={{ offset: 0, duration: 500 }}
+												animate={{ offset: 0, duration: 400 }}
 												className="App-nav-link"
 											>
 												{section.text}

@@ -33,11 +33,6 @@ class Header extends Component {
 				showBubble3: true
 			})
 		}, 10000);
-		setTimeout(() => {
-			this.setState({
-				showBubble4: true
-			})
-		}, 13000);
 	}
 
 	handleMenuClick = () => {
@@ -68,8 +63,7 @@ class Header extends Component {
 					<ChatBubble bubbleId="1" content={"Hello, We are Deal Manipulus"} />
 					{this.state.showBubble1 && <ChatBubble bubbleId="2" content="We specialize in Web Design and Development" finalWidth="150%" />}
 					{this.state.showBubble2 && <ChatBubble bubbleId="3" content="As well as mobile applications" finalWidth="110%" />}
-					{this.state.showBubble3 && <ChatBubble bubbleId="4" content="And for low prices!!!" finalWidth="70%" />}
-					{this.state.showBubble4 && <ChatBubble bubbleId="5" content="Scroll down to see what we've got" finalWidth="110%" />}
+					{this.state.showBubble3 && <ChatBubble bubbleId="5" content="Scroll down to see what we've got" finalWidth="110%" />}
 				</div>
 				<div className={navclass} >
 					<div className="App-navigation-container">

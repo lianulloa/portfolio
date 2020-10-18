@@ -21,11 +21,11 @@
 }
 
 @mixin navigation($fixed) {
-    background-color: $primary_color;
+    // background-color: $primary_color;
 
     @if ($fixed==true) {
         position: fixed;
-		top: 0;
+		top: 6px;
 		opacity: 1;
     }
 
@@ -41,14 +41,11 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    box-shadow: 0px -5px 15px black,
-    0px 2px 5px black;
 
     .App-navigation-container {
-        max-width: 1200px;
+        max-width: 1024px;
         display: block;
-        padding-left: 5px;
-        padding-right: 5px;
+        padding: 8px 16px;
         width: inherit;
 
         >a {
@@ -59,11 +56,11 @@
             float: right;
             display: flex;
             justify-content: space-evenly;
-            margin: 1.5rem 1rem 1.5rem;
+            margin: 8px 0.5rem;
             padding: 0;
 
             >li {
-                font-size: 1.2rem;
+                font-size: 0.9rem;
                 display: block;
 				// margin-right: 7px;
 				padding-left: 10px;

@@ -6,7 +6,8 @@ import About from "./components/about/About";
 import Services from "./components/services/Services";
 import ContactForm from "./components/contact/ContactForm";
 import Footer from "./components/footer/Footer";
-import Header from "./components/header/Header";
+import Banner from "./components/banner/Banner";
+import NavBar from "./components/navBar/NavBar";
 class App extends Component {
   state = {
     fixed: false,
@@ -21,20 +22,21 @@ class App extends Component {
     };
   }
   handleAnimation() {
-    this.setState({});
-    let navH = document.getElementsByClassName("App-navigation")[0]
-      .offsetHeight;
-    let headerH = document.getElementsByClassName("App-header")[0].offsetHeight;
-    let navInit = headerH - navH;
-    this.setState({
-      fixed: window.scrollY > navInit
-    });
+    // this.setState({});
+    // let navH = document.getElementsByClassName("App-navigation")[0]
+    //   .offsetHeight;
+    // let headerH = document.getElementsByClassName("App-header")[0].offsetHeight;
+    // let navInit = headerH - navH;
+    // this.setState({
+    //   fixed: window.scrollY > navInit
+    // });
   }
   render() {
     return (
       <div className="App">
-        <Header fixed={this.state.fixed} width={this.state.width} /> 
-		<About />
+        <NavBar />
+        <Banner width={this.state.width} /> 
+        <About />
         <Services />
         <ContactForm />
         <Footer />

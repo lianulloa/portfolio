@@ -48,13 +48,13 @@ class ChatBubble extends Component {
 		return (
 			<div className="chatBubbleRoot">
 				<svg id="chatBubbleSvg"
-					width="350"
-					height="60"
+					width="250"
+					height="40"
 					viewBox="0 0 92.60475 15.875006"
 					>
 					<rect name={this.props.bubbleId}
 					style={{
-							fill: "#a8b0b1", fillOpacity: 0.83921569, stroke: "#5b5b5b", strokeWidth: 1.19175148, strokeLinecap: "butt",
+							fill: "rgb(51 169 237)", fillOpacity: 0.83921569, stroke: "#5b5b5b", strokeWidth: 1.19175148, strokeLinecap: "butt",
 						strokeLinejoin: "round", strokeMiterlimit: 4, strokeDasharray: "none", strokeDashoffset: 0, strokeOpacity: 0, paintOrder: "normal",
 					}}
 					id="rect65"
@@ -67,7 +67,7 @@ class ChatBubble extends Component {
 					/>
 				</svg>
 
-				<div id="content" className={contentClassNames.join(' ')}>
+				<div className={"content " + contentClassNames.join(" ")}>
 					{this.state.showContent && this.props.content}
 					{!this.state.showContent && <CircleLoader id="loader" />}
 				</div>

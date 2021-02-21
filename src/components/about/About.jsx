@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import Description from "../description/Description";
+import {
+  Container
+} from "@material-ui/core"
 
 class About extends Component {
   state = {};
@@ -13,9 +15,11 @@ class About extends Component {
   render() {
     return (
       <div className="App-section" id="App-about">
-        <div className="App-content">
-          <Description />
-        </div>
+        <Container maxWidth="md">
+          <h1>
+            About
+          </h1>
+        </Container>
       </div>
     );
   }

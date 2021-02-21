@@ -3,7 +3,7 @@
 
 .App {
   text-align: center;
-  color: $font-color;
+  color: white;
 }
 
 .App-logo {
@@ -43,13 +43,8 @@
   }
 }
 
-.App-section:nth-child(odd) {
-  @include section($primary_color);
-}
-
-.App-section:nth-child(even) {
-  @include section($secundary_color);
-  z-index: 2;
+.App-section {
+  @include section(white);
 }
 
 .App-footer {

@@ -14,30 +14,19 @@ class App extends Component {
     width: window.screen.width
   };
   componentDidMount() {
-    window.onscroll = () => this.handleAnimation();
     window.onresize = () => {
       this.setState({
         width: window.screen.width
       });
     };
   }
-  handleAnimation() {
-    // this.setState({});
-    // let navH = document.getElementsByClassName("App-navigation")[0]
-    //   .offsetHeight;
-    // let headerH = document.getElementsByClassName("App-header")[0].offsetHeight;
-    // let navInit = headerH - navH;
-    // this.setState({
-    //   fixed: window.scrollY > navInit
-    // });
-  }
   render() {
     return (
       <div className="App">
         <NavBar />
         <Banner width={this.state.width} /> 
-        <About />
         <Services />
+        <About />
         <ContactForm />
         <Footer />
       </div>

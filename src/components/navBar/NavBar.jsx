@@ -2,7 +2,6 @@ import React, { Component } from "react"
 import Scrollchor from "react-scrollchor";
 import menu from "../../static/images/toggle_menu.svg";
 import logo from "../../logotest.png";
-import header from "../../header.jpg";
 import "./NavBar.scss"
 
 
@@ -10,10 +9,10 @@ class NavBar extends Component {
   state = {
     menuHidden: true,
     sections: [
-      { text: "About us", link: "#App-about" },
       { text: "Services", link: "#App-services" },
+      { text: "About us", link: "#App-about" },
       { text: "Contact", link: "#App-contact" },
-      { text: "How find us", link: "#App-footer" }
+      { text: "How to find us", link: "#App-footer" }
     ],
 
   }

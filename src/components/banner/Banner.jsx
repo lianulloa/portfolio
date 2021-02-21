@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-import logo from "../../logotest.png";
-import menu from "../../static/images/toggle_menu.svg";
-import Scrollchor from "react-scrollchor";
 import ChatBubble from "../chat_bubble/ChatBubble";
-import NavBar from "../navBar/NavBar"
 
 import "./Banner.scss"
 class Header extends Component {
@@ -41,16 +37,13 @@ class Header extends Component {
 	};
 
 	render() {
-		// let navclass = "App-navigation";
-		// navclass += fixed === true ? " fixed" : " no-fixed";
-
 		return (
 			<header className="App-banner">
 				<div style={{width:'50%',textAlign:'left'}}>
-					<h1 style={{color: "#222222", fontSize: "4rem", fontFamily: "OpenSans-Regular", lineHeight: "73px"}}>
+					<h1 style={{color: "white", fontSize: "4rem", fontFamily: "OpenSans-Regular", lineHeight: "73px"}}>
 						Websites and Mobile applications development
 					</h1>
-					<p style={{ fontSize: "1.3rem", textAlign: "justify"}}>
+					<p style={{ fontSize: "1.3rem", textAlign: "justify", color: "white"}}>
 						Best way to promote your business. It doesn't matters 
 						if you are the owner of a small rent business
 						or a multinational bank. Every business needs a 

@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import Scrollchor from "react-scrollchor";
-import menu from "../../static/images/toggle_menu.svg";
+// import menu from "../../static/images/toggle_menu.svg";
 import logo from "../../logotest.png";
 import "./NavBar.scss"
 
@@ -9,10 +9,10 @@ class NavBar extends Component {
   state = {
     menuHidden: true,
     sections: [
-      { text: "Services", link: "#App-services" },
-      { text: "About us", link: "#App-about" },
+      { text: "Skills", link: "#App-services" },
+      { text: "About me", link: "#App-about" },
       { text: "Contact", link: "#App-contact" },
-      { text: "How to find us", link: "#App-footer" }
+      // { text: "How to find us", link: "#App-footer" }
     ],
 
   }
@@ -27,8 +27,12 @@ class NavBar extends Component {
             to=""
             animate={{ offset: 0, duration: 400 }}
             className="App-link-logo"
+            style={{ textDecoration: "none" }}
           >
-            <img src={logo} className="App-menu-logo" alt="Deal" />
+            <span role="img" aria-label="go to the top" style={{ fontSize: 23 }}>
+              🖐
+            </span>
+            {/* <img src={logo} className="App-menu-logo" alt="Deal" /> */}
           </Scrollchor>
           <ul className="App-navigation-btns" >
             {this.state.sections.map(section => (
@@ -47,7 +51,7 @@ class NavBar extends Component {
             className="menu-trigger"
             onClick={this.handleMenuClick}
           >
-            <img src={menu} alt="menu" />
+            {/* <img src={menu} alt="menu" /> */}
           </button>
           <div className={menuOverlay}>
             <div

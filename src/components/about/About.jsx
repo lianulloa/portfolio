@@ -17,7 +17,7 @@ class About extends Component {
       <div className="App-section" id="App-about">
         <Container maxWidth="md">
           <h1>
-            About
+            About me
           </h1>
         </Container>
       </div>

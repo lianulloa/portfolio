@@ -8,7 +8,7 @@ function Services() {
   return <div className="App-section" id="App-services">
     <Container maxWidth="md">
       <h1>
-        Services
+        Skills
       </h1>
       <div className="row" style={{ paddingBottom: 40 }}>
         <Service 

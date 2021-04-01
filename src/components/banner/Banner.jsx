@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import ChatBubble from "../chat_bubble/ChatBubble";
-
 import "./Banner.scss"
 class Header extends Component {
 	constructor(props){
@@ -11,7 +10,7 @@ class Header extends Component {
 				{ text: "About us", link: "#App-about" },
 				{ text: "Services", link: "#App-services" },
 				{ text: "Contact", link: "#App-contact" },
-				{ text: "How find us", link: "#App-footer" }
+				// { text: "How find us", link: "#App-footer" }
 			],
 			showWhatWeDo: false
 		};
@@ -40,20 +39,15 @@ class Header extends Component {
 		return (
 			<header className="App-banner">
 				<div style={{width:'50%',textAlign:'left'}}>
-					<h1 style={{color: "white", fontSize: "4rem", fontFamily: "OpenSans-Regular", lineHeight: "73px"}}>
-						Websites and Mobile applications development
-					</h1>
-					<p style={{ fontSize: "1.3rem", textAlign: "justify", color: "white"}}>
-						Best way to promote your business. It doesn't matters 
-						if you are the owner of a small rent business
-						or a multinational bank. Every business needs a 
-						good marketing strategy and it starts by showing your products
-						to your users. What better way than through a website or an 
-						application accessed right from their smartphone?
+					<div className="me-pic" />
+					<p style={{ fontSize: "1.3rem", textAlign: "justify", color: "white", marginTop: 80}}>
+						Full Stack Developer with 5+ years of experience developing new, and improving
+						existing software applications based on the cloud. Specialized in API Rest and
+						design systems. Creative and clean-coder Computer Scientist.
 					</p>
 				</div>
-				<div style={{width:'50%',textAlign:'left', position: "relative"}}>
-					<div style={{position: "absolute", bottom: "140px", width: "100%", padding: "0 30px"}}>
+				<div style={{width:'50%',textAlign:'left', position: "relative" }}>
+					<div style={{position: "absolute", bottom: "80px", left: 60, width: "100%", padding: "0 30px"}}>
 						<ChatBubble bubbleId="1" content={"Hello, We are Deal Manipulus"} />
 						{this.state.showBubble1 && <ChatBubble bubbleId="2" content="We specialize in Web Design and Development" finalWidth="150%" />}
 						{this.state.showBubble2 && <ChatBubble bubbleId="3" content="As well as mobile applications" finalWidth="110%" />}

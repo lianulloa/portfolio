@@ -1,8 +1,10 @@
 import React from "react";
 import {
+  Chip,
   Container,
 } from '@material-ui/core';
 import Service from "../Service/Service";
+import "./Services.scss"
 
 function Services() {
   return <div className="App-section" id="App-services">
@@ -33,6 +35,18 @@ function Services() {
           frameworkHomePage="https://flutter.dev/"
           right
         />
+      </div>
+      <div className="row" style={{ paddingBottom: 40, justifyContent: "center" }}>
+        <Chip label="Jest" />
+        <Chip label="Vue-Test-Utils" />
+        <Chip label="TDD" />
+        <Chip label="Scrum" />
+        <Chip label="Vuepress" />
+        <Chip label="Git" />
+        <Chip label="Python" />
+        <Chip label="Javascript" />
+        <Chip label="Cypress" />
+        <Chip label="Clean Code" />
       </div>
     </Container>
   </div>;

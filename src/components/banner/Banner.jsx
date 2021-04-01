@@ -45,16 +45,29 @@ class Header extends Component {
 						existing software applications based on the cloud. Specialized in API Rest and
 						design systems. Creative and clean-coder Computer Scientist.
 					</p>
+					<ul style={{ listStyle: "none", padding: 0 }}>
+						<li>
+							<a href="https://www.linkedin.com/in/lian-ulloa/" >
+								Linkend In
+							</a>
+
+						</li>
+						<li>
+							<a href="https://github.com/lianulloa" >
+								Github
+							</a>
+						</li>
+					</ul>
 				</div>
-				<div style={{width:'50%',textAlign:'left', position: "relative" }}>
+				<div style={{ width: '50%', textAlign: 'left', position: "relative" }}>
+
 					<div style={{position: "absolute", bottom: "80px", left: 60, width: "100%", padding: "0 30px"}}>
-						<ChatBubble bubbleId="1" content={"Hello, We are Deal Manipulus"} />
-						{this.state.showBubble1 && <ChatBubble bubbleId="2" content="We specialize in Web Design and Development" finalWidth="150%" />}
-						{this.state.showBubble2 && <ChatBubble bubbleId="3" content="As well as mobile applications" finalWidth="110%" />}
-						{this.state.showBubble3 && <ChatBubble bubbleId="5" content="Scroll down to see what we've got" finalWidth="110%" />}
+						<ChatBubble bubbleId="1" content="Hello, my name is Lian Ulloa" />
+						{this.state.showBubble1 && <ChatBubble bubbleId="2" content="I have a Bachelor Degree in Computer Science" finalWidth="150%" />}
+						{this.state.showBubble2 && <ChatBubble bubbleId="3" content="I am passionated about code and music" finalWidth="125%" />}
+						{this.state.showBubble3 && <ChatBubble bubbleId="5" content="and AI (of course)" finalWidth="60%" />}
 					</div>
 				</div>
-				{/* <NavBar /> */}
 			</header>
 		);
 	}

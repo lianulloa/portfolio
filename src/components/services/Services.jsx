@@ -26,6 +26,7 @@ function Services() {
           frameworkTitle="Django" 
           frameworkHomePage="https://docs.djangoproject.com/en/3.1/"
           middle
+          tooltip="Django doc is not that friendly about letting other people importing its site"
         />
         <Service 
           serviceTitle="Mobile Development on Flutter"

@@ -14,6 +14,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import classnames from "classnames"
+import Tooltip from '@material-ui/core/Tooltip';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -126,10 +127,20 @@ function Service(props) {
           }}
         >
           <div>
-            <iframe
+            {props.tooltip && 
+              <Tooltip title={props.tooltip}>
+                <iframe
+                  title={props.frameworkTitle}
+                  src={props.frameworkHomePage}
+                  style={{ width: "100%", border: "none", height: "100%" }} />
+              </Tooltip>
+            }
+            {!props.tooltip &&
+              <iframe
               title={props.frameworkTitle}
               src={props.frameworkHomePage}
               style={{ width: "100%", border: "none", height: "100%" }} />
+            }
           </div>
         </Grow>
       </div>

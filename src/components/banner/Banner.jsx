@@ -61,7 +61,7 @@ class Header extends Component {
 				</div>
 				<div style={{ width: '50%', textAlign: 'left', position: "relative" }}>
 
-					<div style={{position: "absolute", bottom: "80px", left: 60, width: "100%", padding: "0 30px"}}>
+					<div style={{position: "absolute", bottom: "80px", left: 60, padding: "0 30px", boxSizing: "border-box", width: 400}}>
 						<ChatBubble bubbleId="1" content="Hello, my name is Lian Ulloa" />
 						{this.state.showBubble1 && <ChatBubble bubbleId="2" content="I have a Bachelor Degree in Computer Science" finalWidth="150%" />}
 						{this.state.showBubble2 && <ChatBubble bubbleId="3" content="I am passionated about code and music" finalWidth="125%" />}

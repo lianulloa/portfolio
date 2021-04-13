@@ -7,6 +7,16 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #4B6482;
+  position: relative;
+}
+
+body::before {
+  content: "Let there be rock ✌️";
+  margin: 0 auto;
+  top: 69vh;
+  left: 50vw;
+  position: fixed;
+  font-size: 40px;
 }
 
 a {

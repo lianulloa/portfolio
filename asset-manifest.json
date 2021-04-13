@@ -1,0 +1,20 @@
+{
+  "main.css": "/portfolio/static/css/main.c40e466c.chunk.css",
+  "main.js": "/portfolio/static/js/main.a4d4f0df.chunk.js",
+  "main.js.map": "/portfolio/static/js/main.a4d4f0df.chunk.js.map",
+  "runtime~main.js": "/portfolio/static/js/runtime~main.f308c8e6.js",
+  "runtime~main.js.map": "/portfolio/static/js/runtime~main.f308c8e6.js.map",
+  "static/css/2.975a5253.chunk.css": "/portfolio/static/css/2.975a5253.chunk.css",
+  "static/js/2.e8da7393.chunk.js": "/portfolio/static/js/2.e8da7393.chunk.js",
+  "static/js/2.e8da7393.chunk.js.map": "/portfolio/static/js/2.e8da7393.chunk.js.map",
+  "index.html": "/portfolio/index.html",
+  "precache-manifest.5a5a8f58d0e5b3596ca0b9fe741ba177.js": "/portfolio/precache-manifest.5a5a8f58d0e5b3596ca0b9fe741ba177.js",
+  "service-worker.js": "/portfolio/service-worker.js",
+  "static/css/2.975a5253.chunk.css.map": "/portfolio/static/css/2.975a5253.chunk.css.map",
+  "static/css/main.c40e466c.chunk.css.map": "/portfolio/static/css/main.c40e466c.chunk.css.map",
+  "static/media/App.scss": "/portfolio/static/media/voyager_grotesque(regular).2715b3d6.ttf",
+  "static/media/django.png": "/portfolio/static/media/django.69403a8a.png",
+  "static/media/flutter.png": "/portfolio/static/media/flutter.71ebe10f.png",
+  "static/media/logotest.png": "/portfolio/static/media/logotest.02e059f7.png",
+  "static/media/Banner.scss": "/portfolio/static/media/me.fdb06ac5.jpg"
+}

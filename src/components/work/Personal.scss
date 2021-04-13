@@ -1,0 +1,13 @@
+@import "../../theme/colors";
+
+.personal-project {
+  text-align: start;
+  padding: 16px;
+  box-sizing: border-box;
+  color: $primary_color !important;
+  min-height: 110px;
+  width: 100%;
+}
+h2 {
+  margin: 0;
+}

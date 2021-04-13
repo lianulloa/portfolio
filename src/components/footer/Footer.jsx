@@ -1,0 +1,37 @@
+import React from "react";
+import EmailIcon from '@material-ui/icons/Email';
+import GitHubIcon from '@material-ui/icons/GitHub';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import "./Footer.scss"
+
+function Footer () {
+  return (
+    <footer
+      className="App-footer"
+      id="App-footer"
+      // ref={el => (this.instance = el)}
+    >
+      <div className="row" style={{flex: 1, justifyContent: "center"}}>
+        <div className="col-md-5">
+          <ul>
+            <li>
+              <a href="mailto:lianulloa808@gmail.com"><EmailIcon style={{ fontSize: 22 }} /> lianulloa808@gmail.com</a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/lian-ulloa/" >
+              <LinkedInIcon style={{ fontSize: 22 }} /> LinkedIn
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/lianulloa" >
+                <GitHubIcon style={{ fontSize: 22 }} /> Github
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+export default Footer;

@@ -1,0 +1,136 @@
+@import './colors';
+
+@mixin section($color) {
+    background-color: $color;
+    min-height: 60vh;
+    display: flex;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    color: #4B6482;
+    position: relative;
+    overflow: hidden;
+    h1 {
+        font-size: 3em;
+    }
+}
+
+@mixin content {
+    padding: 10% 5%;
+    max-width: 1024px;
+    // border: solid 1px black;
+}
+
+@mixin navigation($fixed) {
+    // background-color: $primary_color;
+
+    @if ($fixed==true) {
+        position: fixed;
+		top: 10px;
+		opacity: 1;
+    }
+
+    @else {
+        position: absolute;
+		bottom: 0;
+		opacity: 0;
+    }
+
+	display: flex;
+    z-index: 1000;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 20px;
+
+    .App-navigation-container {
+        max-width: 1024px;
+        display: block;
+        padding: 8px 16px;
+        width: inherit;
+
+        >a {
+            float: left;
+        }
+
+        >ul {
+            float: right;
+            display: flex;
+            justify-content: space-evenly;
+            margin: 8px 0.5rem;
+            padding: 0;
+
+            >li {
+                font-size: 0.9rem;
+                display: block;
+				// margin-right: 7px;
+				padding-left: 10px;
+				padding-right: 10px;
+
+                >a {
+                    color: white;
+                    text-decoration: none;
+                }
+            }
+        }
+
+        >button {
+
+            float: right;
+            background: inherit;
+            border: none;
+            outline: 0;
+            padding: 1.5rem 1.5rem;
+            margin-left: 5%;
+
+            >img {
+                width: 2rem;
+            }
+        }
+    }
+}
+
+@mixin menu-overlay($hidden) {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: auto;
+    z-index: 2000;
+
+    @if ($hidden==true) {
+        visibility: hidden;
+        backface-visibility: hidden;
+    }
+
+    @else {
+        visibility: visible;
+        backface-visibility: visible;
+    }
+
+    transform: translateX(-50%) translateY(-50%);
+
+    .App-menu-overlay-content {
+        @if ($hidden==true) {
+            transform: scale(0.8);
+            opacity: 0;
+        }
+
+        @else {
+            display: block;
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        transition: all 0.3s;
+        background: transparent;
+
+        >ul {
+            text-align: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+    }
+}

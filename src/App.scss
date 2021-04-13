@@ -1,32 +1,123 @@
+@import './theme/colors';
+@import './theme/mixins';
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.App-logo {
+  animation: App-logo-in 0.75s ease-in;
+  height: 40vmin;
+  position: absolute;
+  left: 10%;
+  top: 25%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.App-laptop {
+  height: 55vmin;
+  position: absolute;
+  left: -10%;
+  top: -30%;
+  transform: rotate(-10deg);
+}
+
+.App-navigation.no-fixed {
+  @include navigation(false);
+}
+
+@keyframes App-logo-in {
+  0% {
+    transform: scale(1.5);
+    filter: blur(3px);
   }
-  to {
-    transform: rotate(360deg);
+
+  75% {
+    transform: scale(0.75);
+    filter: blur(2px);
   }
+
+  100% {
+    transform: scale(1);
+    filter: blur(0px);
+  }
+}
+
+.App-section {
+  @include section(white);
+}
+
+.App-footer {
+  @include section($primary_color);
+  min-height: 20vh;
+}
+
+.App-content {
+  @include content;
+}
+
+.App-menu-overlay.hidden {
+  @include menu-overlay(true);
+}
+
+.App-menu-overlay.show {
+  @include menu-overlay(false);
+}
+
+.App-menu-overlay-bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  opacity: 0;
+  background: rgba(255, 255, 255, 0.2);
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+
+  >.menu-close {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+    display: inline-block;
+    font-size: 40px;
+    color: #3a4348;
+    background: inherit;
+    border: none;
+    outline: 0;
+  }
+}
+
+.App-menu-overlay.show~.App-menu-overlay-bg {
+  background: rgba(255, 255, 255, 0.96);
+  opacity: 1;
+  visibility: visible;
+}
+
+@font-face{
+	font-family: 'Pixel';
+	font-style: normal;
+	font-weight: 400;
+	src: url('static/fonts/Pixel12x10.ttf') format('truetype');
+}
+@font-face{
+	font-family: 'OpenSans-Regular';
+	font-style: normal;
+	font-weight: 400;
+	src: url('static/fonts/Open_Sans/OpenSans-Regular.ttf') format('truetype');
+}
+@font-face{
+	font-family: 'V-Gerb Bold';
+	font-style: bold;
+	font-weight: bold;
+	src: url('static/fonts/v-gerb(bold).ttf') format('truetype');
+}
+@font-face{
+	font-family: 'Voyager Grotesque';
+	font-style: normal;
+	font-weight: 400;
+	src: url('static/fonts/voyager_grotesque(regular).ttf') format('truetype');
 }

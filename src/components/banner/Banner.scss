@@ -1,0 +1,19 @@
+.App-banner {
+  display: flex;
+  flex-direction: row;
+  min-height: 60vh;
+  padding-top: 80px;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.me-pic {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  background-image: url(../../assets/me.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 30px;
+}

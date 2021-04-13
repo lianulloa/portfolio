@@ -1,44 +1,31 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Para Ulloa
 
-## Available Scripts
+Primero q todo disculpa por incumplir con la palabra q te di de hacer el sitio por mi cuenta. Una vez dicho esto vayamos al grano.
 
-In the project directory, you can run:
+#### Puntos a tocar
 
-### `npm start`
+- La aplicación está hecha con ESX (EcmaScript), _son los archivos de extensión .jsx_. No existe necesidad de desarrollar solo en ESX, si haces un módulo nuevo y lo quieres hacer en _JavaScript_ no hay problema. Siéntete libre de usar lo q más cómodo te sea.
+- Puedes usar _scss_ o _css_ lo que más te guste.
+- El código principal comienza en _index.js_ y comienza a bajar por varios componentes, este archivo no está modificado, el primer archivo donde empiezan las modificaciones es en _App.js_
+- Hay 3 carpetas principales:
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  - _static_: creo que esta no lleva mucha explicación, es prácticamente lo de siempre
+  - _theme_: donde yo guarde 2 archivos que pueden ser útiles para el diseño, estos archivos sirven para crear mixins y colores de manera global. Te darás cuenta q los colores son usados en varios archivos _.scss_
+  - por último, y si, lo más importante, se guarda en la carpeta _components_. Hay se encuantran las diferentes partes que deben ir en la página. El nombre de cada componente te debe dar una idea de para qué los quería.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+#### Que hay y q falta?
 
-### `npm test`
+- En general falta:
+  - q todos los efectos se realicen una sola vez. Eso se debe manejar en los estados locales de los componentes asociados.
+  - mejorar las typografias
+- el About tiene 2 dependencias: Description y Members.
+  Descriptions -> es un texto donde damos un pequeño background de quienes somos. Members -> son los "Cards" asociados a cada uno. Le falta:
+  - manejar el texto de cada uno he incluir los links de los medios socials, si quieres creo q eso se puede omitir por ahora
+- el Contant, es la parte del formulario. Ya tiene hecho por atras la parte de enviar emails usando EmailJS y validaciones. falta:
+  - ponerle un texto introductorio
+  - darle estilo
+- Services, que puede o no subdividirse en Service. falta todo
+- Footer, lo vas a ver, está realmente pobre
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Creo q eso es todo. Si se me ocurre algo más te digo.
+Otra vez, mis disculpas

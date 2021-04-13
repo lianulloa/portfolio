@@ -1,0 +1,39 @@
+@import "../../theme/mixins";
+
+.App-navigation-container {
+  background-position: top left;
+  border-radius: 10px;
+  // background-color: #4B6482;
+  background-image: linear-gradient(90deg, #4b6482cf, #4B6482);
+}
+
+.App-link-logo {
+  padding-top: 3px;
+}
+
+.App-menu-logo {
+  float: left;
+  height: 2rem;
+}
+
+.App-navigation.fixed {
+  @include navigation(true);
+
+}
+
+
+.App-navigation-btns {
+  display: flex;
+}
+.menu-trigger {
+  display: none;
+}
+
+@media (max-width: 764px) {
+  .App-navigation-btns {
+    display: none;
+  }
+  .menu-trigger {
+    display: block;
+  }
+}

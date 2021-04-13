@@ -48,7 +48,7 @@ class Header extends Component {
 					<ul style={{ listStyle: "none", padding: 0 }}>
 						<li>
 							<a href="https://www.linkedin.com/in/lian-ulloa/" >
-								Linkend In
+								LinkedIn
 							</a>
 
 						</li>

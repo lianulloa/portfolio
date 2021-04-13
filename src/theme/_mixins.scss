@@ -4,11 +4,14 @@
     background-color: $color;
     min-height: 60vh;
     display: flex;
-    font-size: calc(10px + 2vmin);
     padding-top: 40px;
+    padding-bottom: 20px;
     color: #4B6482;
     position: relative;
     overflow: hidden;
+    h1 {
+        font-size: 3em;
+    }
 }
 
 @mixin content {

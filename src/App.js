@@ -4,7 +4,7 @@ import "./App.scss";
 
 import About from "./components/about/About";
 import Services from "./components/services/Services";
-import ContactForm from "./components/contact/ContactForm";
+// import ContactForm from "./components/contact/ContactForm";
 import Footer from "./components/footer/Footer";
 import Banner from "./components/banner/Banner";
 import NavBar from "./components/navBar/NavBar";
@@ -27,7 +27,7 @@ class App extends Component {
         <Banner width={this.state.width} /> 
         <Services />
         <About />
-        <ContactForm />
+        {/* <ContactForm /> */}
         <Footer />
       </div>
     );

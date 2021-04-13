@@ -11,8 +11,8 @@ class NavBar extends Component {
     sections: [
       { text: "Skills", link: "#App-services" },
       { text: "About me", link: "#App-about" },
-      { text: "Contact", link: "#App-contact" },
-      // { text: "How to find us", link: "#App-footer" }
+      // { text: "Contact", link: "#App-contact" },
+      { text: "Contact Info", link: "#App-footer" }
     ],
 
   }

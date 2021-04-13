@@ -14,9 +14,10 @@ body::before {
   content: "Let there be rock ✌️";
   margin: 0 auto;
   top: 69vh;
-  left: 50vw;
+  left: 45vw;
   position: fixed;
   font-size: 40px;
+  color: white;
 }
 
 a {

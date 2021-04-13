@@ -22,11 +22,6 @@ function Footer () {
               <LinkedInIcon style={{ fontSize: 22 }} /> LinkedIn
               </a>
             </li>
-            <li>
-              <a href="https://github.com/lianulloa" >
-                <GitHubIcon style={{ fontSize: 22 }} /> Github
-              </a>
-            </li>
           </ul>
         </div>
       </div>

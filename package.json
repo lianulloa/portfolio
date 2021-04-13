@@ -1,7 +1,8 @@
 {
-  "name": "deal-page",
+  "name": "portfolio",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://lianulloa.github.io/portfolio/",
   "dependencies": {
     "@lingui/react": "^2.7.2",
     "@material-ui/core": "^4.11.3",
@@ -23,7 +24,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -39,6 +42,7 @@
     "@lingui/cli": "^2.7.2",
     "@lingui/macro": "^2.7.2",
     "babel-core": "^7.0.0-bridge.0",
+    "gh-pages": "^3.1.0",
     "node-sass": "^4.10.0",
     "sass-loader": "^7.1.0"
   }

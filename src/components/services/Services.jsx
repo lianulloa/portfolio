@@ -43,6 +43,7 @@ function Services() {
         <Chip label="TDD" />
         <Chip label="Scrum" />
         <Chip label="Vuepress" />
+        <Chip label="React" />
         <Chip label="Git" />
         <Chip label="Python" />
         <Chip label="Javascript" />

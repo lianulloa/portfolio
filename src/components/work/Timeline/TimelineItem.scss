@@ -8,3 +8,10 @@
 h3, h5 {
   margin: 0;
 }
+
+@media (max-width: 430px) {
+  .MuiTimelineOppositeContent-root {
+    max-width: 90px;
+    box-sizing: border-box;
+  }
+}

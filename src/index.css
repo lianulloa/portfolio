@@ -14,10 +14,23 @@ body::before {
   content: "Let there be rock ✌️";
   margin: 0 auto;
   top: 69vh;
-  left: 40vw;
+  left: 0;
   position: fixed;
   font-size: 40px;
   color: white;
+  width: 100%;
+  text-align: center;
+}
+
+@media (max-width: 768px)  {
+  body::before {
+    content: "";
+  }
+}
+@media (max-height:768px)  {
+  body::before {
+    content: "";
+  }
 }
 
 a {

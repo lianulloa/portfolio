@@ -11,10 +11,9 @@ import {
 import { makeStyles } from '@material-ui/core/styles';
 import { red } from '@material-ui/core/colors';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
 import classnames from "classnames"
 import Tooltip from '@material-ui/core/Tooltip';
+import "./Service.scss"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -62,7 +61,7 @@ function Service(props) {
     setExpanded(!expanded);
   };
   const classes = useStyles()
-  return <div className="col-md-4 service-col" style={{position: "relative"}}>
+  return <div className="col-md-4 col-sm-7 col-xs-12 service-col" style={{position: "relative"}}>
     <Card
       elevation={expanded ? 10 : 1}
       className={classnames(classes.service, {
@@ -75,7 +74,6 @@ function Service(props) {
         transitionDuration: ".3s",
         transitionProperty: "width, left, right",
         width: "100%",
-        height: 432
       }}
     >
       <div className="content-wrapper">
@@ -98,14 +96,8 @@ function Service(props) {
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
-            <FavoriteIcon />
-          </IconButton>
-          <IconButton aria-label="share">
-            <ShareIcon />
-          </IconButton>
           <IconButton
-            className={classnames(classes.expand, {
+            className={classnames(classes.expand, "expand-site-btn", {
               [classes.expandOpen]: expanded,
             })}
             onClick={handleExpandClick}

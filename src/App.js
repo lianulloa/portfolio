@@ -21,6 +21,7 @@ class App extends Component {
     };
   }
   render() {
+    console.error("fix responsive")
     return (
       <div className="App">
         <NavBar />

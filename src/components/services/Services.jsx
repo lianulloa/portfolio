@@ -12,7 +12,7 @@ function Services() {
       <h1>
         Skills
       </h1>
-      <div className="row" style={{ paddingBottom: 40 }}>
+      <div className="row" style={{ paddingBottom: 40, justifyContent: "center" }}>
         <Service 
           serviceTitle="Frontend Development on Vue"
           description="The Progressive JavaScript Framework. An incrementally adoptable ecosystem that scales between a library and a full-featured framework."

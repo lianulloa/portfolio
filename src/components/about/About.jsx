@@ -32,14 +32,14 @@ class About extends Component {
             Personal Projects
           </h1>
           <div className="row">
-            <div className="col-md-6">
+            <div className="col-sm-6 col-xs-12">
               <PersonalProject
                 title="VuexModuleMaker"
                 description="A helper to reduce repetition inside Vuex modules"
                 link="https://www.npmjs.com/package/@lianulloa/vuex-module-maker"
               />
             </div>
-            <div className="col-md-6">
+            <div className="col-sm-6 col-xs-12">
               <PersonalProject
                 title="Silic"
                 description="Gesture-based mobile music player. Integrates with cloud services like Google Drive and Dropbox"

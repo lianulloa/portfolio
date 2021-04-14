@@ -47,12 +47,12 @@ class NavBar extends Component {
               </li>
             ))}
           </ul>
-          <button
+          {/* <button
             className="menu-trigger"
             onClick={this.handleMenuClick}
           >
-            {/* <img src={menu} alt="menu" /> */}
-          </button>
+            <img src={menu} alt="menu" />
+          </button> */}
           <div className={menuOverlay}>
             <div
               className="App-menu-overlay-content"

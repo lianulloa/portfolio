@@ -1,23 +1,23 @@
 self.__precacheManifest = [
   {
-    "revision": "139f3f0f7f0d5d59f228",
-    "url": "/portfolio/static/css/main.da77f979.chunk.css"
+    "revision": "c5fd4bcd234aa8180e00",
+    "url": "/portfolio/static/css/main.41fe8b81.chunk.css"
   },
   {
-    "revision": "139f3f0f7f0d5d59f228",
-    "url": "/portfolio/static/js/main.2376c9d0.chunk.js"
+    "revision": "c5fd4bcd234aa8180e00",
+    "url": "/portfolio/static/js/main.0f4fc804.chunk.js"
   },
   {
     "revision": "53ebc025fca807d4dbea",
     "url": "/portfolio/static/js/runtime~main.f308c8e6.js"
   },
   {
-    "revision": "f59ce3cbf823cd7b4b91",
+    "revision": "bf30f81517b67fe59424",
     "url": "/portfolio/static/css/2.975a5253.chunk.css"
   },
   {
-    "revision": "f59ce3cbf823cd7b4b91",
-    "url": "/portfolio/static/js/2.fc548d48.chunk.js"
+    "revision": "bf30f81517b67fe59424",
+    "url": "/portfolio/static/js/2.fef7494a.chunk.js"
   },
   {
     "revision": "5fa242b984b30b0f6bc6dbc4af22e4bc",
@@ -28,12 +28,12 @@ self.__precacheManifest = [
     "url": "/portfolio/static/media/voyager_grotesque(regular).2715b3d6.ttf"
   },
   {
-    "revision": "3ed9575dcc488c3e3a5bd66620bdf5a4",
-    "url": "/portfolio/static/media/OpenSans-Regular.3ed9575d.ttf"
-  },
-  {
     "revision": "dd4a3af4ed0e93cc4a3b610cbcf5c9ba",
     "url": "/portfolio/static/media/Pixel12x10.dd4a3af4.ttf"
+  },
+  {
+    "revision": "3ed9575dcc488c3e3a5bd66620bdf5a4",
+    "url": "/portfolio/static/media/OpenSans-Regular.3ed9575d.ttf"
   },
   {
     "revision": "69403a8ac835fa70bd0f31d7a543e12c",
@@ -52,7 +52,7 @@ self.__precacheManifest = [
     "url": "/portfolio/static/media/logotest.02e059f7.png"
   },
   {
-    "revision": "a7b50e48601e59965dce3a15f8281312",
+    "revision": "fd4c3cded623d698a17a74c1023d2465",
     "url": "/portfolio/index.html"
   }
 ];

@@ -4,6 +4,7 @@
     "company": "Soluciones Alegra S.A.S.",
     "period": "11/2019 - Present",
     "achievements": [
+      "Conducted an A/B test to review influence of UX ease regarding creation of new documents",
       "Collaborated in the creation and maintenance of the company's Design System.",
       "Improved Design System documentation site by introducing a component which allowed to replace Codepen links and save money to the company by prescinding from that subscription.",
       "Designed and implemented a webpack loader in order to make translation reactive so different micro front could be integrated together dynamically.",

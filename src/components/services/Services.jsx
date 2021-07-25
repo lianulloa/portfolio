@@ -40,6 +40,7 @@ function Services() {
       <div className="row" style={{ paddingBottom: 40, justifyContent: "center" }}>
         {/* TODO: deploy backend (node) to provide skills and work experience*/}
         <Chip label="Node.js" />
+        <Chip label="Express" />
         <Chip label="React" />
         <Chip label="Vuepress" />
         <Chip label="Jest" />

@@ -38,17 +38,18 @@ function Services() {
         />
       </div>
       <div className="row" style={{ paddingBottom: 40, justifyContent: "center" }}>
+        <Chip label="Node.js" />
+        <Chip label="React" />
+        <Chip label="Vuepress" />
         <Chip label="Jest" />
         <Chip label="Vue-Test-Utils" />
-        <Chip label="TDD" />
-        <Chip label="Scrum" />
-        <Chip label="Vuepress" />
-        <Chip label="React" />
         <Chip label="Git" />
         <Chip label="Python" />
         <Chip label="Javascript" />
-        <Chip label="Cypress" />
         <Chip label="Clean Code" />
+        <Chip label="Cypress" />
+        <Chip label="TDD" />
+        <Chip label="Scrum" />
       </div>
     </Container>
   </div>;

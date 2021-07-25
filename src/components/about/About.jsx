@@ -53,6 +53,13 @@ class About extends Component {
                 </div>
                 <div className="col-xs-12">
                   <PersonalProject
+                    title="Node Rest Server"
+                    description="Basic project to learn Node.js"
+                    link="https://github.com/lianulloa/node-rest-server-base"
+                  />
+                </div>
+                <div className="col-xs-12">
+                  <PersonalProject
                     title="Silic"
                     description="Gesture-based mobile music player. Integrates with cloud services like Google Drive and Dropbox"
                   />

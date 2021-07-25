@@ -3,6 +3,9 @@
     height: 432px;
   }
 }
+.MuiChip-root {
+  margin-bottom: 6px !important;
+}
 
 
 @media (max-width: 1020px) {
@@ -14,8 +17,5 @@
     > .MuiPaper-root {
       height: 370px;
     }
-  }
-  .MuiChip-root {
-    margin-bottom: 6px !important;
   }
 }

@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "0a8fb562ab56efff7ec7",
-    "url": "/portfolio/static/css/main.c1d6e72c.chunk.css"
+    "revision": "79af2b32cd211b5ef805",
+    "url": "/portfolio/static/css/main.96933c32.chunk.css"
   },
   {
-    "revision": "0a8fb562ab56efff7ec7",
-    "url": "/portfolio/static/js/main.b08f9a2d.chunk.js"
+    "revision": "79af2b32cd211b5ef805",
+    "url": "/portfolio/static/js/main.e84487f7.chunk.js"
   },
   {
     "revision": "53ebc025fca807d4dbea",
@@ -20,20 +20,20 @@ self.__precacheManifest = [
     "url": "/portfolio/static/js/2.53da4a44.chunk.js"
   },
   {
-    "revision": "5fa242b984b30b0f6bc6dbc4af22e4bc",
-    "url": "/portfolio/static/media/v-gerb(bold).5fa242b9.ttf"
-  },
-  {
-    "revision": "2715b3d64ec45893e8b9ef2b19c715e5",
-    "url": "/portfolio/static/media/voyager_grotesque(regular).2715b3d6.ttf"
+    "revision": "3ed9575dcc488c3e3a5bd66620bdf5a4",
+    "url": "/portfolio/static/media/OpenSans-Regular.3ed9575d.ttf"
   },
   {
     "revision": "dd4a3af4ed0e93cc4a3b610cbcf5c9ba",
     "url": "/portfolio/static/media/Pixel12x10.dd4a3af4.ttf"
   },
   {
-    "revision": "3ed9575dcc488c3e3a5bd66620bdf5a4",
-    "url": "/portfolio/static/media/OpenSans-Regular.3ed9575d.ttf"
+    "revision": "2715b3d64ec45893e8b9ef2b19c715e5",
+    "url": "/portfolio/static/media/voyager_grotesque(regular).2715b3d6.ttf"
+  },
+  {
+    "revision": "5fa242b984b30b0f6bc6dbc4af22e4bc",
+    "url": "/portfolio/static/media/v-gerb(bold).5fa242b9.ttf"
   },
   {
     "revision": "69403a8ac835fa70bd0f31d7a543e12c",
@@ -52,7 +52,7 @@ self.__precacheManifest = [
     "url": "/portfolio/static/media/logotest.02e059f7.png"
   },
   {
-    "revision": "e3f4966dbe5b57c856e6304d1e09d0f8",
+    "revision": "8e1718d3a5a6d83cdfe39f0378dab60b",
     "url": "/portfolio/index.html"
   }
 ];

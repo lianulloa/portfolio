@@ -5,6 +5,7 @@ import {
   Hidden
 } from '@material-ui/core';
 import Service from "../Service/Service";
+import tags from "../../assets/tags.json"
 import "./Services.scss"
 
 function Services() {
@@ -19,7 +20,8 @@ function Services() {
           description="The Progressive JavaScript Framework. An incrementally adoptable ecosystem that scales between a library and a full-featured framework."
           logo={require("../../assets/logo.png")}
           frameworkTitle="VueJs" 
-          frameworkHomePage="https://vuejs.org/"/>
+          frameworkHomePage="https://vuejs.org/"
+        />
         <Service 
           serviceTitle="Backend Development on Django"
           description="Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design"
@@ -41,19 +43,7 @@ function Services() {
       <Hidden mdUp>
         <div className="row" style={{ paddingBottom: 40, justifyContent: "center" }}>
           {/* TODO: deploy backend (node) to provide skills and work experience*/}
-          <Chip label="Node.js" />
-          <Chip label="Express" />
-          <Chip label="React" />
-          <Chip label="Vuepress" />
-          <Chip label="Jest" />
-          <Chip label="Vue-Test-Utils" />
-          <Chip label="Git" />
-          <Chip label="Python" />
-          <Chip label="Javascript" />
-          <Chip label="Clean Code" />
-          <Chip label="Cypress" />
-          <Chip label="TDD" />
-          <Chip label="Scrum" />
+          {tags.map(({tag}) => <Chip label={tag} />)}
         </div>
       </Hidden>
     </Container>

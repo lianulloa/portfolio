@@ -4,23 +4,19 @@ import {
 	Card,
 	CardHeader,
 	CardContent,
-	Chip,
 	Hidden
 } from '@material-ui/core';
+import Tag from "../tag/tag"
 import "./Banner.scss"
+import tags from "../../assets/tags.json"
 class Header extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			menuHidden: true,
-			sections: [
-				{ text: "About us", link: "#App-about" },
-				{ text: "Services", link: "#App-services" },
-				{ text: "Contact", link: "#App-contact" },
-				// { text: "How find us", link: "#App-footer" }
-			],
-			showWhatWeDo: false
-		};
+			showBubble1: false,
+			showBubble2: false,
+			showBubble3: false,
+		}
 		setTimeout(() => {
 			this.setState({
 				showBubble1: true
@@ -37,10 +33,6 @@ class Header extends Component {
 			})
 		}, 10000);
 	}
-
-	handleMenuClick = () => {
-		this.setState({ menuHidden: !this.state.menuHidden });
-	};
 
 	render() {
 		return (
@@ -82,19 +74,9 @@ class Header extends Component {
 							<CardContent>
 								<div className="row">
 									{/* TODO: deploy backend (node) to provide skills and work experience*/}
-									<Chip label="Node.js" />
-									<Chip label="Express" />
-									<Chip label="React" />
-									<Chip label="Vue-Test-Utils" />
-									<Chip label="Vuepress" />
-									<Chip label="Jest" />
-									<Chip label="Git" />
-									<Chip label="Python" />
-									<Chip label="Javascript" />
-									<Chip label="Clean Code" />
-									<Chip label="Cypress" />
-									<Chip label="TDD" />
-									<Chip label="Scrum" />
+									{
+										tags.map(tag => <Tag {...tag} />)
+									}
 								</div>
 							</CardContent>
 						</Card>

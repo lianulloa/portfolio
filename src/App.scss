@@ -1,5 +1,6 @@
 @import './theme/colors';
 @import './theme/mixins';
+@import "./theme/animations.scss";
 
 .App {
   text-align: center;
@@ -78,6 +79,9 @@
 .secondary-color {
   color: $secondary_color
 }
+img {
+  width: 100%;
+}
 
 @font-face{
 	font-family: 'Pixel';
@@ -103,3 +107,5 @@
 	font-weight: 400;
 	src: url('static/fonts/voyager_grotesque(regular).ttf') format('truetype');
 }
+
+

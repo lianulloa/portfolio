@@ -1,0 +1,60 @@
+[
+  {
+    "tag":"Node.js",
+    "bounce": true,
+    "img": "node-cert.jpg",
+    "imgLink": "https://ude.my/UC-5912d391-560e-4f31-919d-28f511a1a0a3"
+  },
+  {
+    "tag":"Express",
+    "bounce": false
+  },
+  {
+    "tag":"React",
+    "bounce": false
+  },
+  {
+    "tag":"Vue-Test-Utils",
+    "bounce": false
+  },
+  {
+    "tag":"Vuepress",
+    "bounce": false
+  },
+  {
+    "tag":"Vuex",
+    "bounce": false
+  },
+  {
+    "tag":"Jest",
+    "bounce": false
+  },
+  {
+    "tag":"Git",
+    "bounce": false
+  },
+  {
+    "tag":"Python",
+    "bounce": false
+  },
+  {
+    "tag":"Javascript",
+    "bounce": false
+  },
+  {
+    "tag":"Clean Code",
+    "bounce": false
+  },
+  {
+    "tag":"Cypress",
+    "bounce": false
+  },
+  {
+    "tag":"TDD",
+    "bounce": false
+  },
+  {
+    "tag":"Scrum",
+    "bounce": false
+  }
+]

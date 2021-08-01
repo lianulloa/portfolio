@@ -2,6 +2,7 @@ import React from "react";
 import {
   Chip,
   Container,
+  Hidden
 } from '@material-ui/core';
 import Service from "../Service/Service";
 import "./Services.scss"
@@ -10,7 +11,7 @@ function Services() {
   return <div className="App-section" id="App-services">
     <Container maxWidth="md">
       <h1>
-        Skills
+        Main Skills
       </h1>
       <div className="row" style={{ paddingBottom: 40, justifyContent: "center" }}>
         <Service 
@@ -37,22 +38,24 @@ function Services() {
           right
         />
       </div>
-      <div className="row" style={{ paddingBottom: 40, justifyContent: "center" }}>
-        {/* TODO: deploy backend (node) to provide skills and work experience*/}
-        <Chip label="Node.js" />
-        <Chip label="Express" />
-        <Chip label="React" />
-        <Chip label="Vuepress" />
-        <Chip label="Jest" />
-        <Chip label="Vue-Test-Utils" />
-        <Chip label="Git" />
-        <Chip label="Python" />
-        <Chip label="Javascript" />
-        <Chip label="Clean Code" />
-        <Chip label="Cypress" />
-        <Chip label="TDD" />
-        <Chip label="Scrum" />
-      </div>
+      <Hidden mdUp>
+        <div className="row" style={{ paddingBottom: 40, justifyContent: "center" }}>
+          {/* TODO: deploy backend (node) to provide skills and work experience*/}
+          <Chip label="Node.js" />
+          <Chip label="Express" />
+          <Chip label="React" />
+          <Chip label="Vuepress" />
+          <Chip label="Jest" />
+          <Chip label="Vue-Test-Utils" />
+          <Chip label="Git" />
+          <Chip label="Python" />
+          <Chip label="Javascript" />
+          <Chip label="Clean Code" />
+          <Chip label="Cypress" />
+          <Chip label="TDD" />
+          <Chip label="Scrum" />
+        </div>
+      </Hidden>
     </Container>
   </div>;
 }

@@ -51,6 +51,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: red[500],
   },
 }));
+
 function Service(props) {
   const [expanded, setExpanded] = useState(false);
 

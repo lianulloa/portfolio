@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import Scrollchor from "react-scrollchor";
 // import menu from "../../static/images/toggle_menu.svg";
-import logo from "../../logotest.png";
+// import logo from "../../logotest.png";
 import "./NavBar.scss"
 
 

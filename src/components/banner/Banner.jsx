@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import ChatBubble from "../chat_bubble/ChatBubble";
-import Hidden from '@material-ui/core/Hidden';
+import {
+	Card,
+	CardHeader,
+	CardContent,
+	Chip,
+	Hidden
+} from '@material-ui/core';
 import "./Banner.scss"
 class Header extends Component {
 	constructor(props){
@@ -60,14 +66,38 @@ class Header extends Component {
 						</li>
 					</ul>
 				</div>
-				<Hidden smDown>
+				<Hidden mdDown>
 					<div className="col-md-6" style={{ textAlign: 'left', position: "relative" }}>
-						<div style={{position: "absolute", bottom: "80px", left: 60, padding: "0 30px", boxSizing: "border-box", width: 400}}>
+						<div style={{position: "absolute", top: "80px", left: 60, padding: "0 30px", boxSizing: "border-box", width: 400}}>
 							<ChatBubble bubbleId="1" content="Hello, my name is Lian Ulloa" />
 							{this.state.showBubble1 && <ChatBubble bubbleId="2" content="I have a Bachelor Degree in Computer Science" finalWidth="150%" />}
 							{this.state.showBubble2 && <ChatBubble bubbleId="3" content="I am passionated about code and music" finalWidth="125%" />}
-							{this.state.showBubble3 && <ChatBubble bubbleId="5" content="and AI (of course)" finalWidth="60%" />}
+							{/* {this.state.showBubble3 && <ChatBubble bubbleId="5" content="and AI (of course)" finalWidth="60%" />} */}
 						</div>
+						<Card
+							elevation={5}
+							style={{ position: "absolute", bottom: "-80px", right: "-50px", width: "60%", zIndex: "1", borderRadius: 16 }}
+						>
+							<CardHeader title="Tech Skills" style={{paddingBottom: 0}}/>
+							<CardContent>
+								<div className="row">
+									{/* TODO: deploy backend (node) to provide skills and work experience*/}
+									<Chip label="Node.js" />
+									<Chip label="Express" />
+									<Chip label="React" />
+									<Chip label="Vue-Test-Utils" />
+									<Chip label="Vuepress" />
+									<Chip label="Jest" />
+									<Chip label="Git" />
+									<Chip label="Python" />
+									<Chip label="Javascript" />
+									<Chip label="Clean Code" />
+									<Chip label="Cypress" />
+									<Chip label="TDD" />
+									<Chip label="Scrum" />
+								</div>
+							</CardContent>
+						</Card>
 					</div>
 				</Hidden>
 			</header>

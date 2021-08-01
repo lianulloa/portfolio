@@ -1,3 +1,5 @@
+@import '../../theme/colors';
+
 .App-banner {
   display: flex;
   flex-direction: row;
@@ -8,7 +10,11 @@
   justify-content: center;
   padding-left: 40px;
   padding-right: 40px;
+  .MuiPaper-root {
+    color: $primary_color;
+  }
 }
+
 
 .me-pic {
   width: 200px;

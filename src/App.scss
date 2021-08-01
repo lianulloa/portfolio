@@ -6,14 +6,6 @@
   color: white;
 }
 
-.App-logo {
-  animation: App-logo-in 0.75s ease-in;
-  height: 40vmin;
-  position: absolute;
-  left: 10%;
-  top: 25%;
-}
-
 .App-laptop {
   height: 55vmin;
   position: absolute;
@@ -24,23 +16,6 @@
 
 .App-navigation.no-fixed {
   @include navigation(false);
-}
-
-@keyframes App-logo-in {
-  0% {
-    transform: scale(1.5);
-    filter: blur(3px);
-  }
-
-  75% {
-    transform: scale(0.75);
-    filter: blur(2px);
-  }
-
-  100% {
-    transform: scale(1);
-    filter: blur(0px);
-  }
 }
 
 .App-section {
@@ -95,6 +70,13 @@
   background: rgba(255, 255, 255, 0.96);
   opacity: 1;
   visibility: visible;
+}
+
+.primary-color {
+  color: $primary_color
+}
+.secondary-color {
+  color: $secondary_color
 }
 
 @font-face{

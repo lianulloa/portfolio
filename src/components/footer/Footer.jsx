@@ -14,10 +14,10 @@ function Footer () {
         <div className="col-md-5">
           <ul>
             <li>
-              <a href="mailto:lianulloa808@gmail.com"><EmailIcon style={{ fontSize: 22 }} /> lianulloa808@gmail.com</a>
+              <a className="secondary-color" href="mailto:lianulloa808@gmail.com"><EmailIcon style={{ fontSize: 22 }} /> lianulloa808@gmail.com</a>
             </li>
             <li>
-              <a href="https://www.linkedin.com/in/lian-ulloa/" >
+              <a className="secondary-color" href="https://www.linkedin.com/in/lian-ulloa/" >
               <LinkedInIcon style={{ fontSize: 22 }} /> LinkedIn
               </a>
             </li>

@@ -3,7 +3,7 @@
 .App-banner {
   display: flex;
   flex-direction: row;
-  min-height: 60vh;
+  // min-height: 60vh;
   padding-top: 80px;
   max-width: 1024px;
   margin: 0 auto;
@@ -13,6 +13,13 @@
   .MuiPaper-root {
     color: $primary_color;
   }
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
 }
 
 

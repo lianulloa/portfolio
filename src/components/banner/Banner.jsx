@@ -54,19 +54,19 @@ class Header extends Component {
 					</p>
 					<ul style={{ listStyle: "none", padding: 0 }}>
 						<li>
-							<a href="https://www.linkedin.com/in/lian-ulloa/" >
+							<a className="secondary-color" href="https://www.linkedin.com/in/lian-ulloa/" >
 								LinkedIn
 							</a>
 
 						</li>
 						<li>
-							<a href="https://github.com/lianulloa" >
+							<a className="secondary-color" href="https://github.com/lianulloa" >
 								Github
 							</a>
 						</li>
 					</ul>
 				</div>
-				<Hidden mdDown>
+				<Hidden smDown>
 					<div className="col-md-6" style={{ textAlign: 'left', position: "relative" }}>
 						<div style={{position: "absolute", top: "80px", left: 60, padding: "0 30px", boxSizing: "border-box", width: 400}}>
 							<ChatBubble bubbleId="1" content="Hello, my name is Lian Ulloa" />
@@ -76,7 +76,7 @@ class Header extends Component {
 						</div>
 						<Card
 							elevation={5}
-							style={{ position: "absolute", bottom: "-80px", right: "-50px", width: "60%", zIndex: "1", borderRadius: 16 }}
+							style={{ position: "absolute", bottom: "-80px", right: "-30px", width: "60%", zIndex: "1", borderRadius: 16 }}
 						>
 							<CardHeader title="Tech Skills" style={{paddingBottom: 0}}/>
 							<CardContent>

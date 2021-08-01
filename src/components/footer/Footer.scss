@@ -2,14 +2,13 @@
   ul {
     list-style: none;
   }
-}
-
-a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 10px;
-  svg {
-    margin-right: 6px;
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    svg {
+      margin-right: 6px;
+    }
   }
 }

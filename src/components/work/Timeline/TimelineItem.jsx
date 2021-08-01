@@ -6,6 +6,7 @@ import TimelineContent from '@material-ui/lab/TimelineContent';
 import TimelineDot from '@material-ui/lab/TimelineDot';
 import TimelineOppositeContent from '@material-ui/lab/TimelineOppositeContent';
 import Typography from '@material-ui/core/Typography';
+import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 import "./TimelineItem.scss"
 
 function TimelineItemExp(props) {
@@ -24,10 +25,15 @@ function TimelineItemExp(props) {
           { props.title }
         </h3>
         <h5>
-          {props.company}
-          <small style={{ fontSize: 12, marginLeft: 20 }}>
-            ({props.period})
-          </small>
+          {props.companyWebsite && 
+            // eslint-disable-next-line react/jsx-no-target-blank
+            <a className="primary-color" href={props.companyWebsite} target="_blank" >
+              {props.company} <OpenInNewIcon style={{fontSize: 14}} />
+            </a>
+          }
+          {!props.companyWebsite && 
+            props.company
+          }
         </h5>
         <ul className="achievements">
           { props.achievements.map(ach => <li>{ach}</li>)}

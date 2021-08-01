@@ -9,7 +9,7 @@ function PersonalProject(props) {
       <Paper className="personal-project" >
         <h2 >
           {props.title}
-          {props.link && <OpenInNewIcon fontSize="small" />}
+          {props.link && <OpenInNewIcon fontSize="14" />}
         </h2>
         <small>{props.description}</small>
       </Paper>

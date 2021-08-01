@@ -33,10 +33,13 @@ body::before {
   }
 }
 
-a {
+a.App-nav-link {
   color: white;
+}
+a {
   text-decoration: none;
 }
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",

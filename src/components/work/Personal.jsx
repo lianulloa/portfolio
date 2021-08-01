@@ -5,8 +5,8 @@ import "./Personal.scss"
 
 function PersonalProject(props) {
   return (
-    <a href={props.link} target="_blank" rel="noopener noreferrer">
-      <Paper className="personal-project" >
+    <a href={props.link} target="_blank" rel="noopener noreferrer" >
+      <Paper className="personal-project" style={{marginBottom: 10}}>
         <h2 >
           {props.title}
           {props.link && <OpenInNewIcon fontSize="14" />}

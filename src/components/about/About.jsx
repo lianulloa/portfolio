@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from "react"
 import {
   Container
 } from "@material-ui/core"
@@ -10,8 +10,6 @@ import JOBS from "./jobs.json"
 import BOOKS from "./books.js"
 
 class About extends Component {
-  state = {};
-
   // componentDidMount() {
   //   window.onscroll = () => {
   //     this.setState();
@@ -74,7 +72,7 @@ class About extends Component {
               <div className="row" style={{columnCount: 2, display: "block"}}>
                 {
                   BOOKS.map(book =>
-                    <div style={{display: "inline-block"}}>
+                    <div key={book.title} style={{display: "inline-block"}}>
                       <Book {...book} />
                     </div>
                   )

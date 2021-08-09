@@ -1,7 +1,7 @@
 export default [
   {
-    "title": "Clean Code",
-    "description": "A Handbook of Agile Software Craftsmanship",
+    title: "Clean Code",
+    description: "A Handbook of Agile Software Craftsmanship",
     author: "Robert C. Martin",
     img: "https://images-na.ssl-images-amazon.com/images/I/41yafGMO+rL._SX376_BO1,204,203,200_.jpg"
   },

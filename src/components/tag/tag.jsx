@@ -1,7 +1,8 @@
-import React, {useState, useRef} from "react"
-import Chip from '@material-ui/core/Chip';
-import Typography from '@material-ui/core/Typography';
-import Tooltip from '@material-ui/core/Tooltip';
+import React, { useState, useRef } from "react"
+import PropTypes from "prop-types"
+import Chip from "@material-ui/core/Chip"
+import Typography from "@material-ui/core/Typography"
+import Tooltip from "@material-ui/core/Tooltip"
 
 function TooltipTag(props) {
   const chip = useRef(null)
@@ -21,7 +22,7 @@ function TooltipTag(props) {
   img.onload = function () {
     imgHeight = (this.height * imgWidth)/this.width
   }
-  const imgSrc = require("../../assets/certs/" + props.img)
+  const imgSrc = require("../../assets/certs/" + props.img).default
   img.src = imgSrc
 
   const label = <React.Fragment>
@@ -49,6 +50,12 @@ function TooltipTag(props) {
       />
     </Tooltip>
   )
+}
+
+TooltipTag.propTypes = {
+  img: PropTypes.string,
+  imgLink: PropTypes.string,
+  tag: PropTypes.string
 }
 
 function Tag(props) {

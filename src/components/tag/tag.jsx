@@ -2,6 +2,7 @@ import React, {useState, useRef} from "react"
 import Chip from '@material-ui/core/Chip';
 import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip';
+import "./tag.scss"
 
 function TooltipTag(props) {
   const chip = useRef(null)
@@ -36,11 +37,12 @@ function TooltipTag(props) {
       title={label}
       placement="left"
       interactive
+
     >
       <Chip
         ref={chip}
         style={{ userSelect: "none", animationIterationCount}}
-        className="bouncing-chip"
+        className="bouncing-chip Tag"
         label={props.tag}
         onMouseEnter={stopBouncing}
         onAnimationIteration={() => {
@@ -53,10 +55,10 @@ function TooltipTag(props) {
 
 function Tag(props) {
   if (props.bounce) {
-    return <TooltipTag {...props}/>
+    return <TooltipTag  {...props}/>
   } else {
     return (
-      <Chip label={props.tag} style={{ userSelect: "none" }} />
+      <Chip className="Tag" label={props.tag} style={{ userSelect: "none" }} />
     )
 
   }

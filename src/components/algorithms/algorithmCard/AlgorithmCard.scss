@@ -1,0 +1,18 @@
+.AlgorithmCard {
+  &.MuiPaper-root {
+    color: #4B6482;
+  }
+
+  .MuiCardHeader-root {
+    text-align: left;
+  }
+
+  .MuiCardHeader-avatar {
+    margin: 0;
+    margin-left: -12px;
+    margin-right: 4px;
+  }
+  .MuiCardHeader-content {
+    overflow: hidden;
+  }
+}

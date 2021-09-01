@@ -5,7 +5,7 @@ import {
   Hidden,
   Paper,
   Tooltip
-} from '@material-ui/core';
+} from "@material-ui/core"
 import skills from "./skills.js"
 import "./MainSills.scss"
 
@@ -40,7 +40,7 @@ function MainSkills() {
                 avatar={
                   <div
                     className="avatar" 
-                    style={{ backgroundImage: `url(${skill.avatar})` }}
+                    style={{ backgroundImage: `url(${skill.avatar.default})` }}
                   />
                 }
                 title={skill.title}

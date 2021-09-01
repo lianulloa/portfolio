@@ -66,7 +66,12 @@ function Tag(props) {
     return <TooltipTag  {...props}/>
   } else {
     return (
-      <Chip className="Tag" label={props.tag} style={{ userSelect: "none" }} />
+      <Chip
+        className="Tag"
+        label={props.tag}
+        style={{ userSelect: "none" }}
+        {...props}
+      />
     )
 
   }

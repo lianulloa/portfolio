@@ -3,7 +3,7 @@ import {
   Container
 } from "@material-ui/core"
 import "./About.scss"
-import PersonalProject from "../work/Personal";
+import PersonalProject from "../work/Personal"
 import Book from "../work/Book/Book"
 import WorkTimeline from "../work/Timeline/Timeline"
 import JOBS from "./jobs.json"
@@ -82,8 +82,8 @@ class About extends Component {
           </div>
         </Container>
       </div>
-    );
+    )
   }
 }
 
-export default About;
+export default About

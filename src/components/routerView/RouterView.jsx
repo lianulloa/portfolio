@@ -1,9 +1,9 @@
 // import React from "react"
-import { useRoutes } from "hookrouter";
+import { useRoutes } from "hookrouter"
 import { routes } from "./routes"
 
 function RouterView() {
-  const routeResult = useRoutes(routes);
+  const routeResult = useRoutes(routes)
   return routeResult
 }
 

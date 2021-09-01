@@ -1,6 +1,6 @@
-import React from "react";
-import EmailIcon from '@material-ui/icons/Email';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import React from "react"
+import EmailIcon from "@material-ui/icons/Email"
+import LinkedInIcon from "@material-ui/icons/LinkedIn"
 import "./Footer.scss"
 
 function Footer () {
@@ -18,14 +18,14 @@ function Footer () {
             </li>
             <li>
               <a className="secondary-color" href="https://www.linkedin.com/in/lian-ulloa/" >
-              <LinkedInIcon style={{ fontSize: 22 }} /> LinkedIn
+                <LinkedInIcon style={{ fontSize: 22 }} /> LinkedIn
               </a>
             </li>
           </ul>
         </div>
       </div>
     </footer>
-  );
+  )
 }
 
-export default Footer;
+export default Footer

@@ -17,8 +17,6 @@ function NavBar() {
     { text: "Skills", anchor: "App-services" },
     { text: "About me", anchor: "App-about" },
     { text: "Algorithms", link: "algorithms"}
-    // { text: "Contact", anchor: "App-contact" },
-    // { text: "Contact Info", anchor: "App-footer" }
   ]
 
 
@@ -63,6 +61,7 @@ function NavBar() {
                 <A
                   href={section.link}
                   className="App-nav-anchor"
+                  onClick={() => setWithAnchor("")}
                 >
                   {section.text}
                 </A>

@@ -1,7 +1,9 @@
-import React, {useState} from "react"
+import React, { useState } from "react"
+import { useSelector, useDispatch } from "react-redux"
 import { Container } from "@material-ui/core"
 import Editor from "../../components/algorithms/editor/Editor"
 import AlgorithmCard from "../../components/algorithms/algorithmCard/AlgorithmCard"
+import { selectors } from "../../store/slices/algorithms"
 
 const tags = {
   0: ["Loops", "Strings"],
@@ -12,8 +14,9 @@ const tags = {
 }
 
 function AlgorithmsPage() {
+  const algorithms = useSelector(selectors.algorithms)
   const [showEditor, setShowEditor] = useState(false)
-  const [algorithm, setAlgorithm] = useState({title: "Product of array except self", difficulty: "EASY"})
+  const [selectedAlgorithm, setAlgorithm] = useState({title: "Product of array except self", difficulty: "EASY"})
   return (
     <div className="App-section" id="App-algorithms">
       <Container maxWidth="md">
@@ -22,14 +25,14 @@ function AlgorithmsPage() {
           <div className="col-xs-12 m-b">
             put filters here
           </div>
-          {[1,2,3,4,5,6,7,8,9,0].map(_ => 
-            (<div className="col-md-6 col-xs-12 m-b-md" key={_} >
+          {algorithms.map(algorithm => 
+            (<div className="col-md-6 col-xs-12 m-b-md" key={algorithm.id} >
               <AlgorithmCard
-                title="Product of array except self"
+                title={algorithm.title}
                 question="Let Google help apps determine location. This means sending anonymous location data to
                 Google, even when no apps are running"
                 onAvatarClick={(algorithm) => setShowEditor(true)}
-                tags={tags[_%5]}
+                tags={tags[algorithm.id%5]}
               />
             </div>)
           )}
@@ -37,7 +40,7 @@ function AlgorithmsPage() {
         <div className="row m-b">
           <Editor
             open={showEditor}
-            algorithm={algorithm}
+            algorithm={selectedAlgorithm}
             onClose={() => setShowEditor(false)}
           />
         </div>

@@ -1,9 +1,9 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { Container } from "@material-ui/core"
 import Editor from "../../components/algorithms/editor/Editor"
 import AlgorithmCard from "../../components/algorithms/algorithmCard/AlgorithmCard"
-import { selectors } from "../../store/slices/algorithms"
+import { selectors, actions } from "../../store/slices/algorithms"
 
 const tags = {
   0: ["Loops", "Strings"],
@@ -15,8 +15,15 @@ const tags = {
 
 function AlgorithmsPage() {
   const algorithms = useSelector(selectors.algorithms)
+  const dispatch = useDispatch()
   const [showEditor, setShowEditor] = useState(false)
-  const [selectedAlgorithm, setAlgorithm] = useState({title: "Product of array except self", difficulty: "EASY"})
+  const [selectedAlgorithm, setAlgorithm] = useState({})
+  
+  useEffect(() => {
+    if (!algorithms.length)
+      dispatch(actions.getAlgorithms())
+  }, [])
+
   return (
     <div className="App-section" id="App-algorithms">
       <Container maxWidth="md">
@@ -26,13 +33,15 @@ function AlgorithmsPage() {
             put filters here
           </div>
           {algorithms.map(algorithm => 
-            (<div className="col-md-6 col-xs-12 m-b-md" key={algorithm.id} >
+            (<div className="col-md-6 col-xs-12 m-b-md" key={algorithm.uid} >
               <AlgorithmCard
                 title={algorithm.title}
-                question="Let Google help apps determine location. This means sending anonymous location data to
-                Google, even when no apps are running"
-                onAvatarClick={(algorithm) => setShowEditor(true)}
-                tags={tags[algorithm.id%5]}
+                question={algorithm.question}
+                onAvatarClick={() => {
+                  setAlgorithm(algorithm)
+                  setShowEditor(true)
+                }}
+                tags={algorithm.tags}
               />
             </div>)
           )}
@@ -41,7 +50,11 @@ function AlgorithmsPage() {
           <Editor
             open={showEditor}
             algorithm={selectedAlgorithm}
-            onClose={() => setShowEditor(false)}
+            onClose={() => {
+              setShowEditor(false)
+              setAlgorithm({})
+
+            }}
           />
         </div>
       </Container>

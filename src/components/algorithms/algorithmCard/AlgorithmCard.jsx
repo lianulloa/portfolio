@@ -39,7 +39,7 @@ function AlgorithmCard({question, title, onAvatarClick, tags=[]}) {
           </Typography>
         }
       />
-      <CardActions disableSpacing style={{justifyContent: "flex-end"}}>
+      <CardActions disableSpacing style={{justifyContent: "flex-end", minHeight: 54}}>
         {tags.map(t => 
           <Tag tag={t} key={t} />
         )}

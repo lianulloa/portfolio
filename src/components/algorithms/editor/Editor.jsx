@@ -39,11 +39,9 @@ function Editor({ open, algorithm, onClose }) {
           />
         }
       </DialogTitle>
-      <DialogContent className="p-t-0" >
-        <DialogContentText id="alert-dialog-description">
+      <DialogContent className="p-t-0" style={{maxHeight: 100}} >
+        <DialogContentText id="alert-dialog-description" style={{whiteSpace: "pre-wrap"}}>
           {algorithm && algorithm.question}
-          Let Google help apps determine location. This means sending anonymous location data to
-              Google, even when no apps are running.
         </DialogContentText>
       </DialogContent>
       <AceEditor

@@ -1,11 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit"
+import AlgorithmsApi from "../../api/algorithms"
 
 const initialState = {
-  algorithms: [1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map(_ => ({
-    id: _,
-    title: "Product of array except self " + _,
-    question: "Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running"
-  })),
+  algorithms: [],
   totalAlgorithms: 0
 }
 
@@ -29,6 +26,10 @@ export const selectors = {
   totalAlgorithms: ({ algorithms }) => algorithms.totalAlgorithms,
 }
 
+// Action creators are generated for each case reducer function
+// I call them mutations because I plan to use them just for synchronous calls
+export const mutations = AlgorithmSlice.actions
+
 // The function below is called a thunk and allows us to perform async logic. It
 // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
 // will call the thunk with the `dispatch` function as the first argument. Async
@@ -38,11 +39,21 @@ export const actions = {
     setTimeout(() => {
       dispatch(incrementByAmount(amount))
     }, 1000)
+  },
+  getAlgorithms: query => dispatch => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const { data } = await AlgorithmsApi.list(query)
+        console.log("algorithms", data)
+        resolve(data)
+        dispatch(mutations.setAlgoritms(data.data))
+        dispatch(mutations.setTotalAlgorithms(data.metadata.total))
+      } catch (error) {
+        reject(error)
+      }
+    })
   }
 }
 
-// Action creators are generated for each case reducer function
-// I call them mutations because I plan to use them just for synchronous calls
-export const mutations = AlgorithmSlice.actions
 
 export default AlgorithmSlice.reducer

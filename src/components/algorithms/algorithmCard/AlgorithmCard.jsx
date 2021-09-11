@@ -13,10 +13,13 @@ AlgorithmCard.propTypes = {
   title: PropTypes.string.isRequired,
   question: PropTypes.string.isRequired,
   onAvatarClick: PropTypes.func.isRequired,
+  source: PropTypes.string,
   tags: PropTypes.arrayOf(PropTypes.string)
 }
 
-function AlgorithmCard({question, title, onAvatarClick, tags=[]}) {
+function AlgorithmCard({
+  question, title, onAvatarClick, source, tags = []
+}) {
   return (
     <Card
       className="AlgorithmCard"
@@ -34,15 +37,22 @@ function AlgorithmCard({question, title, onAvatarClick, tags=[]}) {
           </Typography>
         }
         subheader={
-          <Typography variant="body2" noWrap>
+          <Typography variant="body2">
             {question}
           </Typography>
         }
       />
-      <CardActions disableSpacing style={{justifyContent: "flex-end", minHeight: 54}}>
-        {tags.map(t => 
-          <Tag tag={t} key={t} />
-        )}
+      <CardActions disableSpacing style={{
+        justifyContent: "space-between", minHeight: 54
+      }}>
+        <small style={{ textAlign: "left", marginLeft: 10 }}>
+          <b>Source</b><br /> {source}
+        </small>
+        <div>
+          {tags.map(t => 
+            <Tag tag={t} key={t} style={{marginRight: 0}}/>
+          )}
+        </div>
       </CardActions>
     </Card>
   )

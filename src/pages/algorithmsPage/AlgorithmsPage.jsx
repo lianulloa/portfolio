@@ -33,10 +33,11 @@ function AlgorithmsPage() {
             put filters here
           </div>
           {algorithms.map(algorithm => 
-            (<div className="col-md-6 col-xs-12 m-b-md" key={algorithm.uid} >
+            (<div className="col-md-6 col-xs-12 m-b-md" key={algorithm.id} >
               <AlgorithmCard
                 title={algorithm.title}
-                question={algorithm.question}
+                question={algorithm.questionPreview}
+                source={algorithm.source}
                 onAvatarClick={() => {
                   setAlgorithm(algorithm)
                   setShowEditor(true)

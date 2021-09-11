@@ -23,7 +23,7 @@ function AlgorithmCard({
   return (
     <Card
       className="AlgorithmCard"
-      elevation={3}
+      elevation={2}
     >
       <CardHeader
         avatar={
@@ -32,8 +32,10 @@ function AlgorithmCard({
           </IconButton>
         }
         title={
-          <Typography variant="subtitle1" >
-            {title}
+          <Typography variant="subtitle1" noWrap>
+            <b>
+              {title}
+            </b>
           </Typography>
         }
         subheader={

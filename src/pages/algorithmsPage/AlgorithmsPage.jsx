@@ -27,8 +27,12 @@ function AlgorithmsPage() {
   return (
     <div className="App-section" id="App-algorithms">
       <Container maxWidth="md">
-        <h1>Algorithms Page</h1>
+        <h1 className="m-b-xs">Algorithms Page</h1>
         <div className="row m-b">
+          <div className="col-xs-12 m-b">
+            For some problems, the provided answer is not mine.
+            I have had to look some solutions up.
+          </div>
           <div className="col-xs-12 m-b">
             put filters here
           </div>
@@ -53,8 +57,6 @@ function AlgorithmsPage() {
             algorithm={selectedAlgorithm}
             onClose={() => {
               setShowEditor(false)
-              setAlgorithm({})
-
             }}
           />
         </div>

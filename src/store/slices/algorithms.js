@@ -16,6 +16,14 @@ export const AlgorithmSlice = createSlice({
     setTotalAlgorithms: (state, action) => {
       state.totalAlgorithms = action.payload
     },
+    updateAlgorithmOrAdd: (state, action) => {
+      const index = state.algorithms.findIndex(algorithm => algorithm.id === action.payload.id)
+      if (index !== -1) {
+        state.algorithms[index] = {...state.algorithms[index], ...action.payload}
+      } else {
+        state.algorithms.push(action.payload)
+      }
+    }
   },
 })
 
@@ -35,19 +43,24 @@ export const mutations = AlgorithmSlice.actions
 // will call the thunk with the `dispatch` function as the first argument. Async
 // code can then be executed and other actions can be dispatched
 export const actions = {
-  incrementAsync: amount => dispatch => {
-    setTimeout(() => {
-      dispatch(incrementByAmount(amount))
-    }, 1000)
-  },
   getAlgorithms: query => dispatch => {
     return new Promise(async (resolve, reject) => {
       try {
         const { data } = await AlgorithmsApi.list(query)
-        console.log("algorithms", data)
         resolve(data)
         dispatch(mutations.setAlgoritms(data.data))
         dispatch(mutations.setTotalAlgorithms(data.metadata.total))
+      } catch (error) {
+        reject(error)
+      }
+    })
+  },
+  getAlgorithmDetail: id => dispatch => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const { data } = await AlgorithmsApi.detail(id)
+        resolve(data)
+        dispatch(mutations.updateAlgorithmOrAdd(data))
       } catch (error) {
         reject(error)
       }

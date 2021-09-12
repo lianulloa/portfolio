@@ -6,12 +6,15 @@ import Button from "@material-ui/core/Button"
 import Dialog from "@material-ui/core/Dialog"
 import DialogTitle from "@material-ui/core/DialogTitle"
 import Slide from "@material-ui/core/Slide"
+import MarkdownIt from "markdown-it"
 import Tag from "../../tag/tag"
 import { actions } from "../../../store/slices/algorithms"
 import "ace-builds/src-noconflict/mode-python"
 import "ace-builds/src-noconflict/mode-javascript"
 import "ace-builds/src-noconflict/theme-nord_dark"
 import "./Editor.scss"
+
+const mdIt = new MarkdownIt()
 
 Editor.propTypes = {
   open: PropTypes.bool,
@@ -36,8 +39,13 @@ function Editor({ open, algorithm, onClose }) {
     }
   }, [open])
 
-  const question = algorithm.question || fetchedAlgorithm.question
   const answers = algorithm.answers || fetchedAlgorithm.answers
+  const question = algorithm.question || fetchedAlgorithm.question
+  let markdownQuestion = ""
+  if (question) {
+    markdownQuestion = mdIt.render(question)
+  }
+  console.log("markdown:", markdownQuestion)
 
   return (
     <Dialog
@@ -111,9 +119,7 @@ function Editor({ open, algorithm, onClose }) {
           mountOnEnter
           unmountOnExit
         >
-          <div className="question-container" >
-            {question}
-          </div>
+          <div className="question-container" dangerouslySetInnerHTML={{__html: markdownQuestion}} />
         </Slide>
       </div>
     </Dialog>

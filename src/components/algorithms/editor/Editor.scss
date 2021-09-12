@@ -7,10 +7,13 @@
     width: 40%;
     padding: 16px 24px;
     overflow: auto;
-    white-space: pre-wrap;
+    // white-space: pre-wrap;
     background-color: #eeeff1;
     box-sizing: border-box;
     z-index: 10;
+    p {
+      margin-top: 0;
+    }
   }
   .MuiDialogTitle-root {
     .MuiTypography-root {

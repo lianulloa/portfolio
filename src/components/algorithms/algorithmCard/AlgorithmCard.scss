@@ -5,6 +5,11 @@
 
   .MuiCardHeader-root {
     text-align: left;
+    .question-preview {
+      p {
+        margin:0;
+      }
+    }
   }
 
   .MuiCardHeader-avatar {

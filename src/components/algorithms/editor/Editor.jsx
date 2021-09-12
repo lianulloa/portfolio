@@ -6,15 +6,14 @@ import Button from "@material-ui/core/Button"
 import Dialog from "@material-ui/core/Dialog"
 import DialogTitle from "@material-ui/core/DialogTitle"
 import Slide from "@material-ui/core/Slide"
-import MarkdownIt from "markdown-it"
 import Tag from "../../tag/tag"
 import { actions } from "../../../store/slices/algorithms"
+import { mdIt } from "../../../utils/mdIt"
 import "ace-builds/src-noconflict/mode-python"
 import "ace-builds/src-noconflict/mode-javascript"
 import "ace-builds/src-noconflict/theme-nord_dark"
 import "./Editor.scss"
 
-const mdIt = new MarkdownIt()
 
 Editor.propTypes = {
   open: PropTypes.bool,

@@ -5,6 +5,7 @@ import CardHeader from "@material-ui/core/CardHeader"
 import CardActions from "@material-ui/core/CardActions"
 import IconButton from "@material-ui/core/IconButton"
 import PlayArrowIcon from "@material-ui/icons/PlayArrow"
+import { mdIt } from "../../../utils/mdIt"
 import Tag from "../../tag/tag"
 import Typography from "@material-ui/core/Typography"
 import "./AlgorithmCard.scss"
@@ -40,7 +41,7 @@ function AlgorithmCard({
         }
         subheader={
           <Typography variant="body2">
-            {question}
+            <span className="question-preview" dangerouslySetInnerHTML={{ __html: mdIt.render(question)}}/>
           </Typography>
         }
       />

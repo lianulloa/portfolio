@@ -7,4 +7,6 @@ export const routes = {
   "/algorithms": () => <AlgorithmsPage />
 }
 
+export const basePath = "/portfolio"
+
 

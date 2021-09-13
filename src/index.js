@@ -6,6 +6,9 @@ import "./index.css"
 import "flexboxgrid/dist/flexboxgrid.css"
 import App from "./App"
 import * as serviceWorker from "./serviceWorker"
+import { setBasepath } from "hookrouter"
+import { basePath } from "./components/routerView/routes"
+setBasepath(basePath)
 
 ReactDOM.render(
   <Provider store={store}>

@@ -55,7 +55,9 @@ function AlgorithmsPage() {
           {
             !algorithms.length &&
             // TODO: show a better component for this
-            <p style={{minHeight: 350, display: "flex", alignItems: "center", margin: "auto"}}>Loading...</p>
+            <p style={{ minHeight: 350, display: "flex", alignItems: "center", margin: "auto" }}>
+              Loading (May take a few seconds for the heroku deployed backend to start)...
+            </p>
           }
         </div>
         {!!algorithms.length &&

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
-import {usePath, navigate, A} from "hookrouter"
+import { usePath, navigate, A } from "hookrouter"
+import { basePath } from "../routerView/routes"
 import "./NavBar.scss"
 
 
@@ -20,7 +21,8 @@ function NavBar() {
   ]
 
 
-  const handleDistinctUrlProgammaticaly = (e, to) => {
+  const handleDistinctUrlProgrammaticaly = (e, to) => {
+    console.log(path, to)
     if (path !== "/") {
       e.preventDefault()
       navigate(to)
@@ -34,10 +36,10 @@ function NavBar() {
     <div className="App-navigation fixed" >
       <div className="App-navigation-container">
         <a
-          href="/#"
+          href={basePath + "/#"}
           className="App-anchor-logo"
           style={{ textDecoration: "none" }}
-          onClick={(e) => handleDistinctUrlProgammaticaly(e,"/#")}
+          onClick={(e) => handleDistinctUrlProgrammaticaly(e,basePath + "/#")}
         >
           <span role="img" aria-label="go to the top" style={{ fontSize: 23 }}>
             🖐
@@ -49,9 +51,9 @@ function NavBar() {
               {
                 section.anchor &&
                 <a
-                  href={"/#" + section.anchor}
+                  href={basePath + "/#" + section.anchor}
                   className="App-nav-anchor"
-                  onClick={(e) => handleDistinctUrlProgammaticaly(e,"/#" + section.anchor)}
+                  onClick={(e) => handleDistinctUrlProgrammaticaly(e,basePath + "/#" + section.anchor)}
                 >
                   {section.text}
                 </a>

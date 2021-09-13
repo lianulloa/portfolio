@@ -1,20 +1,28 @@
 {
-  "main.css": "/portfolio/static/css/main.c800908f.chunk.css",
-  "main.js": "/portfolio/static/js/main.32a77407.chunk.js",
-  "main.js.map": "/portfolio/static/js/main.32a77407.chunk.js.map",
-  "runtime~main.js": "/portfolio/static/js/runtime~main.f308c8e6.js",
-  "runtime~main.js.map": "/portfolio/static/js/runtime~main.f308c8e6.js.map",
-  "static/css/2.975a5253.chunk.css": "/portfolio/static/css/2.975a5253.chunk.css",
-  "static/js/2.20946cd5.chunk.js": "/portfolio/static/js/2.20946cd5.chunk.js",
-  "static/js/2.20946cd5.chunk.js.map": "/portfolio/static/js/2.20946cd5.chunk.js.map",
-  "index.html": "/portfolio/index.html",
-  "precache-manifest.997a88a1afcc3a7e279bdb2bfc3bda4c.js": "/portfolio/precache-manifest.997a88a1afcc3a7e279bdb2bfc3bda4c.js",
-  "service-worker.js": "/portfolio/service-worker.js",
-  "static/css/2.975a5253.chunk.css.map": "/portfolio/static/css/2.975a5253.chunk.css.map",
-  "static/css/main.c800908f.chunk.css.map": "/portfolio/static/css/main.c800908f.chunk.css.map",
-  "static/media/App.scss": "/portfolio/static/media/voyager_grotesque(regular).2715b3d6.ttf",
-  "static/media/django.png": "/portfolio/static/media/django.69403a8a.png",
-  "static/media/flutter.png": "/portfolio/static/media/flutter.71ebe10f.png",
-  "static/media/Banner.scss": "/portfolio/static/media/me.fdb06ac5.jpg",
-  "static/media/node-cert.jpg": "/portfolio/static/media/node-cert.ffe55c68.jpg"
+  "files": {
+    "main.css": "/portfolio/static/css/main.32611d0b.chunk.css",
+    "main.js": "/portfolio/static/js/main.0ca9e43f.chunk.js",
+    "main.js.map": "/portfolio/static/js/main.0ca9e43f.chunk.js.map",
+    "runtime-main.js": "/portfolio/static/js/runtime-main.bcd5af5a.js",
+    "runtime-main.js.map": "/portfolio/static/js/runtime-main.bcd5af5a.js.map",
+    "static/css/2.e985627f.chunk.css": "/portfolio/static/css/2.e985627f.chunk.css",
+    "static/js/2.8d21d0fe.chunk.js": "/portfolio/static/js/2.8d21d0fe.chunk.js",
+    "static/js/2.8d21d0fe.chunk.js.map": "/portfolio/static/js/2.8d21d0fe.chunk.js.map",
+    "index.html": "/portfolio/index.html",
+    "static/css/2.e985627f.chunk.css.map": "/portfolio/static/css/2.e985627f.chunk.css.map",
+    "static/css/main.32611d0b.chunk.css.map": "/portfolio/static/css/main.32611d0b.chunk.css.map",
+    "static/js/2.8d21d0fe.chunk.js.LICENSE.txt": "/portfolio/static/js/2.8d21d0fe.chunk.js.LICENSE.txt",
+    "static/media/App.scss": "/portfolio/static/media/voyager_grotesque(regular).9c70794c.ttf",
+    "static/media/django.png": "/portfolio/static/media/django.a5aaa412.png",
+    "static/media/flutter.png": "/portfolio/static/media/flutter.c01689b8.png",
+    "static/media/Banner.scss": "/portfolio/static/media/me.94f2129b.jpg",
+    "static/media/node-cert.jpg": "/portfolio/static/media/node-cert.5b7e04e8.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.bcd5af5a.js",
+    "static/css/2.e985627f.chunk.css",
+    "static/js/2.8d21d0fe.chunk.js",
+    "static/css/main.32611d0b.chunk.css",
+    "static/js/main.0ca9e43f.chunk.js"
+  ]
 }

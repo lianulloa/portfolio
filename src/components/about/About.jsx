@@ -8,6 +8,7 @@ import Book from "../work/Book/Book"
 import WorkTimeline from "../work/Timeline/Timeline"
 import JOBS from "./jobs.json"
 import BOOKS from "./books.js"
+import PERSONAL_PROJECTS from "./personal.json"
 
 class About extends Component {
   // componentDidMount() {
@@ -35,33 +36,15 @@ class About extends Component {
               </h2>
               <small>(or Hobbies)</small>
               <div className="row">
-                <div className="col-xs-12">
-                  <PersonalProject
-                    title="VuexModuleMaker"
-                    description="A helper to reduce repetition inside Vuex modules"
-                    link="https://www.npmjs.com/package/@lianulloa/vuex-module-maker"
-                  />
-                </div>
-                <div className="col-xs-12">
-                  <PersonalProject
-                    title="Faster"
-                    description="A (toy) service to infer network speed. Implements an unary gRPC service (Inspired by fast.com)"
-                    link="https://github.com/lianulloa/faster"
-                  />
-                </div>
-                <div className="col-xs-12">
-                  <PersonalProject
-                    title="Node Rest Server"
-                    description="Basic project to learn Node.js"
-                    link="https://github.com/lianulloa/node-rest-server-base"
-                  />
-                </div>
-                <div className="col-xs-12">
-                  <PersonalProject
-                    title="Silic"
-                    description="Gesture-based mobile music player. Integrates with cloud services like Google Drive and Dropbox"
-                  />
-                </div>
+                {
+                  PERSONAL_PROJECTS.map(p => 
+                    <div className="col-xs-12" key={p.title}>
+                      <PersonalProject
+                        {...p}
+                      />
+                    </div>
+                  )
+                }
               </div>
             </div>
             <div className="col-md-6 col-xs-12 secondary-experience">

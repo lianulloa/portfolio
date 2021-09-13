@@ -5,6 +5,8 @@ import AceEditor from "react-ace"
 import Button from "@material-ui/core/Button"
 import Dialog from "@material-ui/core/Dialog"
 import DialogTitle from "@material-ui/core/DialogTitle"
+import MenuItem from "@material-ui/core/MenuItem"
+import Select from "@material-ui/core/Select"
 import Slide from "@material-ui/core/Slide"
 import Tag from "../../tag/tag"
 import { actions } from "../../../store/slices/algorithms"
@@ -31,6 +33,11 @@ function Editor({ open, algorithm, onClose }) {
   const dispatch = useDispatch()
   const [fetchedAlgorithm, setFetchedAlgorithm] = useState({ answers: {} })
   const [showQuestion, setShowQuestion] = useState(false)
+  const [language, setLanguage] = useState("")
+  const handleLanguageChange = (event) => {
+    setLanguage(event.target.value)
+  }
+
   useEffect(async () => {
     if (open && !algorithm.question) {
       algorithm = await dispatch(actions.getAlgorithmDetail(algorithm.id))
@@ -39,12 +46,13 @@ function Editor({ open, algorithm, onClose }) {
   }, [open])
 
   const answers = algorithm.answers || fetchedAlgorithm.answers
+  const languages = Object.keys(answers)
+
   const question = algorithm.question || fetchedAlgorithm.question
   let markdownQuestion = ""
   if (question) {
     markdownQuestion = mdIt.render(question)
   }
-  console.log("markdown:", markdownQuestion)
 
   return (
     <Dialog
@@ -54,7 +62,8 @@ function Editor({ open, algorithm, onClose }) {
       onClose={() => {
         onClose()
         setShowQuestion(false)
-        
+        setLanguage("")
+        setFetchedAlgorithm({ answers: {} })
       }}
       fullWidth
     >
@@ -70,40 +79,40 @@ function Editor({ open, algorithm, onClose }) {
             />
           }
         </div>
-        <Button onClick={() => setShowQuestion(!showQuestion)}
-          style={{
-            textTransform: "none"
-          }}>
-          {showQuestion ? "Hide" : "Show"} question
-        </Button>
+        <div>
+          {languages.length > 1 && 
+            <Select
+              className="m-r"
+              value={language}
+              onChange={handleLanguageChange}
+              displayEmpty
+              SelectDisplayProps={{style: {minWidth: 142, boxSizing: "border-box"}}}
+            >
+              <MenuItem value="" disabled>
+                Select language
+              </MenuItem>
+              {Object.keys(answers).map(lang => <MenuItem key={lang} value={lang}>{lang}</MenuItem>)}
+            </Select>
+          }
+          <Button onClick={() => { setShowQuestion(!showQuestion)}}
+            style={{
+              textTransform: "none"
+            }}>
+            {showQuestion ? "Hide" : "Show"} question
+          </Button>
+        </div>
 
       </DialogTitle>
       <div style={{position: "relative"}}>
         <AceEditor
-          placeholder={`show one programmer quote from that crazy api (https://github.com/15Dkatz/official_joke_api)
-          `}
-          mode="python"
+          // TODO: When it get fixed
+          placeholder={"\n\n\n\n\n\t\tHow many programmers does it take to change a lightbulb?\n\n\t\tNone that's a hardware problem\n\n\n"}
+          mode={language || languages[0]}
           theme="nord_dark"
           name={algorithm.id}
-          value={answers.python || `
-  def productExceptSelf(input):
-    '''DEFAULT: I didn't get to this solution by myself'''
-    right_mul = [0] * len(input)
-    right_mul[-1] = input[-1]
-    i = len(input) - 2
-    while i >= 0:
-      right_mul[i] = right_mul[i+1] * input[i]
-      i -= 1
-
-    output = [0]*len(input)
-    prefix = 1
-    for i in range(len(output) - 1):
-      output[i] = prefix * right_mul[i + 1]
-      prefix *= input[i]
-
-    output[-1] = prefix
-    return output
-  `}
+          value={
+            answers[ language || languages[0] ]
+          }
           fontSize={14}
           width="100%"
           editorProps={{ $blockScrolling: true }}

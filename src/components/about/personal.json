@@ -1,0 +1,26 @@
+[
+  {
+    "title":"VuexModuleMaker",
+    "description": "A helper to reduce repetition inside Vuex modules",
+    "link": "https://www.npmjs.com/package/@lianulloa/vuex-module-maker"
+  },
+  {
+    "title":"Portfolio backend",
+    "description": "Node.js (with TypeScript) backend for this page",
+    "link": "https://github.com/lianulloa/portfolio-backend"
+  },
+  {
+    "title":"Faster",
+    "description": "A (toy) service to infer network speed. Implements an unary gRPC service (Inspired by fast.com)",
+    "link": "https://github.com/lianulloa/faster"
+  },
+  {
+    "title":"Node Rest Server",
+    "description": "Basic project to learn Node.js",
+    "link": "https://github.com/lianulloa/node-rest-server-base"
+  },
+  {
+    "title":"Silic",
+    "description": "Gesture-based mobile music player. Integrates with cloud services like Google Drive and Dropbox"
+  }
+]

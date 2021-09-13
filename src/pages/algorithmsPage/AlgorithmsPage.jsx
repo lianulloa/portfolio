@@ -27,15 +27,17 @@ function AlgorithmsPage() {
   return (
     <div className="App-section" id="App-algorithms">
       <Container maxWidth="md">
-        <h1 className="m-b-xs">Algorithms Page</h1>
+        <h1 className="m-b-xs">Problem Solving</h1>
         <div className="row m-b">
           <div className="col-xs-12 m-b">
             For some problems, the provided answer is not mine.
             I have had to look some solutions up.
           </div>
-          <div className="col-xs-12 m-b">
-            put filters here
-          </div>
+          {false && 
+            <div className="col-xs-12 m-b">
+              put filters here
+            </div>
+          }
           {algorithms.map(algorithm => 
             (<div className="col-md-6 col-xs-12 m-b-md" key={algorithm.id} >
               <AlgorithmCard
@@ -50,7 +52,17 @@ function AlgorithmsPage() {
               />
             </div>)
           )}
+          {
+            !algorithms.length &&
+            // TODO: show a better component for this
+            <p style={{minHeight: 350, display: "flex", alignItems: "center", margin: "auto"}}>Loading...</p>
+          }
         </div>
+        {!!algorithms.length &&
+          <div className="col-xs-12 m-b">
+          Still more to come
+          </div>
+        }
         <div className="row m-b">
           <Editor
             open={showEditor}

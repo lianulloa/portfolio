@@ -1,85 +1,77 @@
-import React, { Component } from "react"
-import Scrollchor from "react-scrollchor";
-// import menu from "../../static/images/toggle_menu.svg";
-// import logo from "../../logotest.png";
+import { useEffect, useState } from "react"
+import {usePath, navigate, A} from "hookrouter"
 import "./NavBar.scss"
 
 
-class NavBar extends Component {
-  state = {
-    menuHidden: true,
-    sections: [
-      { text: "Skills", link: "#App-services" },
-      { text: "About me", link: "#App-about" },
-      // { text: "Contact", link: "#App-contact" },
-      { text: "Contact Info", link: "#App-footer" }
-    ],
+function NavBar() {
+  const path = usePath()
+  const [withAnchor, setWithAnchor] = useState("")
+  useEffect(() => {
+    if (withAnchor && withAnchor !== "#") {
+      const element = document.querySelector(withAnchor).scrollIntoView()
+      element && element.scrollIntoView()
+    }
+  }, [path])
 
+  const sections = [
+    { text: "Skills", anchor: "App-services" },
+    { text: "About me", anchor: "App-about" },
+    { text: "Algorithms", link: "algorithms"}
+  ]
+
+
+  const handleDistinctUrlProgammaticaly = (e, to) => {
+    if (path !== "/") {
+      e.preventDefault()
+      navigate(to)
+      setWithAnchor(to.split("/").pop())
+    } else {
+      setWithAnchor("")
+    }
   }
-  render() {
-		let menuOverlay = "App-menu-overlay";
-		menuOverlay += this.state.menuHidden === true ? " hidden" : " show";
-    
-    return (
-      <div className="App-navigation fixed" >
-        <div className="App-navigation-container">
-          <Scrollchor
-            to=""
-            animate={{ offset: 0, duration: 400 }}
-            className="App-link-logo"
-            style={{ textDecoration: "none" }}
-          >
-            <span role="img" aria-label="go to the top" style={{ fontSize: 23 }}>
-              🖐
-            </span>
-            {/* <img src={logo} className="App-menu-logo" alt="Deal" /> */}
-          </Scrollchor>
-          <ul className="App-navigation-btns" >
-            {this.state.sections.map(section => (
-              <li key={section.link}>
-                <Scrollchor
-                  to={section.link}
-                  animate={{ offset: 0, duration: 400 }}
-                  className="App-nav-link"
+
+  return (
+    <div className="App-navigation fixed" >
+      <div className="App-navigation-container">
+        <a
+          href="/#"
+          className="App-anchor-logo"
+          style={{ textDecoration: "none" }}
+          onClick={(e) => handleDistinctUrlProgammaticaly(e,"/#")}
+        >
+          <span role="img" aria-label="go to the top" style={{ fontSize: 23 }}>
+            🖐
+          </span>
+        </a>
+        <ul className="App-navigation-btns" >
+          {sections.map(section => (
+            <li key={section.anchor || section.link}>
+              {
+                section.anchor &&
+                <a
+                  href={"/#" + section.anchor}
+                  className="App-nav-anchor"
+                  onClick={(e) => handleDistinctUrlProgammaticaly(e,"/#" + section.anchor)}
                 >
                   {section.text}
-                </Scrollchor>
-              </li>
-            ))}
-          </ul>
-          {/* <button
-            className="menu-trigger"
-            onClick={this.handleMenuClick}
-          >
-            <img src={menu} alt="menu" />
-          </button> */}
-          <div className={menuOverlay}>
-            <div
-              className="App-menu-overlay-content"
-              onClick={this.handleMenuClick}
-            >
-              <ul>
-                {this.state.sections.map(section => (
-                  <li key={section.link}>
-                    <Scrollchor
-                      to={section.link}
-                      animate={{ offset: 0, duration: 400 }}
-                      className="App-nav-link"
-                    >
-                      {section.text}
-                    </Scrollchor>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          <div className="App-menu-overlay-bg" onClick={this.handleMenuClick}>
-            {/* <button className="menu-close">x</button> */}
-          </div>
-        </div>
+                </a>
+              }
+              {
+                section.link &&
+                <A
+                  href={section.link}
+                  className="App-nav-anchor"
+                  onClick={() => setWithAnchor("")}
+                >
+                  {section.text}
+                </A>
+              }
+            </li>
+          ))}
+        </ul>
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default NavBar

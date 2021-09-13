@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React, { useState } from "react"
+import PropTypes from "prop-types"
 import {
   Card,
   CardActions,
@@ -7,12 +8,12 @@ import {
   Grow,
   IconButton,
   Typography
-} from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import { red } from '@material-ui/core/colors';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+} from "@material-ui/core"
+import { makeStyles } from "@material-ui/core/styles"
+import { red } from "@material-ui/core/colors"
+import ChevronRightIcon from "@material-ui/icons/ChevronRight"
 import classnames from "classnames"
-import Tooltip from '@material-ui/core/Tooltip';
+import Tooltip from "@material-ui/core/Tooltip"
 import "./Service.scss"
 
 const useStyles = makeStyles((theme) => ({
@@ -21,12 +22,12 @@ const useStyles = makeStyles((theme) => ({
   },
   media: {
     height: 0,
-    paddingTop: '56.25%', // 16:9
+    paddingTop: "56.25%", // 16:9
   },
   expand: {
-    transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
+    transform: "rotate(0deg)",
+    marginLeft: "auto",
+    transition: theme.transitions.create("transform", {
       duration: theme.transitions.duration.shortest,
     }),
   },
@@ -45,27 +46,28 @@ const useStyles = makeStyles((theme) => ({
     right: 0
   },
   expandOpen: {
-    transform: 'rotate(180deg)',
+    transform: "rotate(180deg)",
   },
   avatar: {
     backgroundColor: red[500],
   },
-}));
+}))
 
 function Service(props) {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(false)
 
   const handleExpandClick = (event) => {
     const col = event.target.closest(".service-col")
     const contentWrapper = col.querySelector(".content-wrapper")
     contentWrapper.style.width = `${contentWrapper.offsetWidth}px`
-    setExpanded(!expanded);
-  };
+    setExpanded(!expanded)
+  }
   const classes = useStyles()
   return <div className="col-md-4 col-sm-7 col-xs-12 service-col" style={{position: "relative"}}>
     <Card
       elevation={expanded ? 10 : 1}
-      className={classnames(classes.service, {
+      className={
+        classnames(classes.service, {
           [classes.cardExpandedRight]: props.right,
           [classes.cardExpandedMiddle]: props.middle,
           [classes.cardExpanded]: expanded
@@ -84,7 +86,7 @@ function Service(props) {
         <div
           className="card-media"
           style={{
-            backgroundImage:  `url(${props.logo})`,
+            backgroundImage:  `url(${props.logo.default})`,
             height: 200,
             backgroundPosition: "center",
             backgroundSize: "contain",
@@ -110,7 +112,7 @@ function Service(props) {
         </CardActions>
         <Grow
           in={expanded}
-          timeout="500"
+          timeout={500}
           style={{
             position: "absolute",
             top: 0,
@@ -122,23 +124,39 @@ function Service(props) {
           <div>
             {props.tooltip && 
               <Tooltip title={props.tooltip}>
-                <iframe
-                  title={props.frameworkTitle}
-                  src={props.frameworkHomePage}
-                  style={{ width: "100%", border: "none", height: "100%" }} />
+                {
+                // eslint-disable-next-line
+                  <iframe
+                    src={props.frameworkHomePage}
+                    style={{ width: "100%", border: "none", height: "100%" }}
+                  />
+                }
               </Tooltip>
             }
             {!props.tooltip &&
+              // eslint-disable-next-line
               <iframe
-              title={props.frameworkTitle}
-              src={props.frameworkHomePage}
-              style={{ width: "100%", border: "none", height: "100%" }} />
+                src={props.frameworkHomePage}
+                style={{ width: "100%", border: "none", height: "100%" }} 
+              />
             }
           </div>
         </Grow>
       </div>
     </Card>
-  </div>;
+  </div>
 }
 
-export default Service;
+Service.propTypes = {
+  description: PropTypes.string,
+  frameworkHomePage: PropTypes.string,
+  logo: PropTypes.shape({
+    default: PropTypes.string
+  }),
+  middle: PropTypes.bool,
+  right: PropTypes.bool,
+  serviceTitle: PropTypes.string,
+  tooltip: PropTypes.string
+}
+
+export default Service

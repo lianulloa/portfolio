@@ -22,7 +22,6 @@ function NavBar() {
 
 
   const handleDistinctUrlProgrammaticaly = (e, to) => {
-    console.log(path, to)
     if (path !== "/") {
       e.preventDefault()
       navigate(to)

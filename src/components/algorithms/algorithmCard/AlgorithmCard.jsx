@@ -10,6 +10,9 @@ import Tag from "../../tag/tag"
 import Typography from "@material-ui/core/Typography"
 import "./AlgorithmCard.scss"
 
+//TODO: unified this with PersonalProject
+
+
 AlgorithmCard.propTypes = {
   title: PropTypes.string.isRequired,
   question: PropTypes.string.isRequired,
@@ -40,7 +43,7 @@ function AlgorithmCard({
           </Typography>
         }
         subheader={
-          <Typography variant="body2">
+          <Typography variant="body2" style={{minHeight: 40}}>
             <span className="question-preview" dangerouslySetInnerHTML={{ __html: mdIt.render(question)}}/>
           </Typography>
         }

@@ -6,6 +6,18 @@ export default [
     img: "https://images-na.ssl-images-amazon.com/images/I/41yafGMO+rL._SX376_BO1,204,203,200_.jpg"
   },
   {
+    title: "Delivering hapiness",
+    description: "A Path to Profits, Passion and Purpose",
+    author: "Tony Hsieh",
+    img: "https://m.media-amazon.com/images/I/51vNDc50J3L.jpg"
+  },
+  {
+    title: "Programming TypeScript",
+    description: "Making Your JavaScript Applications Scale",
+    author: "Boris Cherny",
+    img: "https://images-na.ssl-images-amazon.com/images/I/511YUCKEYrL._SX342_SY445_QL70_ML2_.jpg"
+  },
+  {
     title: "Design Systems Handbook",
     description: "",
     author: "Marco Suarez, Jina Anne, Katie Sylor-Miller, Diana Mounter, and Roy Stanfield",
@@ -29,10 +41,4 @@ export default [
     author: "Eric Schmidt and Jonathan Rosenberg",
     img: "https://images-na.ssl-images-amazon.com/images/I/51WpL-WjlpL.jpg"
   },
-  {
-    title: "Delivering hapiness",
-    description: "A Path to Profits, Passion and Purpose",
-    author: "Tony Hsieh",
-    img: "https://m.media-amazon.com/images/I/51vNDc50J3L.jpg"
-  }
 ]

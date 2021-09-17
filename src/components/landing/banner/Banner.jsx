@@ -1,14 +1,14 @@
 import React, { Component } from "react"
-import ChatBubble from "../chat_bubble/ChatBubble"
+import ChatBubble from "../../chat_bubble/ChatBubble"
 import {
   Card,
   CardHeader,
   CardContent,
   Hidden
 } from "@material-ui/core"
-import Tag from "../tag/tag"
+import Tag from "../../tag/tag"
 import "./Banner.scss"
-import tags from "../../assets/tags.json"
+import tags from "../../../assets/tags.json"
 class Banner extends Component {
   constructor(props){
     super(props)

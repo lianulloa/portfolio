@@ -2,18 +2,42 @@
 
 .personal-project {
   text-align: start;
-  padding: 16px;
-  box-sizing: border-box;
-  color: $primary_color !important;
-  min-height: 110px;
-  width: 100%;
-  h2 {
-    position: relative;
-    margin: 0;
-    svg {
-      position: absolute;
-      right: 0;
-      bottom: 5px;
+  // padding: 16px;
+  // box-sizing: border-box;
+  // color: $primary_color !important;
+  // min-height: 110px;
+  // width: 100%;
+
+  //
+  &.MuiPaper-root {
+    color: #4B6482;
+  }
+
+  .MuiCardHeader-root {
+    text-align: left;
+    padding-bottom: 0;
+    .description {
+      p {
+        margin:0;
+      }
     }
+    h6 {
+      position: relative;
+      margin: 0;
+      svg {
+        position: absolute;
+        right: 0;
+        bottom: 5px;
+      }
+    }
+  }
+
+  .MuiCardHeader-avatar {
+    margin: 0;
+    margin-left: -12px;
+    margin-right: 4px;
+  }
+  .MuiCardHeader-content {
+    overflow: hidden;
   }
 }

@@ -1,7 +1,7 @@
 import React from "react"
-import Banner from "../../components/banner/Banner"
-import Services from "../../components/services/Services"
-import About from "../../components/about/About"
+import Banner from "../../components/landing/banner/Banner"
+import Services from "../../components/landing/services/Services"
+import About from "../../components/landing/about/About"
 
 function HomePage() {
   return (

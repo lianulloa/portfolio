@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Paper } from "@material-ui/core"
+import { Box } from "@material-ui/core"
 import "./Book.scss"
 
 Book.propTypes = {
@@ -12,23 +12,17 @@ Book.propTypes = {
 
 function Book(props) {
   return (
-    <Paper className="book">
-      {/* <div className="row">
-        <div className="col-xs-3"> */}
+    <Box className="book">
       <img
         src={props.img}
-        style={{ width: "40%", display: "block", margin: "auto" }}
-        alt="clean-code" />
-      {/* </div>
-        <div className="col-xs-9"> */}
-      <p className="title"><b>{ props.title }</b></p>
+        style={{ width: 120, display: "block", margin: "auto" }}
+        alt={props.title} />
+      {/* <p className="title"><b>{ props.title }</b></p>
       <p>{props.description}</p>
       <p>
             by: {props.author}
-      </p>
-      {/* </div>
-      </div> */}
-    </Paper>
+      </p> */}
+    </Box>
   )
 }
 

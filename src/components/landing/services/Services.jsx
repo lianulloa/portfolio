@@ -4,8 +4,8 @@ import {
   Hidden
 } from "@material-ui/core"
 import MainSkills from "../mainSkills/MainSkills"
-import Tag from "../tag/tag"
-import tags from "../../assets/tags.json"
+import Tag from "../../tag/tag"
+import tags from "../../../assets/tags.json"
 import "./Services.scss"
 
 function Services() {

@@ -37,7 +37,9 @@ function TimelineItemExp(props) {
             }
           </h5>
           <ul className="achievements">
-            { props.achievements.map((ach,i) => <li key={i}>{ach}</li>)}
+            {props.achievements.map(
+              (ach, i) => <li key={i} dangerouslySetInnerHTML={{ __html: ach}}/>
+            )}
           </ul>
         </div>
       </TimelineContent>

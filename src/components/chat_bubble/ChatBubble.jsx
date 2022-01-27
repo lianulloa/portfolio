@@ -55,7 +55,7 @@ class ChatBubble extends Component {
         >
           <rect name={this.props.bubbleId}
             style={{
-              fill: "#84859C", fillOpacity: 0.83921569, stroke: "#5b5b5b", strokeWidth: 1.19175148, strokeLinecap: "butt",
+              fill: "#41b883", fillOpacity: 0.83921569, stroke: "#5b5b5b", strokeWidth: 1.19175148, strokeLinecap: "butt",
               strokeLinejoin: "round", strokeMiterlimit: 4, strokeDasharray: "none", strokeDashoffset: 0, strokeOpacity: 0, paintOrder: "normal",
             }}
             id="rect65"

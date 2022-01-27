@@ -1,6 +1,8 @@
+@import '../../../theme/colors.scss';
+
 .AlgorithmCard {
   &.MuiPaper-root {
-    color: #4B6482;
+    color: $primary_color;
   }
 
   .MuiCardHeader-root {

@@ -1,7 +1,9 @@
+@import '../../../theme/colors.scss';
+
 .MuiChip-root {
-  background-color: #4B6482 !important;
+  background-color: $primary_color !important;
   color: white !important;
   font-weight: bold;
   margin: 0 5px;
-  background-image: linear-gradient(45deg, #4b6481, #7b8197);
+  background-image: linear-gradient(145deg, $primary_color 50%, #41b883);
 }

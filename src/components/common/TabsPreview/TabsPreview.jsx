@@ -6,10 +6,11 @@ import {
   Paper,
   Tooltip
 } from "@material-ui/core"
-import skills from "./skills.js"
-import "./MainSills.scss"
+import skills from "../skills.js"
+import "./TabsPreview.scss"
 
-function MainSkills() {
+function TabsPreview() {
+
   const [active, setActive] = useState({
     i: 0,
     ...skills[0]
@@ -20,10 +21,11 @@ function MainSkills() {
       setWidth(window.screen.width)
     }
   }, [])
+
   const ITooltip = active.tooltip ? Tooltip : "div"
   const showActive = width >= 1024
   return (
-    <div className="row MainSills" style={{ paddingBottom: 40}}>
+    <div className="row tabs-preview">
       <div className="col-md-4 col-xs-12">
         {
           skills.map((skill, i) => 
@@ -77,4 +79,4 @@ function MainSkills() {
   )
 }
 
-export default MainSkills
+export default TabsPreview

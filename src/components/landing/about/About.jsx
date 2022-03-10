@@ -14,14 +14,14 @@ function About() {
   return (
     <div className="App-section" id="App-about">
       <Container maxWidth="md">
-        <h1 style={{ textTransform: "uppercase"}}>
+        {/* <h1 style={{ textTransform: "uppercase"}}>
           Work Experience
         </h1>
         <div className="row">
           <div className="col-md-12">
             <WorkTimeline jobs={JOBS}/>
           </div>
-        </div>
+        </div> */}
         <div className="row">
           <div className="col-xs-12 secondary-experience">
             <h2 style={{ textTransform: "uppercase"}}>

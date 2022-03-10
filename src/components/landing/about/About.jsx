@@ -4,8 +4,6 @@ import {
 } from "@material-ui/core"
 import BookSlider from "../bookSlider/bookSlider"
 import PersonalProject from "../../work/Personal"
-import WorkTimeline from "../../work/Timeline/Timeline"
-import JOBS from "./jobs.json"
 import BOOKS from "./books.js"
 import PERSONAL_PROJECTS from "./personal.json"
 import "./About.scss"
@@ -14,16 +12,8 @@ function About() {
   return (
     <div className="App-section" id="App-about">
       <Container maxWidth="md">
-        {/* <h1 style={{ textTransform: "uppercase"}}>
-          Work Experience
-        </h1>
         <div className="row">
-          <div className="col-md-12">
-            <WorkTimeline jobs={JOBS}/>
-          </div>
-        </div> */}
-        <div className="row">
-          <div className="col-xs-12 secondary-experience">
+          <div className="col-xs-12 side-experience">
             <h2 style={{ textTransform: "uppercase"}}>
               My Projects
             </h2>
@@ -40,7 +30,7 @@ function About() {
               }
             </div>
           </div>
-          <div className="col-xs-12 secondary-experience m-b-lg">
+          <div className="col-xs-12 side-experience m-b-lg">
             <h2  style={{ textTransform: "uppercase"}}>
               Books
             </h2>

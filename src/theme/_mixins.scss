@@ -12,6 +12,10 @@
     h1 {
         font-size: 3em;
     }
+    :is(h1,h2) ~ small {
+        display: block;
+        margin-bottom: 20px;
+    }
 }
 
 @mixin content {

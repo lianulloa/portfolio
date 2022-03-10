@@ -4,6 +4,7 @@
     "company": "Linkfire",
     "companyWebsite": "https://www.linkfire.com/",
     "period": "01/2022 - Present",
+    "priority": 2,
     "achievements": [
       "Found a way to use Vue components inside Ember app to help with migration"
     ]
@@ -13,6 +14,7 @@
     "company": "Ligo BV",
     "companyWebsite": "https://www.linkedin.com/company/ligo-bv/",
     "period": "09/2021 - 11/2021",
+    "priority": 2,
     "achievements": [
       "Develop some generic components to deploy landing pages with Storyblok"
     ]
@@ -22,6 +24,7 @@
     "company": "Soluciones Alegra S.A.S.",
     "companyWebsite": "https://www.alegra.com/",
     "period": "11/2019 - 07/2021",
+    "priority": 1,
     "achievements": [
       "Conducted an <b>A/B test</b> to review influence of UX ease regarding creation of new documents",
       "Co-led the creation and maintenance of <b>the company's Design System.</b>",
@@ -34,6 +37,7 @@
     "title": "Full Stack Developer",
     "company": "Freelancer",
     "period": "10/2018 - 11/2019",
+    "priority": 3,
     "achievements": [
       "Developed a health-related QA website (React-Django)",
       "Launched a web-based application to keep the records of environmental actions taken by universities.",
@@ -44,6 +48,7 @@
     "title": "Full Stack Developer",
     "company": "Ampersand Cuba",
     "period": "03/2016 - 08/2018",
+    "priority": 3,
     "achievements": [
       "Launched a social platform for entrepreneurs. It gathered e-commerce and social media features",
       "Developed a TV app with Metrological Application Framework",

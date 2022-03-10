@@ -60,12 +60,12 @@ class Banner extends Component {
         </div>
         <Hidden smDown>
           <div className="col-md-6" style={{ textAlign: "left", position: "relative" }}>
-            <div style={{position: "absolute", top: "80px", left: 60, padding: "0 30px", boxSizing: "border-box", width: 400}}>
+            {<div style={{ position: "absolute", top: "80px", left: 60, padding: "0 30px", boxSizing: "border-box", width: 400 }}>
               <ChatBubble bubbleId="1" content="Hello, my name is Lian Ulloa" />
               {this.state.showBubble1 && <ChatBubble bubbleId="2" content="I have a Bachelor Degree in Computer Science" finalWidth="150%" />}
               {this.state.showBubble2 && <ChatBubble bubbleId="3" content="I am passionated about code and music" finalWidth="125%" />}
               {/* {this.state.showBubble3 && <ChatBubble bubbleId="5" content="and AI (of course)" finalWidth="60%" />} */}
-            </div>
+            </div>}
             <Card
               elevation={5}
               style={{ position: "absolute", bottom: "-80px", right: "-30px", width: "60%", zIndex: "1", borderRadius: 16 }}

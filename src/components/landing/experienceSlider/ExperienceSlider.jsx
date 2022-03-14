@@ -1,12 +1,17 @@
-import React, {useEffect, useState} from "react"
+import React, { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import PropTypes from "prop-types"
 import Slider from "infinite-react-carousel"
-import JOBS from "../about/jobs.json"
 import OpenInNewIcon from "@material-ui/icons/OpenInNew"
 import "./ExperienceSlider.scss"
 import device from "../../../utils/device"
+import {selectors, actions } from "../../../store/slices/jobs"
+import HerokuLoading from "../../common/HerokuLoading"
 
 function ExperienceSlider() {
+  const jobs = useSelector(selectors.jobs)
+  const dispatch = useDispatch()
+
   const [slidesToShow, setSlidesToShow] = useState(window.screen.width <= 1024 ? 1 : 2)
   const scroll = 2
   const sliderSettings =  {
@@ -30,9 +35,13 @@ function ExperienceSlider() {
         setSlidesToShow(2)
       }
     }
+
+    if (!jobs.length) {
+      dispatch(actions.getJobs())
+    }
   }, [])
 
-  const sortedJobs = [...JOBS].sort((a, b) => {
+  const sortedJobs = [...jobs].sort((a, b) => {
     if (a.priority && b.priority) return (a.priority - b.priority)
     if (a.priority) return -1
     else if (b.priority) return 1
@@ -40,38 +49,46 @@ function ExperienceSlider() {
   })
 
   return (
-    <div style={{ width: "100%"}}>
-      <Slider {...sliderSettings}
-        slidesToShow={slidesToShow}
-      >
-        {sortedJobs.map(job => 
-          <div key={job.period} className="experience-item" >
-            <h2>
-              { job.title }
-            </h2>
-            <h5>
-              {job.companyWebsite && 
-                // eslint-disable-next-line react/jsx-no-target-blank
-                <a className="primary-color" href={job.companyWebsite} target="_blank" >
-                  {job.company} <OpenInNewIcon style={{fontSize: 14}} />
-                </a>
-              }
-              {!job.companyWebsite && 
-                job.company
-              }
-            </h5>
-            <small>
-              ({job.period})
-            </small>
-            <ul className="achievements">
-              {job.achievements.slice(0,3).map(
-                (ach, i) => <li key={i} dangerouslySetInnerHTML={{ __html: ach}}/>
-              )}
-            </ul>
-          </div>
-        )}
+    <div style={{ width: "100%" }}>
+      {
+        !!jobs.length &&
+        <Slider {...sliderSettings}
+          slidesToShow={slidesToShow}
+        >
+          {sortedJobs.map(job => 
+            <div key={job.id} className="experience-item" >
+              <h2>
+                { job.title }
+              </h2>
+              <h5>
+                {job.companyWebsite && 
+                  // eslint-disable-next-line react/jsx-no-target-blank
+                  <a className="primary-color" href={job.companyWebsite} target="_blank" >
+                    {job.company} <OpenInNewIcon style={{fontSize: 14}} />
+                  </a>
+                }
+                {!job.companyWebsite && 
+                  job.company
+                }
+              </h5>
+              <small>
+                ({job.period})
+              </small>
+              <ul className="achievements">
+                {job.achievements.slice(0,3).map(
+                  (ach, i) => <li key={i} dangerouslySetInnerHTML={{ __html: ach}}/>
+                )}
+              </ul>
+            </div>
+          )}
 
-      </Slider>
+        </Slider>
+      }
+      {!jobs.length &&
+        <div className="row">
+          <HerokuLoading />
+        </div>
+      }
     </div>
   )
 }

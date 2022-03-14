@@ -1,7 +1,6 @@
 import React, { useEffect } from "react"
 import { Container } from "@material-ui/core"
 import WorkTimeline from "../../components/work/Timeline/Timeline"
-import JOBS from "../../components/landing/about/jobs.json"
 import {selectors, actions } from "../../store/slices/jobs"
 import { useDispatch, useSelector } from "react-redux"
 
@@ -20,7 +19,7 @@ function TimelinePage() {
         <h1 className="m-b-xs">Timeline</h1>
         <div className="row">
           <div className="col-md-12">
-            <WorkTimeline jobs={JOBS}/>
+            <WorkTimeline jobs={jobs}/>
           </div>
         </div>
       </Container>

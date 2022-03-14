@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import PropTypes from "prop-types"
 import Slider from "infinite-react-carousel"
-import JOBS from "../about/jobs.json"
 import OpenInNewIcon from "@material-ui/icons/OpenInNew"
 import "./ExperienceSlider.scss"
 import device from "../../../utils/device"
@@ -42,7 +41,7 @@ function ExperienceSlider() {
     }
   }, [])
 
-  const sortedJobs = [...JOBS].sort((a, b) => {
+  const sortedJobs = [...jobs].sort((a, b) => {
     if (a.priority && b.priority) return (a.priority - b.priority)
     if (a.priority) return -1
     else if (b.priority) return 1

@@ -4,6 +4,7 @@ import { Container } from "@material-ui/core"
 import Editor from "../../components/algorithms/editor/Editor"
 import AlgorithmCard from "../../components/algorithms/algorithmCard/AlgorithmCard"
 import { selectors, actions } from "../../store/slices/algorithms"
+import HerokuLoading from "../../components/common/HerokuLoading"
 
 const tags = {
   0: ["Loops", "Strings"],
@@ -55,9 +56,7 @@ function AlgorithmsPage() {
           {
             !algorithms.length &&
             // TODO: show a better component for this
-            <p style={{ minHeight: 350, display: "flex", alignItems: "center", margin: "auto" }}>
-              Loading (May take a few seconds for the heroku deployed backend to start)...
-            </p>
+            <HerokuLoading />
           }
         </div>
         {!!algorithms.length &&

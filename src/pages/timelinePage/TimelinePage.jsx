@@ -1,9 +1,19 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Container } from "@material-ui/core"
 import WorkTimeline from "../../components/work/Timeline/Timeline"
 import JOBS from "../../components/landing/about/jobs.json"
+import {selectors, actions } from "../../store/slices/jobs"
+import { useDispatch, useSelector } from "react-redux"
 
 function TimelinePage() {
+  const jobs = useSelector(selectors.jobs)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (!jobs.length) {
+      dispatch(actions.getJobs())
+    }
+  })
   return (
     <div className="App-section" id="App-algorithms">
       <Container maxWidth="md">

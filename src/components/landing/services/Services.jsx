@@ -16,7 +16,7 @@ function Services() {
         Work Experience
       </h1>
       <small >
-        <A className="primary-color" href="timeline">(Go to Timeline 👉)</A>
+        <A className="secondary-color" href="timeline">(Go to Timeline 👉)</A>
       </small>
       <div className="row">
         <div className="col-xs-12">

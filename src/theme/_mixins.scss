@@ -1,12 +1,9 @@
 @import './colors';
 
 @mixin section($color) {
-    background-color: $color;
-    // min-height: 60vh;
     display: flex;
     padding-top: 40px;
     padding-bottom: 20px;
-    color: $primary_color;
     position: relative;
     overflow: hidden;
     h1 {

@@ -64,7 +64,7 @@ function ExperienceSlider() {
                 {job.companyWebsite && 
                   // eslint-disable-next-line react/jsx-no-target-blank
                   <a className="secondary-color" href={job.companyWebsite} target="_blank" >
-                    {job.company} <OpenInNewIcon style={{fontSize: 14}} />
+                    {job.company} <OpenInNewIcon style={{fontSize: 15}} />
                   </a>
                 }
                 {!job.companyWebsite && 

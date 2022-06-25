@@ -16,7 +16,7 @@ function NavBar() {
 
   const sections = [
     { text: "Skills", anchor: "App-services" },
-    { text: "About me", anchor: "App-about" },
+    { text: "Challenges", plainLink: "https://lianulloa.github.io/launch-countdown-timer-frontendmentor/" },
     { text: "Algorithms", link: "algorithms"}
   ]
 
@@ -46,13 +46,24 @@ function NavBar() {
         </a>
         <ul className="App-navigation-btns" >
           {sections.map(section => (
-            <li key={section.anchor || section.link}>
+            <li key={section.anchor || section.link || section.plainLink}>
               {
                 section.anchor &&
                 <a
                   href={basePath + "/#" + section.anchor}
                   className="App-nav-anchor"
                   onClick={(e) => handleDistinctUrlProgrammaticaly(e,basePath + "/#" + section.anchor)}
+                >
+                  {section.text}
+                </a>
+              }
+              {
+                section.plainLink &&
+                // eslint-disable-next-line react/jsx-no-target-blank
+                <a
+                  href={section.plainLink}
+                  className="App-nav-anchor"
+                  target="_blank"
                 >
                   {section.text}
                 </a>

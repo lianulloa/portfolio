@@ -14,7 +14,7 @@ function TimelineItemExp(props) {
   return (
     <TimelineItem>
       <TimelineOppositeContent>
-        <Typography color="textSecondary">{props.period}</Typography>
+        <Typography className="secondary-color">{props.period}</Typography>
       </TimelineOppositeContent>
       <TimelineSeparator>
         <TimelineDot variant="outlined"/>

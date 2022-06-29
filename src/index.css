@@ -5,24 +5,11 @@ body {
   scroll-behavior: smooth;
   margin: 0;
   padding: 0;
-  font-family: -apple-system, "OpenSans-Regular",BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #3668a5;
   position: relative;
-}
-
-@media (max-width: 768px)  {
-  body::before {
-    content: "";
-  }
-}
-@media (max-height:768px)  {
-  body::before {
-    content: "";
-  }
 }
 
 a.App-nav-link {
@@ -31,9 +18,6 @@ a.App-nav-link {
 a {
   text-decoration: none;
 }
-
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+img {
+  width: 100%;
 }

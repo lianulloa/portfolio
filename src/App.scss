@@ -8,18 +8,6 @@
   color: white;
 }
 
-.App-laptop {
-  height: 55vmin;
-  position: absolute;
-  left: -10%;
-  top: -30%;
-  transform: rotate(-10deg);
-}
-
-.App-navigation.no-fixed {
-  @include navigation(false);
-}
-
 .App-section {
   @include section(white);
 }
@@ -33,82 +21,12 @@
   @include content;
 }
 
-.App-menu-overlay.hidden {
-  @include menu-overlay(true);
-}
-
-.App-menu-overlay.show {
-  @include menu-overlay(false);
-}
-
-.App-menu-overlay-bg {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  visibility: hidden;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  opacity: 0;
-  background: rgba(255, 255, 255, 0.2);
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  transition: all 0.3s;
-
-  >.menu-close {
-    position: absolute;
-    top: 5px;
-    left: 12px;
-    display: inline-block;
-    font-size: 40px;
-    color: #3a4348;
-    background: inherit;
-    border: none;
-    outline: 0;
-  }
-}
-
-.App-menu-overlay.show~.App-menu-overlay-bg {
-  background: rgba(255, 255, 255, 0.96);
-  opacity: 1;
-  visibility: visible;
-}
-
 .primary-color {
   color: $primary_color
 }
 .secondary-color {
   color: $secondary_color
 }
-img {
-  width: 100%;
-}
-
-@font-face{
-	font-family: 'Pixel';
-	font-style: normal;
-	font-weight: 400;
-	src: url('static/fonts/Pixel12x10.ttf') format('truetype');
-}
-@font-face{
-	font-family: 'OpenSans-Regular';
-	font-style: normal;
-	font-weight: 400;
-	src: url('static/fonts/Open_Sans/OpenSans-Regular.ttf') format('truetype');
-}
-@font-face{
-	font-family: 'V-Gerb Bold';
-	font-style: bold;
-	font-weight: bold;
-	src: url('static/fonts/v-gerb(bold).ttf') format('truetype');
-}
-@font-face{
-	font-family: 'Voyager Grotesque';
-	font-style: normal;
-	font-weight: 400;
-	src: url('static/fonts/voyager_grotesque(regular).ttf') format('truetype');
-}
-
 .MuiPaper-rounded {
   border-radius: 16px !important;
 }

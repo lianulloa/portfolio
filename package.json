@@ -22,7 +22,6 @@
     "axios": "^0.21.4",
     "classnames": "^2.2.6",
     "device": "^0.3.12",
-    "emailjs-com": "^2.3.2",
     "flexboxgrid": "^6.3.1",
     "hookrouter": "^1.2.5",
     "infinite-react-carousel": "^1.2.11",

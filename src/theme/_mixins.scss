@@ -91,25 +91,3 @@
         }
     }
 }
-
-@mixin menu-overlay($hidden) {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: auto;
-    z-index: 2000;
-
-    @if ($hidden==true) {
-        visibility: hidden;
-        backface-visibility: hidden;
-    }
-
-    @else {
-        visibility: visible;
-        backface-visibility: visible;
-    }
-
-    transform: translateX(-50%) translateY(-50%);
-
-}

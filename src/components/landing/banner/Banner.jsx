@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import ChatBubble from "../../chat_bubble/ChatBubble"
 import {
   Card,
   CardHeader,
@@ -12,26 +11,6 @@ import tags from "../../../assets/tags.json"
 class Banner extends Component {
   constructor(props){
     super(props)
-    this.state = {
-      showBubble1: false,
-      showBubble2: false,
-      showBubble3: false,
-    }
-    setTimeout(() => {
-      this.setState({
-        showBubble1: true
-      })
-    }, 3500)
-    setTimeout(() => {
-      this.setState({
-        showBubble2: true
-      })
-    }, 6900)
-    setTimeout(() => {
-      this.setState({
-        showBubble3: true
-      })
-    }, 10000)
   }
 
   render() {
@@ -60,12 +39,11 @@ class Banner extends Component {
         </div>
         <Hidden smDown>
           <div className="col-md-6" style={{ textAlign: "left", position: "relative" }}>
-            {<div style={{ position: "absolute", top: "80px", left: 60, padding: "0 30px", boxSizing: "border-box", width: 400 }}>
-              <ChatBubble bubbleId="1" content="Hello, my name is Lian Ulloa" />
-              {this.state.showBubble1 && <ChatBubble bubbleId="2" content="I have a Bachelor Degree in Computer Science" finalWidth="150%" />}
-              {this.state.showBubble2 && <ChatBubble bubbleId="3" content="I am passionated about code and music" finalWidth="125%" />}
-              {/* {this.state.showBubble3 && <ChatBubble bubbleId="5" content="and AI (of course)" finalWidth="60%" />} */}
-            </div>}
+            <div style={{ position: "absolute", top: "80px", left: 60, boxSizing: "border-box", width: 400 }}>
+              <iframe
+                src="https://github-readme-streak-stats.herokuapp.com?user=lianulloa&theme=vue&hide_border=true"
+                width="100%" style={{border: "none"}}/>
+            </div>
             <Card
               elevation={5}
               style={{ position: "absolute", bottom: "-80px", right: "-30px", width: "60%", zIndex: "1", borderRadius: 16 }}

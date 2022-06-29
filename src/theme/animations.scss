@@ -13,37 +13,3 @@
   animation-direction: alternate;
   animation-iteration-count: 30;
 }
-
-@keyframes ball-bounce {
-  0% {
-    top: 0;
-    animation-timing-function: ease-out;
-  }
-  17% {
-    top: 15px;
-    animation-timing-function: ease-in;
-  }
-  34% {
-    top: 0;
-    animation-timing-function: ease-out;
-  }
-  51% {
-    top: 8px;
-    animation-timing-function: ease-in;
-  }
-  68% {
-    top: 0px;
-     }
-  85% {
-    top: 3px;
-    animation-timing-function: ease-in;
-  }
-  100% {
-    top: 0;
-  }
-}
-
-.ball-bounce {
-  animation-name: ball-bounce;
-  animation-duration: 700ms;
-}

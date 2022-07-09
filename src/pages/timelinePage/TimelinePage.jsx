@@ -3,6 +3,7 @@ import { Container } from "@material-ui/core"
 import WorkTimeline from "../../components/work/Timeline/Timeline"
 import {selectors, actions } from "../../store/slices/jobs"
 import { useDispatch, useSelector } from "react-redux"
+import Tetris from "../../components/work/Tetris/Tetris"
 
 function TimelinePage() {
   const jobs = useSelector(selectors.jobs)
@@ -18,8 +19,9 @@ function TimelinePage() {
       <Container maxWidth="md">
         <h1 className="m-b-xs">Timeline</h1>
         <div className="row">
-          <div className="col-md-12">
-            <WorkTimeline jobs={jobs}/>
+          <div className="col-xs-12">
+            {false && <WorkTimeline jobs={jobs} />}
+            <Tetris />
           </div>
         </div>
       </Container>

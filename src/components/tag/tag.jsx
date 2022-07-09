@@ -63,14 +63,15 @@ TooltipTag.propTypes = {
 
 function Tag(props) {
   if (props.bounce) {
-    return <TooltipTag  {...props}/>
+    return <TooltipTag {...props} />
   } else {
+    const {bounce, ...rest} = props
     return (
       <Chip
         className="Tag"
         label={props.tag}
         style={{ userSelect: "none" }}
-        {...props}
+        {...rest}
       />
     )
 

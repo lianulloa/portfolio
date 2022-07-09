@@ -1,5 +1,5 @@
 import React from "react"
-import ReactDOM from "react-dom"
+import { createRoot } from "react-dom/client"
 import store from "./store"
 import { Provider } from "react-redux"
 import "./index.css"
@@ -10,11 +10,11 @@ import { setBasepath } from "hookrouter"
 import { basePath } from "./components/routerView/routes"
 setBasepath(basePath)
 
-ReactDOM.render(
+const root = createRoot(document.getElementById("root"))
+root.render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById("root")
 )
 
 // If you want your app to work offline and load faster, you can change

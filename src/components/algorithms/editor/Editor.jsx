@@ -38,11 +38,15 @@ function Editor({ open, algorithm, onClose }) {
     setLanguage(event.target.value)
   }
 
-  useEffect(async () => {
-    if (open && !algorithm.question) {
-      algorithm = await dispatch(actions.getAlgorithmDetail(algorithm.id))
-      setFetchedAlgorithm(algorithm)
+  useEffect(() => {
+    // useEffect can't not return a Promise https://www.robinwieruch.de/react-hooks-fetch-data/
+    const getAlgorithm = async () => {
+      if (open && !algorithm.question) {
+        algorithm = await dispatch(actions.getAlgorithmDetail(algorithm.id))
+        setFetchedAlgorithm(algorithm)
+      }
     }
+    getAlgorithm()
   }, [open])
 
   const answers = algorithm.answers || fetchedAlgorithm.answers

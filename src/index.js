@@ -1,7 +1,8 @@
 import React from "react"
 import { createRoot } from "react-dom/client"
-import store from "./store"
 import { Provider } from "react-redux"
+import store from "./store"
+import ace from "ace-builds/src-noconflict/ace"
 import "./index.css"
 import "flexboxgrid/dist/flexboxgrid.css"
 import App from "./App"
@@ -9,6 +10,7 @@ import * as serviceWorker from "./serviceWorker"
 import { setBasepath } from "hookrouter"
 import { basePath } from "./components/routerView/routes"
 setBasepath(basePath)
+ace.config.set("basePath", basePath)
 
 const root = createRoot(document.getElementById("root"))
 root.render(

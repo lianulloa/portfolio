@@ -1,5 +1,19 @@
 class BasePiece {
+  boardPosition = [11, 4]
 
+  // I see a piece as a 3x3 matrix. Except for the row and the square
+  squares = [[1, 1], [1, 2], [2, 0], [2, 1]]
+
+  rotateClockwise() {
+    // check notes
+  }
+
+  rotateCounterClockwise() {
+    // I am just lazy
+    this.rotateClockwise()
+    this.rotateClockwise()
+    this.rotateClockwise()
+  }
 }
 
 export function drawBoard(ctx, width, height) {

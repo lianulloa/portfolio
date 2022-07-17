@@ -5,7 +5,6 @@ import Typography from "@material-ui/core/Typography"
 import Tooltip from "@material-ui/core/Tooltip"
 import "./tag.scss"
 
-
 function TooltipTag(props) {
   const chip = useRef(null)
   let [animationIterationCount, setAnimationIterationCount] = useState(30)
@@ -76,6 +75,11 @@ function Tag(props) {
     )
 
   }
+}
+
+Tag.propTypes = {
+  bounce: PropTypes.bool,
+  tag: PropTypes.string
 }
 
 export default Tag

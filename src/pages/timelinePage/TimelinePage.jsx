@@ -3,7 +3,7 @@ import { Container } from "@material-ui/core"
 import WorkTimeline from "../../components/work/Timeline/Timeline"
 import {selectors, actions } from "../../store/slices/jobs"
 import { useDispatch, useSelector } from "react-redux"
-import Tetris from "../../components/work/Tetris/Tetris"
+import Tetris from "../../components/work/Tetris/Tetris.jsx"
 
 function TimelinePage() {
   const jobs = useSelector(selectors.jobs)

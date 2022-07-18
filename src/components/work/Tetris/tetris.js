@@ -20,24 +20,20 @@ export default class TetrisBoard {
 
     let piece = createPiece("tee", [2,5])
     this.drawPiece(piece)
-    piece = createPiece("ess", [10,4])
-    this.drawPiece(piece)
-    piece = createPiece("zed", [7,6])
-    this.drawPiece(piece)
-    piece = createPiece("jay", [13,3])
-    this.drawPiece(piece)
-    piece = createPiece("el", [5,2])
-    this.drawPiece(piece)
-    piece = createPiece("i", [15,6])
-    this.drawPiece(piece)
-    piece = createPiece("o", [18,3])
-    this.drawPiece(piece)
 
-    setTimeout(() => {
-      this.erasePiece(piece)
-    }, 3000)
+    let i = 0
+    const downInterval = setInterval(() => {
+      this.movePieceDown(piece)
+      if (i % 6 === 0) {
+        this.erasePiece(piece)
+        piece.rotateClockwise()
+        this.drawPiece(piece)
+      }
+      i++
+    }, 500)
+    
+    setTimeout(() => clearInterval(downInterval), 8500)
   }
-
   drawPiece(piece) {
     const onBoardSquares = piece.getOnBoardCoordinates()
     for (const onBoardSquare of onBoardSquares) {
@@ -54,5 +50,10 @@ export default class TetrisBoard {
       this.ctx.strokeStyle = CELL_LINE_COLOR
       this.ctx.strokeRect(onBoardSquare[1] * this.squareSide, onBoardSquare[0] * this.squareSide, this.squareSide, this.squareSide)
     }
+  }
+  movePieceDown(piece) {
+    this.erasePiece(piece) 
+    piece.boardPosition[0] += 1
+    this.drawPiece(piece)
   }
 }

@@ -1,39 +1,58 @@
 import {createPiece} from "./piece"
 
-//TODO: create board class
-let squareSide
-export function drawBoard(ctx, height) {
-  squareSide = height / 20
-
-  ctx.lineWidth = "2"
-  ctx.strokeStyle = "white"
-
-  for (let i = 0; i < 20; i ++) {
-    for (let j = 0; j < 10; j ++) {
-      ctx.strokeRect(j * squareSide, i * squareSide, squareSide, squareSide)
-    }
+const CELL_LINE_WIDTH = "2"
+const CELL_LINE_COLOR = "white"
+export default class TetrisBoard {
+  constructor(ctx, height) {
+    this.ctx = ctx
+    this.squareSide = height / 20
   }
 
-  let piece = createPiece("tee", [2,5])
-  drawPiece(ctx, piece)
-  piece = createPiece("ess", [10,4])
-  drawPiece(ctx, piece)
-  piece = createPiece("zed", [7,6])
-  drawPiece(ctx, piece)
-  piece = createPiece("jay", [13,3])
-  drawPiece(ctx, piece)
-  piece = createPiece("el", [5,2])
-  drawPiece(ctx, piece)
-  piece = createPiece("i", [15,6])
-  drawPiece(ctx, piece)
-  piece = createPiece("o", [18,3])
-  drawPiece(ctx, piece)
-}
+  drawBoard() {
+    this.ctx.lineWidth = CELL_LINE_WIDTH
+    this.ctx.strokeStyle = CELL_LINE_COLOR
 
-export function drawPiece(ctx, piece) {
-  const onBoardSquares = piece.getOnBoardCoordinates()
-  for (const onBoardSquare of onBoardSquares) {
-    ctx.fillStyle = piece.color
-    ctx.fillRect(onBoardSquare[1] * squareSide, onBoardSquare[0] * squareSide, squareSide, squareSide)
+    for (let i = 0; i < 20; i ++) {
+      for (let j = 0; j < 10; j ++) {
+        this.ctx.strokeRect(j * this.squareSide, i * this.squareSide, this.squareSide, this.squareSide)
+      }
+    }
+
+    let piece = createPiece("tee", [2,5])
+    this.drawPiece(piece)
+    piece = createPiece("ess", [10,4])
+    this.drawPiece(piece)
+    piece = createPiece("zed", [7,6])
+    this.drawPiece(piece)
+    piece = createPiece("jay", [13,3])
+    this.drawPiece(piece)
+    piece = createPiece("el", [5,2])
+    this.drawPiece(piece)
+    piece = createPiece("i", [15,6])
+    this.drawPiece(piece)
+    piece = createPiece("o", [18,3])
+    this.drawPiece(piece)
+
+    setTimeout(() => {
+      this.erasePiece(piece)
+    }, 3000)
+  }
+
+  drawPiece(piece) {
+    const onBoardSquares = piece.getOnBoardCoordinates()
+    for (const onBoardSquare of onBoardSquares) {
+      this.ctx.fillStyle = piece.color
+      this.ctx.fillRect(onBoardSquare[1] * this.squareSide, onBoardSquare[0] * this.squareSide, this.squareSide, this.squareSide)
+    }
+  }
+  erasePiece(piece) {
+    const onBoardSquares = piece.getOnBoardCoordinates()
+    for (const onBoardSquare of onBoardSquares) {
+      this.ctx.clearRect(onBoardSquare[1] * this.squareSide, onBoardSquare[0] * this.squareSide, this.squareSide, this.squareSide)
+
+      this.ctx.lineWidth = CELL_LINE_WIDTH
+      this.ctx.strokeStyle = CELL_LINE_COLOR
+      this.ctx.strokeRect(onBoardSquare[1] * this.squareSide, onBoardSquare[0] * this.squareSide, this.squareSide, this.squareSide)
+    }
   }
 }

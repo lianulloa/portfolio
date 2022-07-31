@@ -1,0 +1,13 @@
+name: Awaken backend
+
+on:
+  schedule:
+    - cron: '0 */1 * * *'
+
+jobs:
+  awaken:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Request jobs to awaken heroku
+        run: curl -s https://lian-portfolio-backend.herokuapp.com/api/jobs
+  

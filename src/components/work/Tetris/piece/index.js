@@ -1,7 +1,7 @@
 import { ESS, ZED, EL, JAY, TEE, I, O } from "./pieces"
 import { _rotate3x3Clockwise } from "./rotateBehaviors"
 
-class Piece {
+export class Piece {
   constructor(boardPosition, piece, rotateClockwise = _rotate3x3Clockwise) {
     this.boardPosition = boardPosition
     // I see a piece as a 3x3 matrix. Except for the row and the square
@@ -18,13 +18,26 @@ class Piece {
     this.rotateClockwise()
   }
 
-  getOnBoardCoordinates() {
+  static getOnBoardCoordinates(boardPosition, squares) {
     const onBoardSquares = []
-    for (const square of this.squares) {
+    for (const square of squares) {
       const delta = [square[0] - 1, square[1] - 1]
-      onBoardSquares.push([this.boardPosition[0] + delta[0], this.boardPosition[1] + delta[1]])
+      onBoardSquares.push([boardPosition[0] + delta[0], boardPosition[1] + delta[1]])
     }
     return onBoardSquares
+  }
+  getOnBoardCoordinates() {
+    return Piece.getOnBoardCoordinates(this.boardPosition, this.squares)
+  }
+
+  getDownBoardPosition() {
+    return [this.boardPosition[0] + 1, this.boardPosition[1]]
+  }
+  getLeftBoardPosition() {
+    return [this.boardPosition[0], this.boardPosition[1] - 1]
+  }
+  getRightBoardPosition() {
+    return [this.boardPosition[0], this.boardPosition[1] + 1]
   }
 }
 

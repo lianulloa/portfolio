@@ -28,7 +28,7 @@ function TimelineItemExp(props) {
           <h5>
             {props.companyWebsite && 
               // eslint-disable-next-line react/jsx-no-target-blank
-              <a className="primary-color" href={props.companyWebsite} target="_blank" >
+              <a className="secondary-color" href={props.companyWebsite} target="_blank" >
                 {props.company} <OpenInNewIcon style={{fontSize: 14}} />
               </a>
             }

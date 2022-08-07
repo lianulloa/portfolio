@@ -1,4 +1,4 @@
-import {createPiece, Piece} from "./piece"
+import {createPiece, Piece, getRandomPiece} from "./piece"
 
 const CELL_LINE_WIDTH = "2"
 const CELL_LINE_COLOR = "white"
@@ -13,8 +13,9 @@ export default class TetrisBoard {
   constructor(ctx, height) {
     this.ctx = ctx
     this.squareSide = height / BOARD_ROWS
+    this.board = Array.from({length: BOARD_ROWS}, () => Array(BOARD_COLS).fill(false))
+    // this.board[19][4] = true
   }
-
   drawBoard() {
     this.ctx.lineWidth = CELL_LINE_WIDTH
     this.ctx.strokeStyle = CELL_LINE_COLOR
@@ -25,14 +26,20 @@ export default class TetrisBoard {
       }
     }
 
-    let piece = createPiece("tee", [2,5])
+    let piece = createPiece("tee", [0,4])
     this.drawPiece(piece)
     const interval = setInterval(() => {
       const moved = this.handleMove(piece, MOVE_DIRECTIONS.DOWN)
       if (!moved) {
-        clearInterval(interval)
+        this.persistPiece(piece)
+        piece = getRandomPiece()
+        const topReached = !this.handleMove(piece, MOVE_DIRECTIONS.DOWN)
+        if (topReached) {
+          clearInterval(interval)
+          alert("You lose")
+        }
       }
-    }, 1000)
+    }, 600)
   }
   drawPiece(piece) {
     const onBoardSquares = piece.getOnBoardCoordinates()
@@ -51,12 +58,16 @@ export default class TetrisBoard {
       this.ctx.strokeRect(onBoardSquare[1] * this.squareSide, onBoardSquare[0] * this.squareSide, this.squareSide, this.squareSide)
     }
   }
+  persistPiece(piece) {
+    for (const onBoardSquare of piece.getOnBoardCoordinates()) {
+      this.board[onBoardSquare[0]][onBoardSquare[1]] = piece.color
+    }
+  }
   handleMove(piece, direction) {
     if (this._canMoveTo(piece, direction)) {
       this._movePiece(piece, direction)
       return true
     }
-
     return false
   }
   _movePiece(piece, direction) {
@@ -77,18 +88,6 @@ export default class TetrisBoard {
     }
     this.drawPiece(piece)
   }
-  _areOutOfBoundaries(onBoardSquares) {
-    // const onBoardSquares = piece.getOnBoardCoordinates()
-    for (const onBoardSquare of onBoardSquares) {
-      if (
-        onBoardSquare[0] < 0 ||
-        onBoardSquare[0] >= BOARD_ROWS ||
-        onBoardSquare[1] < 0 ||
-        onBoardSquare[1] >= BOARD_COLS
-      ) return true
-    }
-    return false
-  }
   _canMoveTo(piece, direction) {
     let position
 
@@ -106,9 +105,30 @@ export default class TetrisBoard {
         console.log("[Tetris Board] Unhandled move direction", direction)
         break
     }
+
+    const squares = Piece.getOnBoardCoordinates(position, piece.squares)
   
-    return !this._areOutOfBoundaries(
-      Piece.getOnBoardCoordinates(position, piece.squares)
-    )
+    //TODO: need to check if it collides with previous pieces on board
+    return !this._areOutOfBoundaries(squares) && !this._areAlreadyUsed(squares)
   }
+  _areOutOfBoundaries(onBoardSquares) {
+    for (const onBoardSquare of onBoardSquares) {
+      if (
+        onBoardSquare[0] < 0 ||
+        onBoardSquare[0] >= BOARD_ROWS ||
+        onBoardSquare[1] < 0 ||
+        onBoardSquare[1] >= BOARD_COLS
+      ) return true
+    }
+    return false
+  }
+  _areAlreadyUsed(onBoardSquares) {
+    for (const onBoardSquare of onBoardSquares) {
+      if (
+        this.board[onBoardSquare[0]][onBoardSquare[1]]
+      ) return true
+    }
+    return false
+  }
+
 }

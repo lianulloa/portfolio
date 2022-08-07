@@ -7,7 +7,9 @@ function Tetris() {
   useEffect(() => {
     const canvas = document.querySelector("canvas#tetris-canvas")
     board = new TetrisBoard(canvas.getContext("2d"), canvas.height)
+    window.board = board
     board.drawBoard()
+
     // drawBoard(canvas.getContext("2d"),canvas.height)
   }, [])
   return <canvas id="tetris-canvas" width={300} height={600} />

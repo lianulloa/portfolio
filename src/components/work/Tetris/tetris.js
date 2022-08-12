@@ -1,4 +1,5 @@
-import {createPiece, Piece, getRandomPiece} from "./piece"
+import { createPiece, Piece, getRandomPiece } from "./piece"
+import { BASE_TIMELINE, TEXT_POSITIONS, TIMELINE_GROUPS } from "./piece/pieces"
 
 const CELL_LINE_WIDTH = "2"
 const CELL_LINE_COLOR = "white"
@@ -25,7 +26,43 @@ export default class TetrisBoard {
         this.ctx.strokeRect(j * this.squareSide, i * this.squareSide, this.squareSide, this.squareSide)
       }
     }
+  }
+  drawTimeline(jobs = [0,1,2]) {
+    this.drawBaseTimeline()
 
+    for (let i = 0; i < 3; i++) {
+      const style = { font: `bold ${this.squareSide * 0.5}px 'Open Sans'` }
+      const job = jobs[i]
+      const group = TIMELINE_GROUPS[i]
+      for (const p of group) {
+        this.setupPiece(p)
+        this.drawText(
+          "Frontend Developer",
+          TEXT_POSITIONS[i][0],
+          style
+        )
+        this.drawText(
+          "01/2022 - Present",
+          TEXT_POSITIONS[i][1],
+          style
+        )
+        this.drawText(
+          "Linkfire",
+          TEXT_POSITIONS[i][2],
+          style
+        )
+      }
+    }
+  }
+  drawBaseTimeline() {
+    for (const p of BASE_TIMELINE) {
+      this.setupPiece(p)
+    }
+
+    this.drawText("BSc. Computer Science", [18, 0.4])
+    this.drawText("at University of Havana", [19, 0.7])
+  }
+  startGame() {
     let piece = createPiece("tee", [0,4])
     this.drawPiece(piece)
     const interval = setInterval(() => {
@@ -41,12 +78,30 @@ export default class TetrisBoard {
       }
     }, 600)
   }
+  setupPiece(p) {
+    const piece = createPiece(p[0], p[1])
+    if (p[2]) {
+      for (let i = 0; i < p[2]; i++) {
+        piece.rotateClockwise()          
+      }
+    }
+    this.drawPiece(piece)
+  }
   drawPiece(piece) {
     const onBoardSquares = piece.getOnBoardCoordinates()
     for (const onBoardSquare of onBoardSquares) {
       this.ctx.fillStyle = piece.color
       this.ctx.fillRect(onBoardSquare[1] * this.squareSide, onBoardSquare[0] * this.squareSide, this.squareSide, this.squareSide)
     }
+  }
+  drawText(text, onBoardSquare, { font } = {}) {
+    this.ctx.shadowColor = "#222"
+    this.ctx.shadowBlur = 10
+    this.ctx.fillStyle = CELL_LINE_COLOR
+    this.ctx.font = font || `bold ${ this.squareSide * 0.7 }px 'Open Sans'`
+    this.ctx.fillText(text, onBoardSquare[1] * this.squareSide, (onBoardSquare[0] * this.squareSide + (0.8 * this.squareSide)))
+
+    this.ctx.shadowColor = "transparent"
   }
   erasePiece(piece) {
     const onBoardSquares = piece.getOnBoardCoordinates()

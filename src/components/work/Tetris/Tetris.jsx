@@ -9,6 +9,8 @@ function Tetris() {
     board = new TetrisBoard(canvas.getContext("2d"), canvas.height)
     window.board = board
     board.drawBoard()
+    board.drawTimeline()
+    // board.startGame()
 
     // drawBoard(canvas.getContext("2d"),canvas.height)
   }, [])

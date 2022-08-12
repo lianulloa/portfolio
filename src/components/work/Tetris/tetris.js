@@ -27,27 +27,27 @@ export default class TetrisBoard {
       }
     }
   }
-  drawTimeline(jobs = [0,1,2]) {
+  drawTimeline(jobs) {
     this.drawBaseTimeline()
 
     for (let i = 0; i < 3; i++) {
       const style = { font: `bold ${this.squareSide * 0.5}px 'Open Sans'` }
-      const job = jobs[i]
+      const {title, company, period} = jobs[i]
       const group = TIMELINE_GROUPS[i]
       for (const p of group) {
         this.setupPiece(p)
         this.drawText(
-          "Frontend Developer",
+          title,
           TEXT_POSITIONS[i][0],
           style
         )
         this.drawText(
-          "01/2022 - Present",
+          period,
           TEXT_POSITIONS[i][1],
           style
         )
         this.drawText(
-          "Linkfire",
+          company,
           TEXT_POSITIONS[i][2],
           style
         )
@@ -60,7 +60,7 @@ export default class TetrisBoard {
     }
 
     this.drawText("BSc. Computer Science", [18, 0.4])
-    this.drawText("at University of Havana", [19, 0.7])
+    this.drawText("at University of Havana", [18.9, 0.8])
   }
   startGame() {
     let piece = createPiece("tee", [0,4])
@@ -95,7 +95,7 @@ export default class TetrisBoard {
     }
   }
   drawText(text, onBoardSquare, { font } = {}) {
-    this.ctx.shadowColor = "#222"
+    this.ctx.shadowColor = "#444"
     this.ctx.shadowBlur = 10
     this.ctx.fillStyle = CELL_LINE_COLOR
     this.ctx.font = font || `bold ${ this.squareSide * 0.7 }px 'Open Sans'`

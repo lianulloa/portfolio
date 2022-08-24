@@ -6,13 +6,6 @@ import AlgorithmCard from "../../components/algorithms/algorithmCard/AlgorithmCa
 import { selectors, actions } from "../../store/slices/algorithms"
 import HerokuLoading from "../../components/common/HerokuLoading"
 
-const tags = {
-  0: ["Loops", "Strings"],
-  1: ["Data Structures", "Strings", "Loops"],
-  2: ["Structures", "Strings"],
-  3: ["Recursive", "bitMap"],
-  4: ["Dive"]
-}
 
 function AlgorithmsPage() {
   const algorithms = useSelector(selectors.algorithms)
@@ -45,7 +38,8 @@ function AlgorithmsPage() {
                 title={algorithm.title}
                 question={algorithm.questionPreview}
                 source={algorithm.source}
-                onAvatarClick={() => {
+                difficulty={algorithm.difficulty.toLowerCase().replace("_", " ")}
+                onClick={() => {
                   setAlgorithm(algorithm)
                   setShowEditor(true)
                 }}

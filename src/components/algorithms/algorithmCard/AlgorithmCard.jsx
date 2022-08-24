@@ -16,24 +16,29 @@ import "./AlgorithmCard.scss"
 AlgorithmCard.propTypes = {
   title: PropTypes.string.isRequired,
   question: PropTypes.string.isRequired,
-  onAvatarClick: PropTypes.func.isRequired,
+  difficulty: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
   source: PropTypes.string,
   tags: PropTypes.arrayOf(PropTypes.string)
 }
 
 function AlgorithmCard({
-  question, title, onAvatarClick, source, tags = []
+  question, title, difficulty, onClick, source, tags = []
 }) {
   return (
     <Card
       className="AlgorithmCard"
       elevation={2}
+      onClick={onClick}
     >
       <CardHeader
         avatar={
-          <IconButton onClick={onAvatarClick}>
-            <PlayArrowIcon />
-          </IconButton>
+          <div style={{display: "flex", flexDirection: "column"}}>
+            <IconButton>
+              <PlayArrowIcon />
+            </IconButton>
+            <Tag tag={difficulty} size="small" />
+          </div>
         }
         title={
           <Typography variant="subtitle1" noWrap>

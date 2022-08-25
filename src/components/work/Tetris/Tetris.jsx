@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import TetrisBoard, { MOVE_DIRECTIONS, ROTATE_DIRECTIONS } from "./tetris"
 import {selectors} from "../../../store/slices/jobs"
@@ -6,22 +6,31 @@ import "./Tetris.scss"
 
 //TODO: update to webpack 5 and add all polyfills and replace Material ui with chakra
 //https://peaku.co/questions/2520-el-iframe-transparente-bloquea-el-evento-del-mouse-cuando-se-usa-el-inicio-de-scripts-de-reaccion
+let board
 
 
 function Tetris() {
-  let board
+  const [score, setScore] = useState(0)
   const jobs = useSelector(selectors.jobs)
   const controls = [
     {text: "⬅️", onClick: () => { board.handleMove(MOVE_DIRECTIONS.LEFT) }},
     {text: "➡️", onClick: () => { board.handleMove(MOVE_DIRECTIONS.RIGHT) }},
     {text: "↪️", onClick: () => { board.handleRotation(ROTATE_DIRECTIONS.COUNTER) }},
     {text: "↩️", onClick: () => { board.handleRotation(ROTATE_DIRECTIONS.WISE) }},
-    {text: "⏬", onClick: () => { board.handleMove(MOVE_DIRECTIONS.DOWN) }},
+    {
+      text: "⏬",
+      onClick: () => {
+        board.handleMove(MOVE_DIRECTIONS.DOWN)
+        board.handleMove(MOVE_DIRECTIONS.DOWN)
+      }
+    },
   ]
 
   useEffect(() => {
     const canvas = document.querySelector("#tetris-canvas > canvas")
-    board = new TetrisBoard(canvas.getContext("2d"), canvas.height)
+    board = new TetrisBoard(canvas.getContext("2d"), canvas.height, {
+      setScore
+    })
     window.board = board
     board.drawBoard()
     // if (jobs.length) {
@@ -43,6 +52,9 @@ function Tetris() {
             {control.text}
           </div>
         ))}
+      </div>
+      <div className="row center-xs">
+        Score: {score}
       </div>
     </div>
   )

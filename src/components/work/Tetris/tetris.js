@@ -15,12 +15,14 @@ export const ROTATE_DIRECTIONS = {
   WISE: "wise"
 }
 export default class TetrisBoard {
-  constructor(ctx, height) {
+  constructor(ctx, height, {setScore}) {
     this.ctx = ctx
     this.squareSide = height / BOARD_ROWS
     this.board = Array.from({length: BOARD_ROWS}, () => Array(BOARD_COLS).fill(false))
     this.piece = getRandomPiece()
-    // this.board[19][4] = true
+    this.pauseInterval = false
+    this.score = 0
+    this.setScore = setScore
   }
   drawBoard() {
     this.ctx.lineWidth = CELL_LINE_WIDTH
@@ -67,21 +69,6 @@ export default class TetrisBoard {
     this.drawText("BSc. Computer Science", [18, 0.4])
     this.drawText("at University of Havana", [18.9, 0.8])
   }
-  startGame() {
-    this.drawPiece()
-    const interval = setInterval(() => {
-      const moved = this.handleMove(MOVE_DIRECTIONS.DOWN)
-      if (!moved) {
-        this.persistPiece(this.piece)
-        this.piece = getRandomPiece()
-        const topReached = !this.handleMove(MOVE_DIRECTIONS.DOWN)
-        if (topReached) {
-          clearInterval(interval)
-          alert("You lose")
-        }
-      }
-    }, 600)
-  }
   setupPiece(p) {
     const piece = createPiece(p[0], p[1])
     if (p[2]) {
@@ -90,14 +77,6 @@ export default class TetrisBoard {
       }
     }
     this.drawPiece(piece)
-  }
-  drawPiece(piece = this.piece) {
-    const onBoardSquares = piece.getOnBoardCoordinates()
-    for (const onBoardSquare of onBoardSquares) {
-      this.ctx.fillStyle = piece.color
-      this.ctx.fillRect(onBoardSquare[1] * this.squareSide, onBoardSquare[0] * this.squareSide, this.squareSide, this.squareSide)
-      this.ctx.strokeRect(onBoardSquare[1] * this.squareSide, onBoardSquare[0] * this.squareSide, this.squareSide, this.squareSide)
-    }
   }
   drawText(text, onBoardSquare, { font } = {}) {
     this.ctx.shadowColor = "#444"
@@ -108,20 +87,93 @@ export default class TetrisBoard {
 
     this.ctx.shadowColor = "transparent"
   }
-  erasePiece() {
-    const onBoardSquares = this.piece.getOnBoardCoordinates()
+  startGame() {
+    this.drawPiece()
+    const interval = setInterval(() => {
+      if (!this.pauseInterval) {
+        const moved = this.handleMove(MOVE_DIRECTIONS.DOWN)
+        if (!moved) {
+          this.persistPiece()
+          this.checkForFilledRows()
+          this.piece = getRandomPiece()
+          const topReached = !this.handleMove(MOVE_DIRECTIONS.DOWN)
+          if (topReached) {
+            clearInterval(interval)
+            alert("You lose")
+          }
+        }
+      }
+    }, 600)
+  }
+  drawPiece(piece = this.piece) {
+    const onBoardSquares = piece.getOnBoardCoordinates()
     for (const onBoardSquare of onBoardSquares) {
-      this.ctx.clearRect(onBoardSquare[1] * this.squareSide, onBoardSquare[0] * this.squareSide, this.squareSide, this.squareSide)
-
-      this.ctx.lineWidth = CELL_LINE_WIDTH
-      this.ctx.strokeStyle = CELL_LINE_COLOR
-      this.ctx.strokeRect(onBoardSquare[1] * this.squareSide, onBoardSquare[0] * this.squareSide, this.squareSide, this.squareSide)
+      this._drawSquare(onBoardSquare, piece.color)
     }
   }
-  persistPiece(piece) {
+  clearPiece() {
+    const onBoardSquares = this.piece.getOnBoardCoordinates()
+    this._clearSquares(onBoardSquares)
+  }
+  persistPiece(piece = this.piece) {
     for (const onBoardSquare of piece.getOnBoardCoordinates()) {
       this.board[onBoardSquare[0]][onBoardSquare[1]] = piece.color
     }
+  }
+  checkForFilledRows(piece = this.piece) {
+    const filledPromises = []
+    const clearedRows = new Set()
+    let lowestRow = 0
+    for (const onBoardSquare of piece.getOnBoardCoordinates()) {
+      let filled = true
+
+      if (clearedRows.has(onBoardSquare[0])) {
+        continue
+      }
+
+      for (const filledSquare of this.board[onBoardSquare[0]]) {
+        if (!filledSquare) {
+          filled = false
+          break
+        }
+      }
+
+      if (filled) {
+        this.pauseInterval = true
+        clearedRows.add(onBoardSquare[0])
+        if (onBoardSquare[0] > lowestRow) 
+          lowestRow = onBoardSquare[0]
+        filledPromises.push(this.clearRowFrom(onBoardSquare))
+      }
+    }
+
+    this.score += clearedRows.size * 100
+    this.setScore(this.score)
+
+    Promise.all(filledPromises).then(() => {
+      // This should a function on its own
+      this.pauseInterval = false
+
+      for (let i = lowestRow; i >= 0; i--) {
+        this._clearSquares(
+          Array.from(
+            { length: BOARD_COLS },
+            (_, j) => [i, j]
+          )
+        )
+        let updated = false
+        this.board[i].map((color, j) => {
+          if (color) {
+            updated = true
+  
+            this._drawSquare([i,j], color)
+          }
+        })
+        if (!updated) {
+          break
+        }
+      }
+    })
   }
   handleMove(direction) {
     if (this._canMoveTo(this.piece, direction)) {
@@ -131,7 +183,8 @@ export default class TetrisBoard {
     return false
   }
   handleRotation(rotation) {
-    this.erasePiece() 
+    //TODO: Check if it can be rotated
+    this.clearPiece() 
     switch (rotation) {
       case ROTATE_DIRECTIONS.COUNTER:
         this.piece.rotateCounterClockwise()
@@ -144,8 +197,20 @@ export default class TetrisBoard {
     }
     this.drawPiece()
   }
+  async clearRowFrom(boardPosition) {
+    // Maybe animate how squares are cleared
+    this._clearSquares(
+      Array.from(
+        { length: BOARD_COLS },
+        (_, j) => [boardPosition[0], j]
+      )
+    )
+
+    this.board.splice(boardPosition[0], 1)
+    this.board.unshift(Array(BOARD_COLS).fill(false))
+  }
   _movePiece(piece, direction) {
-    this.erasePiece() 
+    this.clearPiece() 
     switch (direction) {
       case MOVE_DIRECTIONS.DOWN:
         piece.boardPosition[0] += 1
@@ -204,5 +269,18 @@ export default class TetrisBoard {
     }
     return false
   }
+  _clearSquares(onBoardSquares) {
+    for (const onBoardSquare of onBoardSquares) {
+      this.ctx.clearRect(onBoardSquare[1] * this.squareSide, onBoardSquare[0] * this.squareSide, this.squareSide, this.squareSide)
 
+      this.ctx.lineWidth = CELL_LINE_WIDTH
+      this.ctx.strokeStyle = CELL_LINE_COLOR
+      this.ctx.strokeRect(onBoardSquare[1] * this.squareSide, onBoardSquare[0] * this.squareSide, this.squareSide, this.squareSide)
+    }
+  }
+  _drawSquare(square, color) {
+    this.ctx.fillStyle = color
+    this.ctx.fillRect(square[1] * this.squareSide, square[0] * this.squareSide, this.squareSide, this.squareSide)
+    this.ctx.strokeRect(square[1] * this.squareSide, square[0] * this.squareSide, this.squareSide, this.squareSide)
+  }
 }

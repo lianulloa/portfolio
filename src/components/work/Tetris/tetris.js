@@ -96,6 +96,7 @@ export default class TetrisBoard {
     for (const onBoardSquare of onBoardSquares) {
       this.ctx.fillStyle = piece.color
       this.ctx.fillRect(onBoardSquare[1] * this.squareSide, onBoardSquare[0] * this.squareSide, this.squareSide, this.squareSide)
+      this.ctx.strokeRect(onBoardSquare[1] * this.squareSide, onBoardSquare[0] * this.squareSide, this.squareSide, this.squareSide)
     }
   }
   drawText(text, onBoardSquare, { font } = {}) {

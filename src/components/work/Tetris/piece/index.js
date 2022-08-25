@@ -45,7 +45,7 @@ export function getRandomPiece() {
   const pieces = ["ess", "zed", "el", "jay", "tee", "i", "o"]
   return createPiece(
     pieces[Math.floor(Math.random() * 7)],
-    [0, 4]
+    [0, 5]
   )
 }
 

@@ -5,16 +5,21 @@ const CELL_LINE_WIDTH = "2"
 const CELL_LINE_COLOR = "white"
 const BOARD_ROWS = 20
 const BOARD_COLS = 10
-const MOVE_DIRECTIONS = {
+export const MOVE_DIRECTIONS = {
   DOWN: "down",
   LEFT: "left",
   RIGHT: "right"
+}
+export const ROTATE_DIRECTIONS = {
+  COUNTER: "counter",
+  WISE: "wise"
 }
 export default class TetrisBoard {
   constructor(ctx, height) {
     this.ctx = ctx
     this.squareSide = height / BOARD_ROWS
     this.board = Array.from({length: BOARD_ROWS}, () => Array(BOARD_COLS).fill(false))
+    this.piece = getRandomPiece()
     // this.board[19][4] = true
   }
   drawBoard() {
@@ -63,14 +68,13 @@ export default class TetrisBoard {
     this.drawText("at University of Havana", [18.9, 0.8])
   }
   startGame() {
-    let piece = createPiece("tee", [0,4])
-    this.drawPiece(piece)
+    this.drawPiece()
     const interval = setInterval(() => {
-      const moved = this.handleMove(piece, MOVE_DIRECTIONS.DOWN)
+      const moved = this.handleMove(MOVE_DIRECTIONS.DOWN)
       if (!moved) {
-        this.persistPiece(piece)
-        piece = getRandomPiece()
-        const topReached = !this.handleMove(piece, MOVE_DIRECTIONS.DOWN)
+        this.persistPiece(this.piece)
+        this.piece = getRandomPiece()
+        const topReached = !this.handleMove(MOVE_DIRECTIONS.DOWN)
         if (topReached) {
           clearInterval(interval)
           alert("You lose")
@@ -87,7 +91,7 @@ export default class TetrisBoard {
     }
     this.drawPiece(piece)
   }
-  drawPiece(piece) {
+  drawPiece(piece = this.piece) {
     const onBoardSquares = piece.getOnBoardCoordinates()
     for (const onBoardSquare of onBoardSquares) {
       this.ctx.fillStyle = piece.color
@@ -103,8 +107,8 @@ export default class TetrisBoard {
 
     this.ctx.shadowColor = "transparent"
   }
-  erasePiece(piece) {
-    const onBoardSquares = piece.getOnBoardCoordinates()
+  erasePiece() {
+    const onBoardSquares = this.piece.getOnBoardCoordinates()
     for (const onBoardSquare of onBoardSquares) {
       this.ctx.clearRect(onBoardSquare[1] * this.squareSide, onBoardSquare[0] * this.squareSide, this.squareSide, this.squareSide)
 
@@ -118,15 +122,29 @@ export default class TetrisBoard {
       this.board[onBoardSquare[0]][onBoardSquare[1]] = piece.color
     }
   }
-  handleMove(piece, direction) {
-    if (this._canMoveTo(piece, direction)) {
-      this._movePiece(piece, direction)
+  handleMove(direction) {
+    if (this._canMoveTo(this.piece, direction)) {
+      this._movePiece(this.piece, direction)
       return true
     }
     return false
   }
+  handleRotation(rotation) {
+    this.erasePiece() 
+    switch (rotation) {
+      case ROTATE_DIRECTIONS.COUNTER:
+        this.piece.rotateCounterClockwise()
+        break
+      case ROTATE_DIRECTIONS.WISE:
+        this.piece.rotateClockwise()
+        break
+      default:
+        console.error("tetris: Rotation not handled", rotation)
+    }
+    this.drawPiece()
+  }
   _movePiece(piece, direction) {
-    this.erasePiece(piece) 
+    this.erasePiece() 
     switch (direction) {
       case MOVE_DIRECTIONS.DOWN:
         piece.boardPosition[0] += 1
@@ -141,7 +159,7 @@ export default class TetrisBoard {
         console.log("[Tetris Board] Unhandled direction", direction)
         break
     }
-    this.drawPiece(piece)
+    this.drawPiece()
   }
   _canMoveTo(piece, direction) {
     let position

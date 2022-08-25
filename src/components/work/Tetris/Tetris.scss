@@ -1,2 +1,15 @@
 @import '../../../theme/colors.scss';
 
+#tetris-canvas {
+  .control-container {
+    .control {
+      font-size: 2rem;
+      cursor: pointer;
+      -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+      -ms-user-select: none; /* IE 10 and IE 11 */
+      user-select: none; /* Standard syntax */
+    }
+  }
+
+}

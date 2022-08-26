@@ -124,6 +124,7 @@ export default class TetrisBoard {
     const filledPromises = []
     const clearedRows = new Set()
     let lowestRow = 0
+
     for (const onBoardSquare of piece.getOnBoardCoordinates()) {
       let filled = true
 
@@ -147,33 +148,42 @@ export default class TetrisBoard {
       }
     }
 
-    this.score += clearedRows.size * 100
-    this.setScore(this.score)
-
-    Promise.all(filledPromises).then(() => {
-      // This should a function on its own
-      this.pauseInterval = false
-
-      for (let i = lowestRow; i >= 0; i--) {
-        this._clearSquares(
-          Array.from(
-            { length: BOARD_COLS },
-            (_, j) => [i, j]
-          )
-        )
-        let updated = false
-        this.board[i].map((color, j) => {
-          if (color) {
-            updated = true
+    if (clearedRows.size) {
+      this.score += clearedRows.size * 100
+      this.setScore(this.score)
   
-            this._drawSquare([i,j], color)
-          }
-        })
-        if (!updated) {
-          break
+      Promise.all(filledPromises).then(() => {
+        // This should a function on its own
+        this.board.splice(lowestRow - clearedRows.size + 1, clearedRows.size)
+        for (let i = 0; i < clearedRows.size; i++) {
+          this.board.unshift(Array(BOARD_COLS).fill(false))
         }
-      }
-    })
+  
+        for (let i = lowestRow; i >= 0; i--) {
+          this._clearSquares(
+            Array.from(
+              { length: BOARD_COLS },
+              (_, j) => [i, j]
+            )
+          )
+          // let updated = false
+          this.board[i].map((color, j) => {
+            if (color) {
+              // updated = true
+    
+              this._drawSquare([i,j], color)
+            }
+          })
+          // if (!updated) {
+          //   break
+          // }
+        }
+
+
+        this.pauseInterval = false
+      })
+    }
+
   }
   handleMove(direction) {
     if (this._canMoveTo(this.piece, direction)) {
@@ -205,9 +215,6 @@ export default class TetrisBoard {
         (_, j) => [boardPosition[0], j]
       )
     )
-
-    this.board.splice(boardPosition[0], 1)
-    this.board.unshift(Array(BOARD_COLS).fill(false))
   }
   _movePiece(piece, direction) {
     this.clearPiece() 

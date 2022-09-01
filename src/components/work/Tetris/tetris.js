@@ -179,7 +179,6 @@ export default class TetrisBoard {
           // }
         }
 
-
         this.pauseInterval = false
       })
     }
@@ -193,19 +192,21 @@ export default class TetrisBoard {
     return false
   }
   handleRotation(rotation) {
-    //TODO: Check if it can be rotated
-    this.clearPiece() 
-    switch (rotation) {
-      case ROTATE_DIRECTIONS.COUNTER:
-        this.piece.rotateCounterClockwise()
-        break
-      case ROTATE_DIRECTIONS.WISE:
-        this.piece.rotateClockwise()
-        break
-      default:
-        console.error("tetris: Rotation not handled", rotation)
+    if (this._canRotate(Piece.clone(this.piece), rotation)) {
+      this.clearPiece()
+      switch (rotation) {
+        case ROTATE_DIRECTIONS.COUNTER:
+          this.piece.rotateCounterClockwise()
+          break
+        case ROTATE_DIRECTIONS.WISE:
+          this.piece.rotateClockwise()
+          break
+        default:
+          console.error("tetris: Rotation not handled", rotation)
+      }
+      this.drawPiece()
+
     }
-    this.drawPiece()
   }
   async clearRowFrom(boardPosition) {
     // Maybe animate how squares are cleared
@@ -254,7 +255,22 @@ export default class TetrisBoard {
 
     const squares = Piece.getOnBoardCoordinates(position, piece.squares)
   
-    //TODO: need to check if it collides with previous pieces on board
+    return !this._areOutOfBoundaries(squares) && !this._areAlreadyUsed(squares)
+  }
+  _canRotate(piece, rotation) {
+    switch (rotation) {
+      case ROTATE_DIRECTIONS.COUNTER:
+        piece.rotateCounterClockwise()
+        break
+      case ROTATE_DIRECTIONS.WISE:
+        piece.rotateClockwise()
+        break
+      default:
+        console.error("tetris: Rotation not handled", rotation)
+    }
+
+    const squares = Piece.getOnBoardCoordinates(piece.boardPosition, piece.squares)
+
     return !this._areOutOfBoundaries(squares) && !this._areAlreadyUsed(squares)
   }
   _areOutOfBoundaries(onBoardSquares) {

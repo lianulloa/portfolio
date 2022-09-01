@@ -26,6 +26,12 @@ export class Piece {
     }
     return onBoardSquares
   }
+  static clone(piece) {
+    return new Piece(
+      piece.boardPosition,
+      { color: piece.color, squares: piece.squares }
+    )
+  }
   getOnBoardCoordinates() {
     return Piece.getOnBoardCoordinates(this.boardPosition, this.squares)
   }

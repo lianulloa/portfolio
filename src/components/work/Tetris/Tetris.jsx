@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 import TetrisBoard, { MOVE_DIRECTIONS, ROTATE_DIRECTIONS } from "./tetris"
-import {selectors} from "../../../store/slices/jobs"
+import { selectors as jobSelectors } from "../../../store/slices/jobs"
+import { selectors as tetrisScoresSelectors, actions } from "../../../store/slices/tetris"
 import "./Tetris.scss"
 
 //TODO: update to webpack 5 and add all polyfills and replace Material ui with chakra
@@ -11,7 +12,9 @@ let board
 
 function Tetris() {
   const [score, setScore] = useState(0)
-  const jobs = useSelector(selectors.jobs)
+  const jobs = useSelector(jobSelectors.jobs)
+  const scores = useSelector(tetrisScoresSelectors.scores)
+  const dispatch = useDispatch()
   const controls = [
     {text: "⬅️", onClick: () => { board.handleMove(MOVE_DIRECTIONS.LEFT) }},
     {text: "➡️", onClick: () => { board.handleMove(MOVE_DIRECTIONS.RIGHT) }},
@@ -27,6 +30,12 @@ function Tetris() {
   ]
 
   useEffect(() => {
+    if (!scores.length) {
+      dispatch(actions.getScores())
+    }
+  })
+
+  useEffect(() => {
     const canvas = document.querySelector("#tetris-canvas > canvas")
     board = new TetrisBoard(canvas.getContext("2d"), canvas.height, {
       setScore
@@ -39,6 +48,7 @@ function Tetris() {
     board.startGame()
 
   }, [jobs])
+
   return (
     <div id="tetris-canvas">
       <canvas  width={300} height={600} />

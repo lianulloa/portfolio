@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import TetrisBoard, { MOVE_DIRECTIONS, ROTATE_DIRECTIONS } from "./tetris"
 import { selectors as jobSelectors } from "../../../store/slices/jobs"
@@ -12,6 +12,7 @@ let board
 
 function Tetris() {
   const [score, setScore] = useState(0)
+  const ref = useRef()
   const jobs = useSelector(jobSelectors.jobs)
   const scores = useSelector(tetrisScoresSelectors.scores)
   const dispatch = useDispatch()
@@ -29,6 +30,10 @@ function Tetris() {
     },
   ]
 
+  const updateRanking = (score) => {
+    dispatch(actions.createScore(score))
+  }
+
   useEffect(() => {
     if (!scores.length) {
       dispatch(actions.getScores())
@@ -36,11 +41,11 @@ function Tetris() {
   })
 
   useEffect(() => {
-    const canvas = document.querySelector("#tetris-canvas > canvas")
+    const canvas = ref.current
     board = new TetrisBoard(canvas.getContext("2d"), canvas.height, {
-      setScore
+      setScore,
+      updateRanking
     })
-    window.board = board
     board.drawBoard()
     // if (jobs.length) {
     //   board.drawTimeline(jobs)
@@ -51,7 +56,7 @@ function Tetris() {
 
   return (
     <div id="tetris-canvas">
-      <canvas  width={300} height={600} />
+      <canvas ref={ref}  width={300} height={600} />
       <div className="control-container row center-xs">
         {controls.map(control => (
           <div

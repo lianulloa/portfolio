@@ -31,3 +31,19 @@
   border-radius: 16px !important;
 }
 
+.button-group--flat {
+  > button {
+    color: $secondary_color;
+    text-transform: unset;
+
+    &.MuiButton-outlined{
+      border: 1px solid $secondary_color;
+    }
+  }
+}
+
+.MuiButton-outlined {
+  color: $secondary_color !important;
+  text-transform: unset !important;
+  border: 1px solid $secondary_color !important;
+}

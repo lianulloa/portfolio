@@ -15,14 +15,16 @@ export const ROTATE_DIRECTIONS = {
   WISE: "wise"
 }
 export default class TetrisBoard {
-  constructor(ctx, height, {setScore}) {
-    this.ctx = ctx
-    this.squareSide = height / BOARD_ROWS
+  constructor(canvas, {setScore}) {
+    this.canvas = canvas
+    this.ctx = canvas.getContext("2d")
+    this.squareSide = canvas.height / BOARD_ROWS
     this.board = Array.from({length: BOARD_ROWS}, () => Array(BOARD_COLS).fill(false))
     this.piece = getRandomPiece()
     this.pauseInterval = false
     this.score = 0
     this.setScore = setScore
+    this.gameInterval
   }
   drawBoard() {
     this.ctx.lineWidth = CELL_LINE_WIDTH
@@ -33,6 +35,9 @@ export default class TetrisBoard {
         this.ctx.strokeRect(j * this.squareSide, i * this.squareSide, this.squareSide, this.squareSide)
       }
     }
+  }
+  eraseBoard() {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
   }
   drawTimeline(jobs) {
     this.drawBaseTimeline()
@@ -89,7 +94,7 @@ export default class TetrisBoard {
   }
   startGame() {
     this.drawPiece()
-    const interval = setInterval(() => {
+    this.gameInterval = setInterval(() => {
       if (!this.pauseInterval) {
         const moved = this.handleMove(MOVE_DIRECTIONS.DOWN)
         if (!moved) {
@@ -98,12 +103,15 @@ export default class TetrisBoard {
           this.piece = getRandomPiece()
           const topReached = !this.handleMove(MOVE_DIRECTIONS.DOWN)
           if (topReached) {
-            clearInterval(interval)
+            clearInterval(this.gameInterval)
             alert("You lose")
           }
         }
       }
     }, 600)
+  }
+  stopGame() {
+    clearInterval(this.gameInterval)
   }
   drawPiece(piece = this.piece) {
     const onBoardSquares = piece.getOnBoardCoordinates()

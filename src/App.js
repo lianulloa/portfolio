@@ -1,15 +1,25 @@
-import React from "react"
+import React, {useEffect, useRef} from "react"
 import Footer from "./components/footer/Footer"
 import NavBar from "./components/navBar/NavBar"
 import RouterView from "./components/routerView/RouterView"
+import { renderBackground } from "./utils/threejs/pageBackground"
 import "./App.scss"
-
 function App() {
+  const canvas = useRef(null)
+  useEffect(() => {
+    renderBackground(canvas.current)
+  }, [])
+
   return (
     <div className="App">
-      <NavBar />
-      <RouterView />
-      <Footer />
+      <canvas ref={canvas} width={innerWidth} height={innerHeight} className="page-background" />
+      {true &&
+        <React.Fragment>
+          <NavBar />
+          <RouterView />
+          <Footer />
+        </React.Fragment>
+      }
     </div>
   )
 }

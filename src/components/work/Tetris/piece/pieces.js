@@ -4,7 +4,7 @@ export const ESS = {
 }
 export const ZED = {
   squares: [[1, 1], [1, 0], [2, 2], [2, 1]],
-  color: "#301a4b"
+  color: "#00f1ff"
 }
 export const EL = {
   squares: [[1, 1], [1, 2], [1, 0], [0, 2]],
@@ -24,7 +24,7 @@ export const I = {
 }
 export const O = {
   squares: [[1, 1], [1, 0], [0, 0], [0, 1]],
-  color: "#2a4d14"
+  color: "#f947ff"
 }
 
 export const BASE_TIMELINE = [

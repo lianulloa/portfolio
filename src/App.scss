@@ -3,6 +3,20 @@
 @import "./theme/animations.scss";
 @import "./theme/spaces.css";
 
+//FIXME: remove after along with material ui 
+body > iframe {
+  display: none;
+}
+
+canvas.page-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  // width: 100vw;
+  // height: 100vh;
+  z-index: -1;
+}
+
 .App {
   text-align: center;
   color: white;

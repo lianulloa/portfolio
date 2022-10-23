@@ -26,7 +26,7 @@ export const renderBackground = (canvas) => {
   const plane = new THREE.Mesh(planeGeometry, planeMaterial)
   scene.add(plane)
   plane.rotation.set(-1.0, 0.8, 0.0)
-  plane.position.x = 10
+  plane.position.x = 5
 
   // console.log(plane)
 

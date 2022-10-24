@@ -2,6 +2,7 @@ import * as THREE from "three"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 import gsap from "gsap"
 
+// TODO: Need to clean this
 // const planeColor = 0x3668a5
 const planeColorArray = [54/255, 104/255, 165/255]
 const planeAccentColorArray = [138 / 255, 234 / 255, 146 / 255]
@@ -67,6 +68,7 @@ export const renderBackground = (canvas) => {
         array[i] = originalPositions[i] + Math.cos(time +
           randomValues[parseInt(i / 3)]
         ) * Math.sign(randomValues[parseInt(i / 3)])
+
         // array[i - 1] = originalPositions[i - 1] + Math.cos(time +
         //   randomValues[parseInt(i / 3)]
         // ) * Math.sign(randomValues[parseInt(i / 3)]) * 0.5

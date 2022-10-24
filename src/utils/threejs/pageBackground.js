@@ -3,6 +3,8 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 import gsap from "gsap"
 
 // TODO: Need to clean this
+// - try to improve how it looks on mobile
+
 // const planeColor = 0x3668a5
 const planeColorArray = [54/255, 104/255, 165/255]
 const planeAccentColorArray = [138 / 255, 234 / 255, 146 / 255]
@@ -53,8 +55,8 @@ export const renderBackground = (canvas) => {
     3
   ))
 
-  // const controls = new OrbitControls(camera, renderer.domElement)
-  // controls.enableZoom = false
+  const controls = new OrbitControls(camera, renderer.domElement)
+  controls.enableZoom = false
 
   const light = new THREE.DirectionalLight(0xffffff, 1)
   light.position.set(0, 0, 10)
@@ -92,7 +94,7 @@ export const renderBackground = (canvas) => {
     renderer.render(scene, camera)
     raycaster.setFromCamera(mouse, camera)
     frame += 0.008
-    // controls.update()
+    controls.update()
 
     bringPlaneToLife(frame)
 

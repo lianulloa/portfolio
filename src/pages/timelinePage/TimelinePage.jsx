@@ -7,6 +7,7 @@ import WorkTimeline from "../../components/work/Timeline/Timeline"
 import {selectors, actions } from "../../store/slices/jobs"
 import { useDispatch, useSelector } from "react-redux"
 import Tetris from "../../components/work/Tetris/Tetris.jsx"
+import { mutations as settingsMutations } from "../../store/slices/settings"
 import "./TimelinePage.scss"
 
 function TimelinePage() {
@@ -19,6 +20,19 @@ function TimelinePage() {
       dispatch(actions.getJobs())
     }
   })
+
+  const showBoring = () => {
+    if (showTetris) {
+      setShowTetris(false)
+      dispatch(settingsMutations.rollbackBackgroundRotationOneStep())
+    }
+  }
+  const showFun = () => {
+    if (!showTetris) {
+      setShowTetris(true)
+      dispatch(settingsMutations.setBackgroundRotation("center-bottom"))
+    }
+  }
   return (
     <div className="App-section" id="App-timeline">
       <Container maxWidth="md">
@@ -26,8 +40,8 @@ function TimelinePage() {
         <div className="row center-xs m-b-md">
           <div className="col-xs-10 col-sm-8">
             <ButtonGroup className="button-group--flat" disableElevation size="small" aria-label="secondary button group">
-              <Button onClick={()=> setShowTetris(false)}>Show boring</Button>
-              <Button onClick={()=> setShowTetris(true)}>Show fun <PlayArrowIcon fontSize="small"/></Button>
+              <Button onClick={showBoring}>Show boring</Button>
+              <Button onClick={showFun}>Show fun <PlayArrowIcon fontSize="small"/></Button>
             </ButtonGroup>
           </div>
         </div>

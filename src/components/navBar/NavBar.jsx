@@ -9,8 +9,8 @@ function NavBar() {
   const [withAnchor, setWithAnchor] = useState("")
   useEffect(() => {
     if (withAnchor && withAnchor !== "#") {
-      const element = document.querySelector(withAnchor).scrollIntoView()
-      element && element.scrollIntoView()
+      const element = document.querySelector(withAnchor)?.scrollIntoView()
+      element ? element.scrollIntoView() : setWithAnchor("")
     }
   }, [path])
 

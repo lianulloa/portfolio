@@ -23,10 +23,6 @@ function AlgorithmsPage() {
       <Container maxWidth="md">
         <h1 className="m-b-xs">Problem Solving</h1>
         <div className="row m-b">
-          <div className="col-xs-12 m-b">
-            For some problems, the provided answer is not mine.
-            I have had to look some solutions up.
-          </div>
           {false && 
             <div className="col-xs-12 m-b">
               put filters here

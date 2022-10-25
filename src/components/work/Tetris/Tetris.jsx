@@ -61,7 +61,9 @@ function Tetris() {
     if (!scores.length) {
       dispatch(actions.getScores())
     }
-  })
+
+    return stopGame
+  }, [])
 
   useEffect(() => {
     const canvas = ref.current

@@ -16,7 +16,7 @@ const mouse = {
   x: undefined,
   y: undefined
 }
-let plane
+let plane, renderer, scene, camera, raycaster
 
 const captureNormalizedMousePosition = e => {
   mouse.x = (e.clientX / innerWidth) * 2 - 1
@@ -25,46 +25,10 @@ const captureNormalizedMousePosition = e => {
 
 let width, height
 export const renderBackground = (canvas) => {
-  width = canvas.width
-  height = canvas.height
-  const renderer = new THREE.WebGLRenderer({antialias: true, canvas})
-  renderer.setSize(width, height)
-  renderer.setClearColor(0xffffff, 0)
-
-  const raycaster = new THREE.Raycaster()
-
-  const scene = new THREE.Scene()
-
-  const camera = new THREE.PerspectiveCamera(75, width/height, 0.1, 1000)
-  camera.position.z = 35
-  scene.add(camera)
-
-  const planeGeometry = new THREE.PlaneGeometry(60, 60, 20, 20)
-  const planeMaterial = new THREE.MeshPhongMaterial({
-    flatShading: true,
-    vertexColors: true
-  })
-  plane = new THREE.Mesh(planeGeometry, planeMaterial)
-  scene.add(plane)
-  plane.rotation.set(bgCurrentRotation.x, bgCurrentRotation.y, bgCurrentRotation.z)
-  plane.position.x = 5
-
-  const planeItemCount = plane.geometry.attributes.position.count
-  plane.geometry.attributes.position.randomValues = Array.from({length: planeItemCount}, () => Math.random() - 0.5)
-  const colors = Array(planeItemCount).fill(planeColorArray)
-  plane.geometry.setAttribute("color", new THREE.BufferAttribute(
-    new Float32Array(
-      [].concat(...colors)
-    ),
-    3
-  ))
+  setUpScene(canvas)
 
   const controls = new OrbitControls(camera, renderer.domElement)
   controls.enableZoom = false
-
-  const light = new THREE.DirectionalLight(0xffffff, 1)
-  light.position.set(0, 0, 10)
-  scene.add(light)
 
   const bringPlaneToLife = (time) => {
     const { array, originalPositions, randomValues } = plane.geometry.attributes.position
@@ -135,6 +99,46 @@ export const renderBackground = (canvas) => {
 
 export const cleanUp = () => {
   removeEventListener("mousemove", captureNormalizedMousePosition)
+}
+
+const setUpScene = (canvas) => {
+  width = canvas.width
+  height = canvas.height
+  renderer = new THREE.WebGLRenderer({antialias: true, canvas})
+  renderer.setSize(width, height)
+  renderer.setClearColor(0xffffff, 0)
+
+  raycaster = new THREE.Raycaster()
+
+  scene = new THREE.Scene()
+
+  camera = new THREE.PerspectiveCamera(75, width/height, 0.1, 1000)
+  camera.position.z = 35
+  scene.add(camera)
+
+  const planeGeometry = new THREE.PlaneGeometry(60, 60, 20, 20)
+  const planeMaterial = new THREE.MeshPhongMaterial({
+    flatShading: true,
+    vertexColors: true
+  })
+  plane = new THREE.Mesh(planeGeometry, planeMaterial)
+  scene.add(plane)
+  plane.rotation.set(bgCurrentRotation.x, bgCurrentRotation.y, bgCurrentRotation.z)
+  plane.position.x = 5
+
+  const planeItemCount = plane.geometry.attributes.position.count
+  plane.geometry.attributes.position.randomValues = Array.from({length: planeItemCount}, () => Math.random() - 0.5)
+  const colors = Array(planeItemCount).fill(planeColorArray)
+  plane.geometry.setAttribute("color", new THREE.BufferAttribute(
+    new Float32Array(
+      [].concat(...colors)
+    ),
+    3
+  ))
+
+  const light = new THREE.DirectionalLight(0xffffff, 1)
+  light.position.set(0, 0, 10)
+  scene.add(light)
 }
 
 const rotateBackground = (to) => {

@@ -148,24 +148,24 @@ const rotateBackground = (to) => {
     onUpdate: () => {
       plane.rotation.set(bgCurrentRotation.x, bgCurrentRotation.y, bgCurrentRotation.z)
     }
-  })
+  }).delay(0.2)
 }
 
 export const rotateBackgroundTo = (rotation) => {
-  switch (rotation) {
-    case "left":
-      rotateBackground(BACKGROUND_LEFT_ROTATION)
-      break
-    case "right":
-      rotateBackground(BACKGROUND_RIGHT_ROTATION)
-      break
-    case "center-bottom":
-      rotateBackground(BACKGROUND_CENTER_BOTTOM_ROTATION)
-      break
-    default:
-      console.log(`Background rotation ${rotation} not defined`)
-      break
+  if (plane) {
+    switch (rotation) {
+      case "left":
+        rotateBackground(BACKGROUND_LEFT_ROTATION)
+        break
+      case "right":
+        rotateBackground(BACKGROUND_RIGHT_ROTATION)
+        break
+      case "center-bottom":
+        rotateBackground(BACKGROUND_CENTER_BOTTOM_ROTATION)
+        break
+      default:
+        console.log(`Background rotation ${rotation} not defined`)
+        break
+    }
   }
 }
-
-window.r = rotateBackgroundTo

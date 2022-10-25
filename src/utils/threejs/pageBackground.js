@@ -27,8 +27,8 @@ let width, height
 export const renderBackground = (canvas) => {
   setUpScene(canvas)
 
-  const controls = new OrbitControls(camera, renderer.domElement)
-  controls.enableZoom = false
+  // const controls = new OrbitControls(camera, renderer.domElement)
+  // controls.enableZoom = false
 
   const bringPlaneToLife = (time) => {
     const { array, originalPositions, randomValues } = plane.geometry.attributes.position
@@ -58,7 +58,7 @@ export const renderBackground = (canvas) => {
     renderer.render(scene, camera)
     raycaster.setFromCamera(mouse, camera)
     frame += 0.008
-    controls.update()
+    // controls.update()
 
     bringPlaneToLife(frame)
 

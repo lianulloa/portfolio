@@ -1,6 +1,9 @@
 import * as THREE from "three"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 import gsap from "gsap"
+import { BACKGROUND_LEFT_ROTATION, BACKGROUND_RIGHT_ROTATION, BACKGROUND_CENTER_BOTTOM_ROTATION } from "./constants"
+
+const bgCurrentRotation = {...BACKGROUND_LEFT_ROTATION}
 
 // TODO: Need to clean this
 // - try to improve how it looks on mobile
@@ -13,6 +16,7 @@ const mouse = {
   x: undefined,
   y: undefined
 }
+let plane
 
 const captureNormalizedMousePosition = e => {
   mouse.x = (e.clientX / innerWidth) * 2 - 1
@@ -31,7 +35,7 @@ export const renderBackground = (canvas) => {
 
   const scene = new THREE.Scene()
 
-  const camera = new THREE.PerspectiveCamera(75, canvas.width/canvas.height, 0.1, 1000)
+  const camera = new THREE.PerspectiveCamera(75, width/height, 0.1, 1000)
   camera.position.z = 35
   scene.add(camera)
 
@@ -40,9 +44,9 @@ export const renderBackground = (canvas) => {
     flatShading: true,
     vertexColors: true
   })
-  const plane = new THREE.Mesh(planeGeometry, planeMaterial)
+  plane = new THREE.Mesh(planeGeometry, planeMaterial)
   scene.add(plane)
-  plane.rotation.set(-1.0, 0.8, 0.0)
+  plane.rotation.set(bgCurrentRotation.x, bgCurrentRotation.y, bgCurrentRotation.z)
   plane.position.x = 5
 
   const planeItemCount = plane.geometry.attributes.position.count
@@ -70,10 +74,6 @@ export const renderBackground = (canvas) => {
         array[i] = originalPositions[i] + Math.cos(time +
           randomValues[parseInt(i / 3)]
         ) * Math.sign(randomValues[parseInt(i / 3)])
-
-        // array[i - 1] = originalPositions[i - 1] + Math.cos(time +
-        //   randomValues[parseInt(i / 3)]
-        // ) * Math.sign(randomValues[parseInt(i / 3)]) * 0.5
       } else {
         array[i] += Math.random() * 2
       }
@@ -128,7 +128,7 @@ export const renderBackground = (canvas) => {
       }
     })
   }
-  
+
   render()
   addEventListener("mousemove", captureNormalizedMousePosition)
 }
@@ -137,3 +137,31 @@ export const cleanUp = () => {
   removeEventListener("mousemove", captureNormalizedMousePosition)
 }
 
+const rotateBackground = (to) => {
+  gsap.to(bgCurrentRotation, {
+    ...to,
+    duration: 1,
+    onUpdate: () => {
+      plane.rotation.set(bgCurrentRotation.x, bgCurrentRotation.y, bgCurrentRotation.z)
+    }
+  })
+}
+
+export const rotateBackgroundTo = (rotation) => {
+  switch (rotation) {
+    case "left":
+      rotateBackground(BACKGROUND_LEFT_ROTATION)
+      break
+    case "right":
+      rotateBackground(BACKGROUND_RIGHT_ROTATION)
+      break
+    case "center-bottom":
+      rotateBackground(BACKGROUND_CENTER_BOTTOM_ROTATION)
+      break
+    default:
+      console.log(`Background rotation ${rotation} not defined`)
+      break
+  }
+}
+
+window.r = rotateBackgroundTo

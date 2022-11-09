@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, Suspense } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { Container } from "@material-ui/core"
-import Editor from "../../components/algorithms/editor/Editor"
 import AlgorithmCard from "../../components/algorithms/algorithmCard/AlgorithmCard"
 import { selectors, actions } from "../../store/slices/algorithms"
 import HerokuLoading from "../../components/common/HerokuLoading"
 
+const Editor = React.lazy(() => import("../../components/algorithms/editor/Editor"))
 
 function AlgorithmsPage() {
   const algorithms = useSelector(selectors.algorithms)
@@ -55,13 +55,16 @@ function AlgorithmsPage() {
           </div>
         }
         <div className="row m-b">
-          <Editor
-            open={showEditor}
-            algorithm={selectedAlgorithm}
-            onClose={() => {
-              setShowEditor(false)
-            }}
-          />
+          {/* TODO: Time to implement a loading component */}
+          <Suspense fallback={<label style={{fontSize: 20}}>⏳</label>}>
+            <Editor
+              open={showEditor}
+              algorithm={selectedAlgorithm}
+              onClose={() => {
+                setShowEditor(false)
+              }}
+            />
+          </Suspense>
         </div>
       </Container>
     </div>

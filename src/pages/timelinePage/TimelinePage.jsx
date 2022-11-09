@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, Suspense } from "react"
 import { Container } from "@material-ui/core"
 import Button from "@material-ui/core/Button"
 import ButtonGroup from "@material-ui/core/ButtonGroup"
@@ -6,9 +6,10 @@ import PlayArrowIcon from "@material-ui/icons/PlayArrow"
 import WorkTimeline from "../../components/work/Timeline/Timeline"
 import {selectors, actions } from "../../store/slices/jobs"
 import { useDispatch, useSelector } from "react-redux"
-import Tetris from "../../components/work/Tetris/Tetris.jsx"
 import { mutations as settingsMutations } from "../../store/slices/settings"
 import "./TimelinePage.scss"
+
+const Tetris = React.lazy(() => import("../../components/work/Tetris/Tetris.jsx"))
 
 function TimelinePage() {
   const jobs = useSelector(selectors.jobs)
@@ -48,7 +49,12 @@ function TimelinePage() {
         <div className="row">
           <div className="col-xs-12">
             {!showTetris && <WorkTimeline jobs={jobs} />}
-            {showTetris && <Tetris />}
+            {showTetris &&
+              //  TODO: Time to implement a loading component
+              <Suspense fallback={<label style={{fontSize: 20}}>⏳</label>}>
+                <Tetris />
+              </Suspense>
+            }
           </div>
         </div>
       </Container>

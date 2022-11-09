@@ -4,7 +4,7 @@ import PropTypes from "prop-types"
 import Slider from "infinite-react-carousel"
 import OpenInNewIcon from "@material-ui/icons/OpenInNew"
 import "./ExperienceSlider.scss"
-import device from "../../../utils/device"
+import { isMobile } from "react-device-detect"
 import {selectors, actions } from "../../../store/slices/jobs"
 import HerokuLoading from "../../common/HerokuLoading"
 
@@ -23,8 +23,8 @@ function ExperienceSlider() {
     autoplayScroll: scroll,
     dotsScroll: scroll,
     centerMode: true,
-    dots: device.is("phone"),
-    initialSlide: device.is("phone")? 0 : 1
+    dots: isMobile,
+    initialSlide: isMobile? 0 : 1
   }
 
   useEffect(() => {

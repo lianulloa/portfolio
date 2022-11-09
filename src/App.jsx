@@ -6,7 +6,7 @@ import NavBar from "./components/navBar/NavBar"
 import RouterView from "./components/routerView/RouterView"
 import { renderBackground, cleanUp, rotateBackgroundTo } from "./utils/threejs/pageBackground"
 import { selectors as settingsSelector, mutations as settingsMutations } from "./store/slices/settings"
-import device from "./utils/device"
+import { isMobile } from "react-device-detect"
 import "./App.scss"
 function App() {
   const canvas = useRef(null)
@@ -15,7 +15,7 @@ function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    !device.is("phone") && renderBackground(canvas.current)
+    !isMobile && renderBackground(canvas.current)
 
     return cleanUp
   }, [])

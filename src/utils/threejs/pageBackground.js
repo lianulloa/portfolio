@@ -1,14 +1,21 @@
 import * as THREE from "three"
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
+import { isMobile } from "react-device-detect"
 import gsap from "gsap"
-import { BACKGROUND_LEFT_ROTATION, BACKGROUND_RIGHT_ROTATION, BACKGROUND_CENTER_BOTTOM_ROTATION } from "./constants"
+import {
+  BACKGROUND_LEFT_ROTATION, BACKGROUND_RIGHT_ROTATION, BACKGROUND_CENTER_BOTTOM_ROTATION,
+  DESKTOP_SCENE_CONFIG, MOBILE_SCENE_CONFIG
+} from "./constants"
 
-const bgCurrentRotation = {...BACKGROUND_LEFT_ROTATION}
+// import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
+// const controls = new OrbitControls(camera, renderer.domElement)
+// controls.enableZoom = false
+
+const bgCurrentRotation = { ...BACKGROUND_LEFT_ROTATION }
+const config = isMobile ? MOBILE_SCENE_CONFIG : DESKTOP_SCENE_CONFIG
 
 // TODO: Need to clean this
 // - try to improve how it looks on mobile
 
-// const planeColor = 0x3668a5
 const planeColorArray = [54/255, 104/255, 165/255]
 const planeAccentColorArray = [138 / 255, 234 / 255, 146 / 255]
 
@@ -26,9 +33,6 @@ const captureNormalizedMousePosition = e => {
 let width, height
 export const renderBackground = (canvas) => {
   setUpScene(canvas)
-
-  // const controls = new OrbitControls(camera, renderer.domElement)
-  // controls.enableZoom = false
 
   const bringPlaneToLife = (time) => {
     const { array, originalPositions, randomValues } = plane.geometry.attributes.position
@@ -58,7 +62,6 @@ export const renderBackground = (canvas) => {
     renderer.render(scene, camera)
     raycaster.setFromCamera(mouse, camera)
     frame += 0.008
-    // controls.update()
 
     bringPlaneToLife(frame)
 
@@ -112,11 +115,18 @@ const setUpScene = (canvas) => {
 
   scene = new THREE.Scene()
 
+  const { camera: cameraConfig } = config
   camera = new THREE.PerspectiveCamera(75, width/height, 0.1, 1000)
-  camera.position.z = 35
+  camera.position.z = cameraConfig.position.z
   scene.add(camera)
 
-  const planeGeometry = new THREE.PlaneGeometry(60, 60, 20, 20)
+  const { plane: planeConfig } = config
+  const planeGeometry = new THREE.PlaneGeometry(
+    planeConfig.width,
+    planeConfig.height,
+    planeConfig.widthSegments,
+    planeConfig.heightSegments
+  )
   const planeMaterial = new THREE.MeshPhongMaterial({
     flatShading: true,
     vertexColors: true
@@ -124,7 +134,7 @@ const setUpScene = (canvas) => {
   plane = new THREE.Mesh(planeGeometry, planeMaterial)
   scene.add(plane)
   plane.rotation.set(bgCurrentRotation.x, bgCurrentRotation.y, bgCurrentRotation.z)
-  plane.position.x = 5
+  plane.position.x = planeConfig.position.x
 
   const planeItemCount = plane.geometry.attributes.position.count
   plane.geometry.attributes.position.randomValues = Array.from({length: planeItemCount}, () => Math.random() - 0.5)

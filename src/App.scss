@@ -12,8 +12,6 @@ canvas.page-background {
   position: fixed;
   top: 0;
   left: 0;
-  // width: 100vw;
-  // height: 100vh;
   z-index: -1;
 }
 
@@ -67,6 +65,12 @@ canvas.page-background {
   background-color: transparent;
   position: relative;
 
+  // https://stackoverflow.com/questions/14383632/webkit-border-radius-and-overflow-bug-when-using-any-animation-transition/16681137
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+
   &::before {
     content: " ";
     background-color: $primary_color;
@@ -76,5 +80,6 @@ canvas.page-background {
     filter: blur(60px);
     position: absolute;
     z-index: -1;
+    // border-radius: 16px;
   }
 }

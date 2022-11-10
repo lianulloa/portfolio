@@ -25,7 +25,7 @@ function PersonalProject({ link, title, description, tags }) {
       >
         <CardHeader
           title={
-            <Typography variant="subtitle1" noWrap>
+            <Typography variant="h6" noWrap>
               <b>
                 {title}
                 {link && <OpenInNewIcon fontSize="small" />}

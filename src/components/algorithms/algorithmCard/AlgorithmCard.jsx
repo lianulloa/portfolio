@@ -41,7 +41,7 @@ function AlgorithmCard({
           </div>
         }
         title={
-          <Typography variant="subtitle1" noWrap>
+          <Typography variant="h6" noWrap>
             <b>
               {title}
             </b>

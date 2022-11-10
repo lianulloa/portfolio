@@ -61,3 +61,20 @@ canvas.page-background {
   text-transform: unset !important;
   border: 1px solid $secondary_color !important;
 }
+
+.App .MuiPaper-root {
+  color: $secondary_color;
+  background-color: transparent;
+  position: relative;
+
+  &::before {
+    content: " ";
+    background-color: $primary_color;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    filter: blur(60px);
+    position: absolute;
+    z-index: -1;
+  }
+}

@@ -3,16 +3,13 @@
 .App-banner {
   display: flex;
   flex-direction: row;
-  // min-height: 60vh;
   padding-top: 80px;
   max-width: 1024px;
   margin: 0 auto;
   justify-content: center;
   padding-left: 40px;
   padding-right: 40px;
-  .MuiPaper-root {
-    color: $primary_color;
-  }
+
   a {
     display: flex;
     justify-content: center;
@@ -32,4 +29,11 @@
   background-repeat: no-repeat;
   background-position: 28% 50%;
   border-radius: 30px;
+}
+
+.skills-card {
+
+  .MuiCardHeader-title {
+    font-weight: 600;
+  }
 }

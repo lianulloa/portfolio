@@ -3,10 +3,6 @@
 .AlgorithmCard {
   cursor: pointer;
 
-  &.MuiPaper-root {
-    color: $primary_color;
-  }
-
   .MuiCardHeader-root {
     text-align: left;
     padding-bottom: 0;
@@ -15,6 +11,10 @@
         margin:0;
       }
     }
+  }
+
+  .MuiIconButton-root {
+    color: $secondary_color
   }
 
   .MuiCardHeader-avatar {

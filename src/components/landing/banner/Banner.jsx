@@ -46,6 +46,7 @@ class Banner extends Component {
             </div>
             <Card
               elevation={5}
+              className="skills-card"
               style={{ position: "absolute", bottom: "-80px", right: "-30px", width: "60%", zIndex: "1", borderRadius: 16 }}
             >
               <CardHeader title="Tech Skills" style={{paddingBottom: 0}}/>

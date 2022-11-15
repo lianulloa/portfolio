@@ -5,6 +5,7 @@ const CELL_LINE_WIDTH = "2"
 const CELL_LINE_COLOR = "white"
 const BOARD_ROWS = 20
 const BOARD_COLS = 10
+const INITIAL_INTERVAL = 600
 export const MOVE_DIRECTIONS = {
   DOWN: "down",
   LEFT: "left",
@@ -25,6 +26,7 @@ export default class TetrisBoard {
     this.score = 0
     this.setScore = setScore
     this.gameInterval
+    this.intervalLapse = INITIAL_INTERVAL
   }
   drawBoard() {
     this.ctx.lineWidth = CELL_LINE_WIDTH
@@ -94,6 +96,9 @@ export default class TetrisBoard {
   }
   startGame() {
     this.drawPiece()
+    this.runGame()
+  }
+  runGame() {
     this.gameInterval = setInterval(() => {
       if (!this.pauseInterval) {
         const moved = this.handleMove(MOVE_DIRECTIONS.DOWN)
@@ -108,10 +113,12 @@ export default class TetrisBoard {
           }
         }
       }
-    }, 600)
+    }, this.intervalLapse)
   }
   stopGame() {
     clearInterval(this.gameInterval)
+    this.board = Array.from({length: BOARD_ROWS}, () => Array(BOARD_COLS).fill(false))
+    this.score = 0
   }
   drawPiece(piece = this.piece) {
     const onBoardSquares = piece.getOnBoardCoordinates()
@@ -128,6 +135,8 @@ export default class TetrisBoard {
       this.board[onBoardSquare[0]][onBoardSquare[1]] = piece.color
     }
   }
+  //FIXME: this is not working when there is a filled row above a
+  // no-filled row above a filled row
   checkForFilledRows(piece = this.piece) {
     const filledPromises = []
     const clearedRows = new Set()
@@ -159,9 +168,10 @@ export default class TetrisBoard {
     if (clearedRows.size) {
       this.score += clearedRows.size * 100
       this.setScore(this.score)
+      this.updateIntervalLapse()
   
       Promise.all(filledPromises).then(() => {
-        // This should a function on its own
+        // This should be a function on its own
         this.board.splice(lowestRow - clearedRows.size + 1, clearedRows.size)
         for (let i = 0; i < clearedRows.size; i++) {
           this.board.unshift(Array(BOARD_COLS).fill(false))
@@ -224,6 +234,16 @@ export default class TetrisBoard {
         (_, j) => [boardPosition[0], j]
       )
     )
+  }
+  async updateIntervalLapse() {
+    this.pauseInterval = true
+    const newLapse = Math.max(50, INITIAL_INTERVAL - parseInt(this.score / 500) * 50)
+    if (this.intervalLapse !== newLapse) {
+      clearInterval(this.gameInterval)
+      this.intervalLapse = newLapse
+      this.runGame()
+    }
+    this.pauseInterval = false
   }
   _movePiece(piece, direction) {
     this.clearPiece() 

@@ -55,6 +55,7 @@ function Tetris() {
     board.eraseBoard()
     drawTimeline()
     setPlay(false)
+    setScore(0)
   }
 
   useEffect(() => {

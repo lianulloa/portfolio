@@ -2,9 +2,9 @@ import axios from "axios"
 import { getToken } from "./session"
 
 const service = axios.create({
-  baseURL: process.env.NODE_ENV === "development"
+  baseURL: process.env.NODE_ENV === "pdevelopment"
     ? "http://localhost:8080/api/"
-    : "https://lian-portfolio-backend.herokuapp.com/api/",
+    : "https://portfolio-backend-production-9167.up.railway.app/api/",
   timeout: 30000,
   __handleErrorsInResponse: true,
   headers: {

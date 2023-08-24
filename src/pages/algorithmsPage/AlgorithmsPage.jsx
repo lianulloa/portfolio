@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { Container } from "@material-ui/core"
 import AlgorithmCard from "../../components/algorithms/algorithmCard/AlgorithmCard"
 import { selectors, actions } from "../../store/slices/algorithms"
-import HerokuLoading from "../../components/common/HerokuLoading"
+import RailwayLoading from "../../components/common/RailwayLoading"
 
 const Editor = React.lazy(() => import("../../components/algorithms/editor/Editor"))
 
@@ -46,7 +46,7 @@ function AlgorithmsPage() {
           {
             !algorithms.length &&
             // TODO: show a better component for this
-            <HerokuLoading />
+            <RailwayLoading />
           }
         </div>
         {!!algorithms.length &&

@@ -15,9 +15,9 @@ function Services() {
       <h1 style={{marginBottom: 0}}>
         Work Experience
       </h1>
-      <small >
+      {/* <small > */}
         <A className="secondary-color" href="timeline">(Go to Timeline 👉)</A>
-      </small>
+      {/* </small> */}
       <div className="row">
         <div className="col-xs-12">
           <ExperienceSlider />

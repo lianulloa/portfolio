@@ -6,7 +6,7 @@ import OpenInNewIcon from "@material-ui/icons/OpenInNew"
 import "./ExperienceSlider.scss"
 import { isMobile } from "react-device-detect"
 import {selectors, actions } from "../../../store/slices/jobs"
-import HerokuLoading from "../../common/HerokuLoading"
+import RailwayLoading from "../../common/RailwayLoading"
 
 function ExperienceSlider() {
   const jobs = useSelector(selectors.jobs)
@@ -86,7 +86,7 @@ function ExperienceSlider() {
       }
       {!jobs.length &&
         <div className="row">
-          <HerokuLoading />
+          <RailwayLoading />
         </div>
       }
     </div>

@@ -17,7 +17,7 @@ function About() {
             <h2 style={{ textTransform: "uppercase"}}>
               My Projects
             </h2>
-            <small>(or Hobbies)</small>
+            <p style={{marginTop: 0}}>(for learning and improvement)</p>
             <div className="row">
               {
                 PERSONAL_PROJECTS.map(p => 
@@ -34,7 +34,7 @@ function About() {
             <h2  style={{ textTransform: "uppercase"}}>
               Books
             </h2>
-            <small>(I have read)</small>
+            <p style={{marginTop: 0}}>(That inspired me)</p>
             <BookSlider books={BOOKS} />
           </div>
         </div>

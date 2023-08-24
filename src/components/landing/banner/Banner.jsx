@@ -19,7 +19,7 @@ class Banner extends Component {
         <div className="col-md-6 col-sm-8 col-xs-12" style={{width:"50%",textAlign:"left"}}>
           <div className="me-pic" />
           <p style={{ fontSize: "1.3rem", textAlign: "justify", color: "white", marginTop: 80}}>
-            Full Stack Developer with 5+ years of experience developing new, and improving
+            Full Stack Developer with 6+ years of experience developing new, and improving
             existing software applications based on the cloud. Specialized in API Rest and
             design systems. Creative and clean-coder Computer Scientist.
           </p>
